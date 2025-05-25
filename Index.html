@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מסע הריפוי שלי - הבנת טראומה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.2em;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #4a5568;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-section {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nervous-system {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .system-card {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .system-card.danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .system-card.shutdown {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .system-card:hover {
+            transform: scale(1.05);
+        }
+
+        .system-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .vagus-illustration {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .vagus-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .brain-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .vagus-line {
+            width: 6px;
+            height: 100px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            border-radius: 3px;
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .organs {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .organ {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .breathing-games {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .breathing-exercise {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        .breathing-circle {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #ff6b6b;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff6b6b;
+            transition: all 4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .breathing-circle.inhale {
+            transform: scale(1.3);
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .breathing-circle.exhale {
+            transform: scale(0.8);
+            background: rgba(255, 107, 107, 0.05);
+        }
+
+        .box-breathing {
+            width: 200px;
+            height: 200px;
+            border: 4px solid #4facfe;
+            margin: 20px auto;
+            position: relative;
+            background: rgba(79, 172, 254, 0.1);
+        }
+
+        .box-dot {
+            width: 20px;
+            height: 20px;
+            background: #4facfe;
+            border-radius: 50%;
+            position: absolute;
+            transition: all 4s ease-in-out;
+        }
+
+        .box-dot.top-left { top: -10px; left: -10px; }
+        .box-dot.top-right { top: -10px; right: -10px; }
+        .box-dot.bottom-right { bottom: -10px; right: -10px; }
+        .box-dot.bottom-left { bottom: -10px; left: -10px; }
+
+        .star-breathing {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .star {
+            font-size: 150px;
+            color: #f093fb;
+            transition: all 3s ease-in-out;
+            cursor: pointer;
+        }
+
+        .star.glow {
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700;
+            transform: scale(1.2);
+        }
+
+        .exercise-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .exercise-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+
+        .body-connection {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .body-part {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .body-part:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .safe-space {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .safe-space-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .relaxation-exercise {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-right: 5px solid #667eea;
+        }
+
+        .response-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-right: 5px solid #f093fb;
+        }
+
+        .healing-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-right: 5px solid #43e97b;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4caf50;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        h2 {
+            color: #4a5568;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+        }
+
+        h4 {
+            color: #f093fb;
+            margin: 15px 0 10px 0;
+        }
+
+        p, li {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .emoji {
+            font-size: 1.5em;
+            margin: 0 5px;
+        }
+
+        .tip-box {
+            background: linear-gradient(135deg, #e0f2fe 0%, #e1f5fe 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            border-right: 5px solid #4facfe;
+        }
+
+        @media (max-width: 768px) {
+            .nav-btn {
+                padding: 12px 18px;
+                font-size: 1em;
+            }
+            
+            .navigation {
+                gap: 10px;
+            }
+            
+            .breathing-circle, .box-breathing {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌈 מסע הריפוי שלי 🌈</h1>
+            <p>למידה על הגוף, הנפש ודרכים לריפוי מטראומה</p>
+            <p style="font-size: 1em; margin-top: 10px;">מבוסס על התיאוריה הפוליוגלית של ד"ר סטיבן פורג'ס</p>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn active" onclick="showSection('theory')">🧠 התיאוריה הפוליוגלית</button>
+            <button class="nav-btn" onclick="showSection('vagus')">🌿 העצב הוואגוס</button>
+            <button class="nav-btn" onclick="showSection('responses')">⚡ תגובות הגוף</button>
+            <button class="nav-btn" onclick="showSection('safe-space')">🏠 מקום בטוח</button>
+            <button class="nav-btn" onclick="showSection('breathing')">🫁 משחקי נשימה</button>
+            <button class="nav-btn" onclick="showSection('body-connection')">🤗 חיבור לגוף</button>
+            <button class="nav-btn" onclick="showSection('relaxation')">🧘 תרגילי ריפוי</button>
+        </div>
+
+        <!-- התיאוריה הפוליוגלית -->
+        <div class="content-section active" id="theory">
+            <h2>🧠 התיאוריה הפוליוגלית של ד"ר סטיבן פורג'ס</h2>
+            
+            <p>התיאוריה הפוליוגלית מסבירה איך המערכת העצבית שלנו מגיבה לסכנה וביטחון. זה כמו מערכת אזעקה חכמה בגוף שלנו!</p>
+            
+            <div class="nervous-system">
+                <div class="system-card">
+                    <div class="system-icon">🌱</div>
+                    <h3>מצב בטוח וחברתי</h3>
+                    <h4>העצב הוואגוס הגבוה פעיל</h4>
+                    <p>כשאנחנו מרגישים בטוחים, יכולים ללמוד, לשחק, להתחבר לאחרים ולהיות יצירתיים</p>
+                </div>
+                <div class="system-card danger">
+                    <div class="system-icon">⚡</div>
+                    <h3>מצב סימפתטי - לחימה/בריחה</h3>
+                    <h4>מערכת ההישרדות מופעלת</h4>
+                    <p>כשיש סכנה, הגוף מתכונן לפעולה: דופק מהר, נשימה מהירה, שרירים מתוחים</p>
+                </div>
+                <div class="system-card shutdown">
+                    <div class="system-icon">🛡️</div>
+                    <h3>מצב העצב הוואגוס הנמוך</h3>
+                    <h4>הגנה בניתוק</h4>
+                    <p>כשזה יותר מדי, הגוף "נכבה" - מרגישים קפואים, מנותקים, או ישנוניים</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h3>💡 למה זה חשוב להבין?</h3>
+                <p>כשאנחנו מבינים איך הגוף שלנו עובד, אנחנו יכולים לעזור לו לחזור למצב בטוח וטוב יותר!</p>
+            </div>
+        </div>
+
+        <!-- העצב הוואגוס -->
+        <div class="content-section" id="vagus">
+            <h2>🌿 העצב הוואגוס - הגיבור שלנו</h2>
+            
+            <div class="vagus-illustration">
+                <h3>מסע העצב הוואגוס בגוף</h3>
+                <div class="vagus-diagram">
+                    <div class="brain-icon">🧠</div>
+                    <p><strong>המוח</strong> - כאן הכל מתחיל</p>
+                    
+                    <div class="vagus-line"></div>
+                    
+                    <div class="organs">
+                        <div class="organ">
+                            <div>💗</div>
+                            <p>לב</p>
+                        </div>
+                        <div class="organ">
+                            <div>🫁</div>
+                            <p>ריאות</p>
+                        </div>
+                        <div class="organ">
+                            <div>🍯</div>
+                            <p>בטן</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="response-card">
+                    <h4>🌱 העצב הוואגוס הגבוה (החלק החדש)</h4>
+                    <p><strong>מה הוא עושה:</strong> עוזר לנו להרגיש בטוחים, להתחבר לאחרים ולהיות רגועים</p>
+                    <p><strong>איך זה מרגיש:</strong> נעים, רגוע, יכול לחייך ולדבר בקלות</p>
+                </div>
+                
+                <div class="response-card">
+                    <h4>🛡️ העצב הוואגוס הנמוך (החלק הישן)</h4>
+                    <p><strong>מה הוא עושה:</strong> מגן עלינו בזמן סכנה גדולה על ידי "כיבוי" הגוף</p>
+                    <p><strong>איך זה מרגיש:</strong> קפוא, מנותק, קשה לדבר או לזוז</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- תגובות הגוף -->
+        <div class="content-section" id="responses">
+            <h2>⚡ תגובות הגוף והדרכים לעזרה</h2>
+            
+            <div class="response-card">
+                <h3>🌈 מצב בטוח וחברתי</h3>
+                <h4>איך מזהים:</h4>
+                <p>• נשימה רגועה ועמוקה • פנים רגועות • יכולת להקשיב ולדבר • עיניים רכות</p>
+                <h4>איך שומרים על המצב הזה:</h4>
+                <p>• מוזיקה נעימה • חיבוקים • שיחות נעימות • יצירה ומשחק</p>
+            </div>
+            
+            <div class="response-card">
+                <h3>🏃‍♂️ מצב לחימה/בריחה</h3>
+                <h4>איך מזהים:</h4>
+                <p>• דופק מהר • נשימה מהירה • שרירים מתוחים • קושי לשבת במקום</p>
+                <h4>איך עוזרים:</h4>
+                <p>• תרגילי נשימה • פעילות גופנית • מוזיקה קצבית • תרגילי הרפיה</p>
+            </div>
+            
+            <div class="response-card">
+                <h3>🐢 מצב ניתוק והגנה</h3>
+                <h4>איך מזהים:</h4>
+                <p>• תחושת "קפיאה" • קושי לדבר • מרגיש רחוק • עייפות חזקה</p>
+                <h4>איך עוזרים:</h4>
+                <p>• תנועה עדינה • מגע רך • צבעים חמים • מוזיקה שקטה</p>
+            </div>
+
+            <div class="tip-box">
+                <h3>🔄 תהליך הריפוי</h3>
+                <p>הגוף שלנו יודע איך לרפא את עצמו! אנחנו רק צריכים לתת לו את הכלים הנכונים ולהיות סבלניים.</p>
+                <p><strong>זכרו:</strong> כל תגובה של הגוף היא תגובת הישרדות חכמה. אנחנו לא צריכים להיות כועסים על הגוף - הוא מנסה להגן עלינו!</p>
+            </div>
+        </div>
+
+        <!-- מקום בטוח -->
+        <div class="content-section" id="safe-space">
+            <div class="safe-space">
+                <div class="safe-space-icon">🏡</div>
+                <h2>מקום בטוח בפנים</h2>
+                
+                <p>בכל אחד מאיתנו יש מקום מיוחד בפנים שתמיד בטוח! זה המקום שלנו, שאף אחד לא יכול לקחת מאיתנו.</p>
+                
+                <div class="healing-card">
+                    <h3>המקום הבטוח שלי יכול להיות:</h3>
+                    <p>🏖️ חוף יפה עם גלים רגועים</p>
+                    <p>🏠 בית חם ונעים</p>
+                    <p>🌳 עץ גדול וחזק</p>
+                    <p>☁️ ענן רך בשמיים</p>
+                    <p>🌸 גן פרחים צבעוני</p>
+                    <p>🏔️ הר גבוה ושקט</p>
+                </div>
+
+                <h3>💭 איך יוצרים מקום בטוח?</h3>
+                <div class="healing-card">
+                    <p><strong>שלב 1:</strong> עצמו עיניים ונשמו לאט ובעמק</p>
+                    <p><strong>שלב 2:</strong> תארו לעצמכם מקום שבו אתם מרגישים בטוחים לגמרי</p>
+                    <p><strong>שלב 3:</strong> הוסיפו פרטים: איזה צבעים יש שם? איזה ריחות? איזה קולות?</p>
+                    <p><strong>שלב 4:</strong> תחושו איך הגוף שלכם נרגע במקום הזה</p>
+                    <p><strong>שלב 5:</strong> תזכרו - תמיד תוכלו לחזור לכאן כשתרצו!</p>
+                </div>
+
+                <div class="tip-box">
+                    <h3>✨ טיפ מיוחד</h3>
+                    <p>אפשר לצייר את המקום הבטוח, לכתוב עליו, או אפילו ליצור אותו במציאות (פינה קטנה בחדר עם כרית ובובה)!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- משחקי נשימה -->
+        <div class="content-section" id="breathing">
+            <h2>🫁 משחקי נשימה לריפוי</h2>
+            
+            <div class="breathing-games">
+                <!-- נשימת בלון -->
+                <div class="breathing-exercise">
+                    <h3>🎈 נשימת הבלון הקסום</h3>
+                    <div class="breathing-circle" id="breathingCircle" onclick="startBalloonBreathing()">
+                        <span id="breathingText">לחצו להתחלה</span>
+                    </div>
+                    <button class="exercise-btn" onclick="startBalloonBreathing()">התחל תרגיל</button>
+                    <button class="exercise-btn" onclick="stopBalloonBreathing()">עצור</button>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="balloonProgress"></div>
+                    </div>
+                    <p>הבלון שלנו גדל בשאיפה וקטן בנשיפה, כמו קסם!</p>
+                </div>
+
+                <!-- נשימת קופסא -->
+                <div class="breathing-exercise" style="background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);">
+                    <h3>📦 נשימת הקופסא</h3>
+                    <div class="box-breathing" id="boxBreathing">
+                        <div class="box-dot top-left" id="boxDot"></div>
+                        <div style="text-align: center; margin-top: 80px; color: #4facfe; font-weight: bold;" id="boxText">לחצו להתחלה</div>
+                    </div>
+                    <button class="exercise-btn" onclick="startBoxBreathing()" style="background: #4facfe;">התחל תרגיל</button>
+                    <button class="exercise-btn" onclick="stopBoxBreathing()" style="background: #4facfe;">עצור</button>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="boxProgress" style="background: #4facfe;"></div>
+                    </div>
+                    <p>עוקבים אחרי הנקודה מסביב לקופסא ונושמים: שאיפה → החזקה → נשיפה → החזקה</p>
+                </div>
+
+                <!-- נשימת כוכב -->
+                <div class="breathing-exercise" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);">
+                    <h3>⭐ נשימת הכוכב הזוהר</h3>
+                    <div class="star-breathing">
+                        <div class="star" id="breathingStar" onclick="startStarBreathing()">⭐</div>
+                    </div>
+                    <div id="starText" style="color: #f093fb; font-weight: bold; margin-bottom: 15px;">לחצו על הכוכב</div>
+                    <button class="exercise-btn" onclick="startStarBreathing()" style="background: #f093fb;">התחל תרגיל</button>
+                    <button class="exercise-btn" onclick="stopStarBreathing()" style="background: #f093fb;">עצור</button>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="starProgress" style="background: #f093fb;"></div>
+                    </div>
+                    <p>הכוכב זוהר כשאנחנו שואפים ומתעמעם כשאנחנו נושפים. כמה יפה!</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>🌊 עוד טכניקות נשימה</h3>
+                <div class="healing-card">
+                    <h4>🐝 נשימת הדבורה</h4>
+                    <p>שאפו דרך האף, ובנשיפה עשו קול "זזזז" כמו דבורה. הרעדות עוזרות לרגע את המערכת העצבית!</p>
+                </div>
+                <div class="healing-card">
+                    <h4>🌊 נשימת הגלים</h4>
+                    <p>דמיינו שאתם שוכבים על החוף... שאפו כמו גל שמגיע לחוף (4 ספירות), עצרו בנחת (2 ספירות), נשפו כמו גל שחוזר לים (6 ספירות)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- חיבור לגוף -->
+        <div class="content-section" id="body-connection">
+            <h2>🤗 חיבור לגוף שלנו</h2>
+            
+            <p>הגוף שלנו מדבר איתנו כל הזמן! צריך רק לדעת להקשיב 👂</p>
+            <p>פיתוח מודעות גופנית (Body Awareness) חיוני לתהליך הריפוי מטראומה</p>
+
+            <div class="body-connection">
+                <div class="body-part" onclick="exploreBodyPart('head')">
+                    <h3>🧠 הראש</h3>
+                    <p>כאן נמצאים הרגשות והמחשבות</p>
+                </div>
+                <div class="body-part" onclick="exploreBodyPart('chest')">
+                    <h3>💗 החזה</h3>
+                    <p>כאן מרגישים אהבה וכעס</p>
+                </div>
+                <div class="body-part" onclick="exploreBodyPart('belly')">
+                    <h3>🔥 הבטן</h3>
+                    <p>כאן נמצא הכוח שלנו</p>
+                </div>
+                <div class="body-part" onclick="exploreBodyPart('hands')">
+                    <h3>✋ הידיים</h3>
+                    <p>נותנות ומקבלות מגע</p>
+                </div>
+                <div class="body-part" onclick="exploreBodyPart('legs')">
+                    <h3>🦵 הרגליים</h3>
+                    <p>נושאות אותנו ומחוברות לאדמה</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>🔍 סריקת הגוף</h3>
+                <p>שכבו בנוחות ותעברו בתשומת לב על כל חלק בגוף:</p>
+                <div class="healing-card">
+                    <p>• איך מרגיש כל חלק?</p>
+                    <p>• איפה יש מתח?</p>
+                    <p>• איפה יש רגיעה?</p>
+                    <p>• שלחו נשימה לכל מקום שצריך ריפוי</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- תרגילי רגיעה וריפוי -->
+        <div class="content-section" id="relaxation">
+            <h2>🧘 תרגילי רגיעה וריפוי</h2>
+
+            <div class="relaxation-exercise">
+                <h3>🌳 תרגיל עץ הכוח</h3>
+                <div class="healing-card">
+                    <p><strong>עמדו זקופים כמו עץ חזק! 🌳</strong></p>
+                    <p>• השורשים שלכם נמצאים עמוק באדמה</p>
+                    <p>• הגזע (הגוף) חזק ויציב</p>
+                    <p>• הענפים (הידיים) נמתחים לשמיים</p>
+                    <p>• אתם חזקים ויכולים להתמודד עם כל רוח!</p>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 למה זה עוזר?</h4>
+                    <p>תרגיל גראונדינג זה עוזר לחזק את התחושה של יציבות ובטחון. הוא מחבר אותנו לאדמה ונותן לנו כוח פנימי.</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>🦋 שחרור מתחים</h3>
+                <div class="healing-card">
+                    <p>• תכווצו את כל הגוף למשך 5 שניות</p>
+                    <p>• שחררו הכל בבת אחת</p>
+                    <p>• הרגישו איך המתח יוצא מהגוף</p>
+                    <p>• חזרו 3 פעמים</p>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 למה זה עוזר?</h4>
+                    <p>כשאנחנו מכווצים ומשחררים שרירים, אנחנו מלמדים את הגוף איך להרפות ולשחרר מתח שנצבר.</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>❤️ מגע עצמי מרגיע</h3>
+                <div class="healing-card">
+                    <p>• שימו יד על הלב</p>
+                    <p>• הרגישו את הדופק</p>
+                    <p>• אמרו לעצמכם: "אני בטוח/ה עכשיו"</p>
+                    <p>• נשמו לאט ובעמק</p>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 למה זה עוזר?</h4>
+                    <p>מגע עצמי מפעיל את העצב הוואגוס ועוזר למערכת העצבית להירגע. זה אומר לגוף שהוא בטוח.</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>🎨 יצירת רגשות</h3>
+                <div class="healing-card">
+                    <p><strong>ציירו איך הרגש שלכם נראה היום:</strong></p>
+                    <p>• איזה צבע הוא?</p>
+                    <p>• איזה צורה?</p>
+                    <p>• איפה בגוף אתם מרגישים אותו?</p>
+                    <p>• אפשר גם לכתוב, לרקוד, או לשיר את הרגש</p>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 למה זה עוזר?</h4>
+                    <p>ביטוי יצירתי עוזר לנו לעבד רגשות קשים ולתת להם מקום. כשאנחנו יוצרים, אנחנו במצב בטוח וחברתי.</p>
+                </div>
+            </div>
+
+            <div class="relaxation-exercise">
+                <h3>🌙 הכנה לשינה מרגיעה</h3>
+                <div class="healing-card">
+                    <p>• מעברים איטיים בין הפעילויות</p>
+                    <p>• תרגילי נשימה במיטה</p>
+                    <p>• חזרה על המקום הבטוח</p>
+                    <p>• חיבוק עצמי או בובה רכה</p>
+                    <p>• מוזיקה שקטה ונעימה</p>
+                </div>
+                <div class="tip-box">
+                    <h4>💡 למה זה עוזר?</h4>
+                    <p>שינה טובה היא חלק חשוב מהריפוי. כשאנחנו ישנים, המוח מעבד ומרפא את החוויות של היום.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // משתנים גלובליים
+        let balloonBreathingActive = false;
+        let boxBreathingActive = false;
+        let starBreathingActive = false;
+
+        // פונקציות ניווט
+        function showSection(sectionId) {
+            // הסתרת כל הסקשנים
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // הצגת הסקשן הנבחר
+            document.getElementById(sectionId).classList.add('active');
+            
+            // עדכון כפתורי הניווט
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        // נשימת בלון
+        function startBalloonBreathing() {
+            if (balloonBreathingActive) return;
+            
+            balloonBreathingActive = true;
+            const circle = document.getElementById('breathingCircle');
+            const text = document.getElementById('breathingText');
+            const progress = document.getElementById('balloonProgress');
+            
+            let cycle = 0;
+            const maxCycles = 8;
+            
+            function breatheCycle() {
+                if (!balloonBreathingActive || cycle >= maxCycles) {
+                    balloonBreathingActive = false;
+                    text.textContent = 'כל הכבוד! 🌟';
+                    circle.className = 'breathing-circle';
+                    progress.style.width = '100%';
+                    setTimeout(() => {
+                        text.textContent = 'לחצו להתחלה';
+                        progress.style.width = '0%';
+                    }, 2000);
+                    return;
+                }
+                
+                // שאיפה
+                text.textContent = 'שאפו... 🌬️';
+                circle.className = 'breathing-circle inhale';
+                
+                setTimeout(() => {
+                    if (!balloonBreathingActive) return;
+                    
+                    // נשיפה
+                    text.textContent = 'נשפו... 😌';
+                    circle.className = 'breathing-circle exhale';
+                    
+                    setTimeout(() => {
+                        cycle++;
+                        progress.style.width = (cycle / maxCycles * 100) + '%';
+                        breatheCycle();
+                    }, 4000);
+                }, 4000);
+            }
+            
+            breatheCycle();
+        }
+
+        function stopBalloonBreathing() {
+            balloonBreathingActive = false;
+            document.getElementById('breathingText').textContent = 'לחצו להתחלה';
+            document.getElementById('breathingCircle').className = 'breathing-circle';
+            document.getElementById('balloonProgress').style.width = '0%';
+        }
+
+        // נשימת קופסא
+        function startBoxBreathing() {
+            if (boxBreathingActive) return;
+            
+            boxBreathingActive = true;
+            const dot = document.getElementById('boxDot');
+            const text = document.getElementById('boxText');
+            const progress = document.getElementById('boxProgress');
+            
+            let cycle = 0;
+            const maxCycles = 6;
+            
+            function boxCycle() {
+                if (!boxBreathingActive || cycle >= maxCycles) {
+                    boxBreathingActive = false;
+                    text.textContent = 'כל הכבוד! 🌟';
+                    dot.style.top = '-10px';
+                    dot.style.left = '-10px';
+                    progress.style.width = '100%';
+                    setTimeout(() => {
+                        text.textContent = 'לחצו להתחלה';
+                        progress.style.width = '0%';
+                    }, 2000);
+                    return;
+                }
+                
+                // שאיפה - מעלה
+                text.textContent = 'שאפו... ↑';
+                dot.style.top = '-10px';
+                dot.style.left = '190px';
+                
+                setTimeout(() => {
+                    if (!boxBreathingActive) return;
+                    
+                    // החזקה - ימינה
+                    text.textContent = 'החזיקו... →';
+                    dot.style.top = '190px';
+                    dot.style.left = '190px';
+                    
+                    setTimeout(() => {
+                        if (!boxBreathingActive) return;
+                        
+                        // נשיפה - למטה
+                        text.textContent = 'נשפו... ↓';
+                        dot.style.top = '190px';
+                        dot.style.left = '-10px';
+                        
+                        setTimeout(() => {
+                            if (!boxBreathingActive) return;
+                            
+                            // החזקה - שמאלה
+                            text.textContent = 'החזיקו... ←';
+                            dot.style.top = '-10px';
+                            dot.style.left = '-10px';
+                            
+                            setTimeout(() => {
+                                cycle++;
+                                progress.style.width = (cycle / maxCycles * 100) + '%';
+                                boxCycle();
+                            }, 4000);
+                        }, 4000);
+                    }, 4000);
+                }, 4000);
+            }
+            
+            boxCycle();
+        }
+
+        function stopBoxBreathing() {
+            boxBreathingActive = false;
+            document.getElementById('boxText').textContent = 'לחצו להתחלה';
+            document.getElementById('boxDot').style.top = '-10px';
+            document.getElementById('boxDot').style.left = '-10px';
+            document.getElementById('boxProgress').style.width = '0%';
+        }
+
+        // נשימת כוכב
+        function startStarBreathing() {
+            if (starBreathingActive) return;
+            
+            starBreathingActive = true;
+            const star = document.getElementById('breathingStar');
+            const text = document.getElementById('starText');
+            const progress = document.getElementById('starProgress');
+            
+            let cycle = 0;
+            const maxCycles = 7;
+            
+            function starCycle() {
+                if (!starBreathingActive || cycle >= maxCycles) {
+                    starBreathingActive = false;
+                    text.textContent = 'כל הכבוד! ✨';
+                    star.className = 'star';
+                    progress.style.width = '100%';
+                    setTimeout(() => {
+                        text.textContent = 'לחצו על הכוכב';
+                        progress.style.width = '0%';
+                    }, 2000);
+                    return;
+                }
+                
+                // שאיפה - זוהר
+                text.textContent = 'שאפו והכוכב זוהר... ✨';
+                star.className = 'star glow';
+                
+                setTimeout(() => {
+                    if (!starBreathingActive) return;
+                    
+                    // נשיפה - דועך
+                    text.textContent = 'נשפו והכוכב דועך... 🌟';
+                    star.className = 'star';
+                    
+                    setTimeout(() => {
+                        cycle++;
+                        progress.style.width = (cycle / maxCycles * 100) + '%';
+                        starCycle();
+                    }, 3000);
+                }, 3000);
+            }
+            
+            starCycle();
+        }
+
+        function stopStarBreathing() {
+            starBreathingActive = false;
+            document.getElementById('starText').textContent = 'לחצו על הכוכב';
+            document.getElementById('breathingStar').className = 'star';
+            document.getElementById('starProgress').style.width = '0%';
+        }
+
+        // חקירת חלקי גוף
+        function exploreBodyPart(part) {
+            const messages = {
+                head: '🧠 הראש שלכם מלא ברעיונות ורגשות! כשמרגישים הרבה, אפשר לנשום ולתת לרעיונות להיות כמו עננים שעוברים בשמיים. זה בסדר לחשוב ולהרגיש!',
+                
+                chest: '💗 הלב שלכם הוא כמו תוף שמנגן את השיר של החיים! כשהוא דופק מהר, זה אומר שהגוף מתכונן למשהו. אפשר לשים יד על הלב ולנשום איתו.',
+                
+                belly: '🔥 הבטן היא המקום שבו נמצא הכוח שלכם! כמו אש קטנה שנותנת לכם אנרגיה. כשמרגישים פרפרים בבטן, זה אומר שמשהו חשוב קורה.',
+                
+                hands: '✋ הידיים שלכם יכולות לתת חיבוקים, ליצור ולגעת. הן גם יכולות להגן עליכם. כשמרגישים לא בטוחים, אפשר לחבק את עצמכם בעדינות.',
+                
+                legs: '🦵 הרגליים שלכם הן כמו שורשים של עץ! הן מחברות אתכם לאדמה ונותנות לכם כוח לעמוד חזק. הרגישו איך הן נושאות אתכם.'
+            };
+            
+            alert(messages[part] || 'חלק מיוחד בגוף שלכם! 🌟');
+        }
+
+        // אתחול האפליקציה
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('אפליקציית הטראומה נטענה בהצלחה! 🌈');
+        });
+    </script>
+</body>
+</html>
