@@ -1,982 +1,1011 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מסע הריפוי שלי - הבנת טראומה</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מעברים – סדנת נשים | נריה גולד שילד</title>
+  <meta name="description" content="4 מפגשים לנשים שרוצות לעשות מעבר. מעוררות לוויסות, דרך גוף, תנועה, נשימה, אמנות וכתיבה. עם נריה גולד שילד, פסיכותרפיסטית אינטגרטיבית." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
+    :root {
+      --cream:      #FAF6F0;
+      --ivory:      #F2EDE4;
+      --sage:       #A8BFA8;
+      --sage-light: #C8DAC0;
+      --sage-dark:  #7A9E7A;
+      --rose:       #D4A8A8;
+      --rose-light: #EDD8D0;
+      --rose-dark:  #B88080;
+      --lavender:   #C4B8D8;
+      --lav-light:  #DDD5EC;
+      --warm-brown: #8B7355;
+      --text-dark:  #3D3028;
+      --text-mid:   #6B5B4E;
+      --text-light: #9A8C82;
+      --white:      #FFFFFF;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+    html { scroll-behavior: smooth; }
 
-        .header {
-            text-align: center;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.75;
+      font-size: 17px;
+    }
 
-        .header h1 {
-            color: #4a5568;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      background: rgba(250,246,240,0.92);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid var(--rose-light);
+    }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 700; color: var(--sage-dark);
+      letter-spacing: 0.02em;
+    }
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-mid); font-size: 0.95rem;
+      font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--sage-dark); }
+    .nav-cta {
+      background: var(--sage); color: var(--white); border: none;
+      padding: 0.5rem 1.3rem; border-radius: 30px; font-size: 0.92rem;
+      font-family: 'Heebo', sans-serif; cursor: pointer; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--sage-dark); }
 
-        .header p {
-            color: #718096;
-            font-size: 1.2em;
-        }
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--ivory) 0%, var(--rose-light) 40%, var(--lav-light) 75%, var(--sage-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 7rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(255,255,255,0.45) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner { max-width: 780px; position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--white); color: var(--sage-dark);
+      border: 1.5px solid var(--sage); border-radius: 30px;
+      padding: 0.35rem 1.1rem; font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.06em; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(3.2rem, 9vw, 6rem);
+      font-weight: 700; color: var(--text-dark);
+      line-height: 1.05; letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: var(--sage-dark); }
+    .hero-sub {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--text-mid); font-weight: 400;
+      max-width: 580px; margin: 0 auto 0.8rem;
+    }
+    .hero-tagline {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--rose-dark); font-weight: 500;
+      font-style: italic; margin-bottom: 2.5rem;
+    }
+    .hero-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.7rem; margin-bottom: 2.8rem;
+    }
+    .badge {
+      background: rgba(255,255,255,0.7); border: 1px solid var(--sage-light);
+      color: var(--text-mid); padding: 0.4rem 1rem; border-radius: 20px;
+      font-size: 0.9rem; font-weight: 500;
+    }
+    .btn-primary {
+      display: inline-block; background: var(--sage-dark);
+      color: var(--white); padding: 1rem 2.8rem;
+      border-radius: 50px; font-size: 1.05rem; font-weight: 700;
+      text-decoration: none; transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(122,158,122,0.35);
+    }
+    .btn-primary:hover {
+      background: var(--warm-brown);
+      box-shadow: 0 6px 26px rgba(122,158,122,0.45);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-block; background: transparent;
+      color: var(--sage-dark); padding: 0.9rem 2rem;
+      border-radius: 50px; font-size: 1rem; font-weight: 600;
+      text-decoration: none; border: 2px solid var(--sage);
+      margin-right: 1rem; transition: all 0.25s;
+    }
+    .btn-secondary:hover { background: var(--sage-light); }
+    .scroll-hint {
+      margin-top: 3.5rem; color: var(--text-light); font-size: 0.88rem;
+    }
+    .scroll-hint span { display: block; font-size: 1.4rem; margin-top: 0.3rem; animation: bob 1.8s infinite; }
+    @keyframes bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
 
-        .navigation {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
+    /* ── SECTIONS SHARED ─────────────────────────────── */
+    section { padding: 5.5rem 2rem; }
+    .container { max-width: 980px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--rose-dark);
+      margin-bottom: 0.6rem;
+    }
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--text-dark);
+      line-height: 1.2; margin-bottom: 1.2rem;
+    }
+    h2 span { color: var(--sage-dark); }
+    .lead {
+      font-size: 1.12rem; color: var(--text-mid);
+      max-width: 680px; margin-bottom: 2rem;
+    }
+    .divider {
+      width: 60px; height: 3px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--sage), var(--rose));
+      margin-bottom: 2rem;
+    }
 
-        .nav-btn {
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            padding: 15px 25px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            color: #4a5568;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+    /* ── PERMISSION SECTION ──────────────────────────── */
+    .section-permission {
+      background: linear-gradient(135deg, var(--ivory) 0%, var(--lav-light) 100%);
+    }
+    .permission-box {
+      background: var(--white); border-radius: 24px;
+      padding: 3.5rem 3rem; max-width: 820px; margin: 0 auto;
+      box-shadow: 0 8px 40px rgba(100,80,60,0.08);
+      border-right: 5px solid var(--lavender);
+    }
+    .permission-box blockquote {
+      font-size: clamp(1.3rem, 3vw, 1.7rem);
+      font-weight: 600; color: var(--text-dark);
+      line-height: 1.4; margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .permission-box blockquote em { color: var(--sage-dark); font-style: normal; }
+    .permission-body p {
+      color: var(--text-mid); margin-bottom: 1rem; font-size: 1.05rem;
+    }
 
-        .nav-btn:hover, .nav-btn.active {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
+    /* ── FOR WHOM ────────────────────────────────────── */
+    .section-forwhom { background: var(--cream); }
+    .forwhom-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 1.4rem; margin-top: 2.5rem;
+    }
+    .forwhom-card {
+      background: var(--white); border-radius: 18px;
+      padding: 1.8rem 1.6rem;
+      border-top: 4px solid var(--rose-light);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .forwhom-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(100,80,60,0.1); }
+    .forwhom-icon { font-size: 1.9rem; margin-bottom: 0.7rem; }
+    .forwhom-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.5rem; }
+    .forwhom-card p { font-size: 0.95rem; color: var(--text-mid); }
 
-        .content-section {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s ease-in;
-        }
+    /* ── PROCESS ─────────────────────────────────────── */
+    .section-process {
+      background: linear-gradient(175deg, var(--sage-light) 0%, var(--cream) 60%);
+    }
+    .process-intro { max-width: 700px; }
+    .process-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem; margin-top: 3rem;
+    }
+    .process-step {
+      background: rgba(255,255,255,0.75); border-radius: 18px;
+      padding: 1.8rem 1.5rem; text-align: center;
+      border: 1px solid rgba(168,191,168,0.4);
+      backdrop-filter: blur(6px);
+      transition: background 0.2s;
+    }
+    .process-step:hover { background: rgba(255,255,255,0.95); }
+    .step-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2.4rem; height: 2.4rem; border-radius: 50%;
+      background: var(--sage-dark); color: var(--white);
+      font-weight: 700; font-size: 0.9rem; margin-bottom: 0.8rem;
+    }
+    .process-step h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.4rem; }
+    .process-step p { font-size: 0.92rem; color: var(--text-mid); }
 
-        .content-section.active {
-            display: block;
-        }
+    /* ── SESSIONS ────────────────────────────────────── */
+    .section-sessions { background: var(--cream); }
+    .sessions-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.3rem; margin-top: 2.5rem;
+    }
+    .session-card {
+      background: var(--white); border-radius: 20px;
+      padding: 2rem 1.6rem; position: relative; overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .session-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(100,80,60,0.12); }
+    .session-card::before {
+      content: ''; position: absolute; top: 0; right: 0; left: 0;
+      height: 5px;
+    }
+    .session-card:nth-child(1)::before { background: linear-gradient(90deg, var(--rose), var(--lavender)); }
+    .session-card:nth-child(2)::before { background: linear-gradient(90deg, var(--lavender), var(--sage-light)); }
+    .session-card:nth-child(3)::before { background: linear-gradient(90deg, var(--sage-light), var(--sage)); }
+    .session-card:nth-child(4)::before { background: linear-gradient(90deg, var(--sage), var(--rose)); }
+    .session-num {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      color: var(--text-light); text-transform: uppercase; margin-bottom: 0.5rem;
+    }
+    .session-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.6rem; }
+    .session-card p { font-size: 0.93rem; color: var(--text-mid); }
+    .session-tools {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+    }
+    .tool-tag {
+      background: var(--ivory); color: var(--text-mid);
+      font-size: 0.78rem; padding: 0.2rem 0.7rem; border-radius: 12px;
+      font-weight: 500;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* ── METHODS ─────────────────────────────────────── */
+    .section-methods {
+      background: linear-gradient(135deg, var(--rose-light) 0%, var(--lav-light) 100%);
+    }
+    .methods-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .method-item {
+      background: rgba(255,255,255,0.7); border-radius: 16px;
+      padding: 1.6rem 1rem; text-align: center;
+      border: 1px solid rgba(255,255,255,0.9);
+      transition: background 0.2s, transform 0.2s;
+    }
+    .method-item:hover { background: var(--white); transform: scale(1.03); }
+    .method-icon { font-size: 2rem; margin-bottom: 0.6rem; }
+    .method-item span { font-size: 0.93rem; font-weight: 600; color: var(--text-dark); }
 
-        .nervous-system {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
+    /* ── ABOUT ───────────────────────────────────────── */
+    .section-about { background: var(--cream); }
+    .about-layout {
+      display: grid; grid-template-columns: 1fr 1.8fr;
+      gap: 4rem; align-items: start; margin-top: 1rem;
+    }
+    .about-photo-wrap {
+      position: sticky; top: 5rem;
+    }
+    .about-photo {
+      width: 100%; aspect-ratio: 3/4; border-radius: 24px;
+      background: linear-gradient(160deg, var(--sage-light) 0%, var(--lavender) 60%, var(--rose-light) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4.5rem; color: rgba(255,255,255,0.8);
+      box-shadow: 0 12px 40px rgba(100,80,60,0.12);
+    }
+    .about-name {
+      font-size: 1.35rem; font-weight: 700; color: var(--text-dark);
+      margin-top: 1rem; text-align: center;
+    }
+    .about-title {
+      font-size: 0.9rem; color: var(--text-light); text-align: center; margin-top: 0.2rem;
+    }
+    .about-credentials {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      justify-content: center; margin-top: 1rem;
+    }
+    .cred-tag {
+      background: var(--ivory); color: var(--sage-dark);
+      border: 1px solid var(--sage-light);
+      font-size: 0.8rem; padding: 0.25rem 0.75rem;
+      border-radius: 15px; font-weight: 600;
+    }
+    .about-text h2 { margin-bottom: 0.5rem; }
+    .about-text .divider { margin-bottom: 1.5rem; }
+    .about-text p { color: var(--text-mid); margin-bottom: 1.1rem; font-size: 1.03rem; }
+    .about-text p strong { color: var(--text-dark); }
+    .expertise-list {
+      list-style: none; margin: 1.5rem 0;
+    }
+    .expertise-list li {
+      padding: 0.65rem 0; border-bottom: 1px solid var(--ivory);
+      color: var(--text-mid); font-size: 1rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .expertise-list li::before {
+      content: ''; display: block;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--sage); flex-shrink: 0;
+    }
 
-        .system-card {
-            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            color: white;
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
+    /* ── TESTIMONIALS ────────────────────────────────── */
+    .section-testimonials {
+      background: linear-gradient(175deg, var(--ivory) 0%, var(--rose-light) 100%);
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 2.5rem;
+    }
+    .testimonial-card {
+      background: var(--white); border-radius: 20px;
+      padding: 2rem; position: relative;
+      box-shadow: 0 4px 20px rgba(100,80,60,0.07);
+    }
+    .quote-mark {
+      font-size: 3.5rem; line-height: 0.7; color: var(--rose-light);
+      font-family: Georgia, serif; margin-bottom: 0.8rem;
+      display: block;
+    }
+    .testimonial-card blockquote {
+      font-size: 1rem; color: var(--text-mid);
+      font-style: italic; line-height: 1.7; margin-bottom: 1.2rem;
+    }
+    .testimonial-author { font-size: 0.88rem; font-weight: 700; color: var(--text-dark); }
 
-        .system-card.danger {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
+    /* ── FAQ ─────────────────────────────────────────── */
+    .section-faq { background: var(--cream); }
+    .faq-list { max-width: 700px; margin-top: 2rem; }
+    .faq-item {
+      border-bottom: 1px solid var(--ivory);
+      padding: 1.3rem 0;
+    }
+    .faq-q {
+      font-weight: 700; color: var(--text-dark); font-size: 1.03rem;
+      cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; gap: 1rem;
+    }
+    .faq-q::after { content: '+'; color: var(--sage); font-size: 1.4rem; flex-shrink: 0; }
+    .faq-a { color: var(--text-mid); margin-top: 0.7rem; font-size: 0.97rem; }
 
-        .system-card.shutdown {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        }
+    /* ── REGISTER ────────────────────────────────────── */
+    .section-register {
+      background: linear-gradient(150deg, var(--sage-light) 0%, var(--lav-light) 50%, var(--rose-light) 100%);
+    }
+    .register-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .register-info h2 { color: var(--text-dark); }
+    .register-info .lead { max-width: none; }
+    .detail-list { list-style: none; margin-top: 1.8rem; }
+    .detail-list li {
+      display: flex; align-items: flex-start; gap: 0.9rem;
+      padding: 0.65rem 0; font-size: 1rem; color: var(--text-mid);
+      border-bottom: 1px solid rgba(168,191,168,0.3);
+    }
+    .detail-list li .di { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .detail-list li strong { color: var(--text-dark); display: block; font-size: 0.85rem; margin-bottom: 0.1rem; }
+    .phone-cta {
+      margin-top: 2rem; background: var(--white); border-radius: 16px;
+      padding: 1.5rem; border: 1.5px solid var(--sage);
+    }
+    .phone-cta p { font-size: 0.9rem; color: var(--text-mid); margin-bottom: 0.4rem; }
+    .phone-cta a {
+      font-size: 1.5rem; font-weight: 700; color: var(--sage-dark);
+      text-decoration: none; letter-spacing: 0.02em;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .phone-cta a:hover { color: var(--warm-brown); }
 
-        .system-card:hover {
-            transform: scale(1.05);
-        }
+    /* Registration Form */
+    .register-form-wrap {
+      background: var(--white); border-radius: 24px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 10px 40px rgba(100,80,60,0.1);
+    }
+    .register-form-wrap h3 {
+      font-size: 1.3rem; font-weight: 700; color: var(--text-dark);
+      margin-bottom: 0.3rem;
+    }
+    .register-form-wrap p {
+      font-size: 0.92rem; color: var(--text-light); margin-bottom: 1.8rem;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block; font-size: 0.9rem; font-weight: 600;
+      color: var(--text-mid); margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%; padding: 0.8rem 1rem;
+      border: 1.5px solid var(--ivory); border-radius: 12px;
+      font-family: 'Heebo', sans-serif; font-size: 0.97rem;
+      color: var(--text-dark); background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--sage); box-shadow: 0 0 0 3px rgba(168,191,168,0.2);
+    }
+    .form-group textarea { resize: vertical; min-height: 90px; }
+    .btn-submit {
+      width: 100%; background: var(--sage-dark); color: var(--white);
+      border: none; padding: 1rem; border-radius: 50px;
+      font-family: 'Heebo', sans-serif; font-size: 1.05rem; font-weight: 700;
+      cursor: pointer; transition: all 0.25s; margin-top: 0.5rem;
+    }
+    .btn-submit:hover { background: var(--warm-brown); transform: translateY(-1px); }
+    .form-privacy {
+      text-align: center; font-size: 0.8rem; color: var(--text-light);
+      margin-top: 0.8rem;
+    }
 
-        .system-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-        }
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: var(--text-dark); color: rgba(255,255,255,0.65);
+      padding: 3rem 2rem 2rem; text-align: center;
+    }
+    .footer-logo { font-size: 1.6rem; font-weight: 700; color: var(--sage-light); margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.92rem; margin-bottom: 1.5rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--sage-light); }
+    .footer-phone { color: var(--sage-light); font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .footer-copy { font-size: 0.8rem; color: rgba(255,255,255,0.3); }
 
-        .vagus-illustration {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 20px 0;
-            text-align: center;
-        }
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0.8rem 1.2rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.2rem; }
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo-wrap { position: static; max-width: 260px; margin: 0 auto; }
+      .register-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
+      .permission-box { padding: 2rem 1.5rem; }
+      .hero { padding: 6rem 1.2rem 3.5rem; }
+    }
 
-        .vagus-diagram {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .brain-icon {
-            font-size: 4em;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
-        }
-
-        .vagus-line {
-            width: 6px;
-            height: 100px;
-            background: linear-gradient(to bottom, #667eea, #764ba2);
-            border-radius: 3px;
-            position: relative;
-            margin: 10px 0;
-        }
-
-        .organs {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .organ {
-            text-align: center;
-            font-size: 2em;
-        }
-
-        .breathing-games {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .breathing-exercise {
-            text-align: center;
-            padding: 30px;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-radius: 20px;
-            margin: 20px 0;
-        }
-
-        .breathing-circle {
-            width: 200px;
-            height: 200px;
-            border: 4px solid #ff6b6b;
-            border-radius: 50%;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #ff6b6b;
-            transition: all 4s ease-in-out;
-            cursor: pointer;
-        }
-
-        .breathing-circle.inhale {
-            transform: scale(1.3);
-            background: rgba(255, 107, 107, 0.1);
-        }
-
-        .breathing-circle.exhale {
-            transform: scale(0.8);
-            background: rgba(255, 107, 107, 0.05);
-        }
-
-        .box-breathing {
-            width: 200px;
-            height: 200px;
-            border: 4px solid #4facfe;
-            margin: 20px auto;
-            position: relative;
-            background: rgba(79, 172, 254, 0.1);
-        }
-
-        .box-dot {
-            width: 20px;
-            height: 20px;
-            background: #4facfe;
-            border-radius: 50%;
-            position: absolute;
-            transition: all 4s ease-in-out;
-        }
-
-        .box-dot.top-left { top: -10px; left: -10px; }
-        .box-dot.top-right { top: -10px; right: -10px; }
-        .box-dot.bottom-right { bottom: -10px; right: -10px; }
-        .box-dot.bottom-left { bottom: -10px; left: -10px; }
-
-        .star-breathing {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .star {
-            font-size: 150px;
-            color: #f093fb;
-            transition: all 3s ease-in-out;
-            cursor: pointer;
-        }
-
-        .star.glow {
-            color: #ffd700;
-            text-shadow: 0 0 20px #ffd700;
-            transform: scale(1.2);
-        }
-
-        .exercise-btn {
-            background: #667eea;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 1.1em;
-            cursor: pointer;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .exercise-btn:hover {
-            background: #5a67d8;
-            transform: translateY(-2px);
-        }
-
-        .body-connection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-
-        .body-part {
-            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .body-part:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .safe-space {
-            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .safe-space-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-
-        .relaxation-exercise {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-right: 5px solid #667eea;
-        }
-
-        .response-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            border-right: 5px solid #f093fb;
-        }
-
-        .healing-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            border-right: 5px solid #43e97b;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: #4caf50;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        h2 {
-            color: #4a5568;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        h3 {
-            color: #667eea;
-            margin: 20px 0 10px 0;
-        }
-
-        h4 {
-            color: #f093fb;
-            margin: 15px 0 10px 0;
-        }
-
-        p, li {
-            line-height: 1.6;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
-        .emoji {
-            font-size: 1.5em;
-            margin: 0 5px;
-        }
-
-        .tip-box {
-            background: linear-gradient(135deg, #e0f2fe 0%, #e1f5fe 100%);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 15px 0;
-            border-right: 5px solid #4facfe;
-        }
-
-        @media (max-width: 768px) {
-            .nav-btn {
-                padding: 12px 18px;
-                font-size: 1em;
-            }
-            
-            .navigation {
-                gap: 10px;
-            }
-            
-            .breathing-circle, .box-breathing {
-                width: 150px;
-                height: 150px;
-            }
-        }
-    </style>
+    /* ── ANIMATIONS ──────────────────────────────────── */
+    .fade-in {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>🌈 מסע הריפוי שלי 🌈</h1>
-            <p>למידה על הגוף, הנפש ודרכים לריפוי מטראומה</p>
-            <p style="font-size: 1em; margin-top: 10px;">מבוסס על התיאוריה הפוליוגלית של ד"ר סטיבן פורג'ס</p>
-        </div>
 
-        <div class="navigation">
-            <button class="nav-btn active" onclick="showSection('theory')">🧠 התיאוריה הפוליוגלית</button>
-            <button class="nav-btn" onclick="showSection('vagus')">🌿 העצב הוואגוס</button>
-            <button class="nav-btn" onclick="showSection('responses')">⚡ תגובות הגוף</button>
-            <button class="nav-btn" onclick="showSection('safe-space')">🏠 מקום בטוח</button>
-            <button class="nav-btn" onclick="showSection('breathing')">🫁 משחקי נשימה</button>
-            <button class="nav-btn" onclick="showSection('body-connection')">🤗 חיבור לגוף</button>
-            <button class="nav-btn" onclick="showSection('relaxation')">🧘 תרגילי ריפוי</button>
-        </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">מעברים</div>
+  <ul class="nav-links">
+    <li><a href="#about-workshop">על הסדנה</a></li>
+    <li><a href="#sessions">המפגשים</a></li>
+    <li><a href="#about-neria">נריה</a></li>
+    <li><a href="#register">הרשמה</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('register').scrollIntoView({behavior:'smooth'})">אני רוצה להצטרף</button>
+</nav>
 
-        <!-- התיאוריה הפוליוגלית -->
-        <div class="content-section active" id="theory">
-            <h2>🧠 התיאוריה הפוליוגלית של ד"ר סטיבן פורג'ס</h2>
-            
-            <p>התיאוריה הפוליוגלית מסבירה איך המערכת העצבית שלנו מגיבה לסכנה וביטחון. זה כמו מערכת אזעקה חכמה בגוף שלנו!</p>
-            
-            <div class="nervous-system">
-                <div class="system-card">
-                    <div class="system-icon">🌱</div>
-                    <h3>מצב בטוח וחברתי</h3>
-                    <h4>העצב הוואגוס הגבוה פעיל</h4>
-                    <p>כשאנחנו מרגישים בטוחים, יכולים ללמוד, לשחק, להתחבר לאחרים ולהיות יצירתיים</p>
-                </div>
-                <div class="system-card danger">
-                    <div class="system-icon">⚡</div>
-                    <h3>מצב סימפתטי - לחימה/בריחה</h3>
-                    <h4>מערכת ההישרדות מופעלת</h4>
-                    <p>כשיש סכנה, הגוף מתכונן לפעולה: דופק מהר, נשימה מהירה, שרירים מתוחים</p>
-                </div>
-                <div class="system-card shutdown">
-                    <div class="system-icon">🛡️</div>
-                    <h3>מצב העצב הוואגוס הנמוך</h3>
-                    <h4>הגנה בניתוק</h4>
-                    <p>כשזה יותר מדי, הגוף "נכבה" - מרגישים קפואים, מנותקים, או ישנוניים</p>
-                </div>
-            </div>
-
-            <div class="tip-box">
-                <h3>💡 למה זה חשוב להבין?</h3>
-                <p>כשאנחנו מבינים איך הגוף שלנו עובד, אנחנו יכולים לעזור לו לחזור למצב בטוח וטוב יותר!</p>
-            </div>
-        </div>
-
-        <!-- העצב הוואגוס -->
-        <div class="content-section" id="vagus">
-            <h2>🌿 העצב הוואגוס - הגיבור שלנו</h2>
-            
-            <div class="vagus-illustration">
-                <h3>מסע העצב הוואגוס בגוף</h3>
-                <div class="vagus-diagram">
-                    <div class="brain-icon">🧠</div>
-                    <p><strong>המוח</strong> - כאן הכל מתחיל</p>
-                    
-                    <div class="vagus-line"></div>
-                    
-                    <div class="organs">
-                        <div class="organ">
-                            <div>💗</div>
-                            <p>לב</p>
-                        </div>
-                        <div class="organ">
-                            <div>🫁</div>
-                            <p>ריאות</p>
-                        </div>
-                        <div class="organ">
-                            <div>🍯</div>
-                            <p>בטן</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="response-card">
-                    <h4>🌱 העצב הוואגוס הגבוה (החלק החדש)</h4>
-                    <p><strong>מה הוא עושה:</strong> עוזר לנו להרגיש בטוחים, להתחבר לאחרים ולהיות רגועים</p>
-                    <p><strong>איך זה מרגיש:</strong> נעים, רגוע, יכול לחייך ולדבר בקלות</p>
-                </div>
-                
-                <div class="response-card">
-                    <h4>🛡️ העצב הוואגוס הנמוך (החלק הישן)</h4>
-                    <p><strong>מה הוא עושה:</strong> מגן עלינו בזמן סכנה גדולה על ידי "כיבוי" הגוף</p>
-                    <p><strong>איך זה מרגיש:</strong> קפוא, מנותק, קשה לדבר או לזוז</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- תגובות הגוף -->
-        <div class="content-section" id="responses">
-            <h2>⚡ תגובות הגוף והדרכים לעזרה</h2>
-            
-            <div class="response-card">
-                <h3>🌈 מצב בטוח וחברתי</h3>
-                <h4>איך מזהים:</h4>
-                <p>• נשימה רגועה ועמוקה • פנים רגועות • יכולת להקשיב ולדבר • עיניים רכות</p>
-                <h4>איך שומרים על המצב הזה:</h4>
-                <p>• מוזיקה נעימה • חיבוקים • שיחות נעימות • יצירה ומשחק</p>
-            </div>
-            
-            <div class="response-card">
-                <h3>🏃‍♂️ מצב לחימה/בריחה</h3>
-                <h4>איך מזהים:</h4>
-                <p>• דופק מהר • נשימה מהירה • שרירים מתוחים • קושי לשבת במקום</p>
-                <h4>איך עוזרים:</h4>
-                <p>• תרגילי נשימה • פעילות גופנית • מוזיקה קצבית • תרגילי הרפיה</p>
-            </div>
-            
-            <div class="response-card">
-                <h3>🐢 מצב ניתוק והגנה</h3>
-                <h4>איך מזהים:</h4>
-                <p>• תחושת "קפיאה" • קושי לדבר • מרגיש רחוק • עייפות חזקה</p>
-                <h4>איך עוזרים:</h4>
-                <p>• תנועה עדינה • מגע רך • צבעים חמים • מוזיקה שקטה</p>
-            </div>
-
-            <div class="tip-box">
-                <h3>🔄 תהליך הריפוי</h3>
-                <p>הגוף שלנו יודע איך לרפא את עצמו! אנחנו רק צריכים לתת לו את הכלים הנכונים ולהיות סבלניים.</p>
-                <p><strong>זכרו:</strong> כל תגובה של הגוף היא תגובת הישרדות חכמה. אנחנו לא צריכים להיות כועסים על הגוף - הוא מנסה להגן עלינו!</p>
-            </div>
-        </div>
-
-        <!-- מקום בטוח -->
-        <div class="content-section" id="safe-space">
-            <div class="safe-space">
-                <div class="safe-space-icon">🏡</div>
-                <h2>מקום בטוח בפנים</h2>
-                
-                <p>בכל אחד מאיתנו יש מקום מיוחד בפנים שתמיד בטוח! זה המקום שלנו, שאף אחד לא יכול לקחת מאיתנו.</p>
-                
-                <div class="healing-card">
-                    <h3>המקום הבטוח שלי יכול להיות:</h3>
-                    <p>🏖️ חוף יפה עם גלים רגועים</p>
-                    <p>🏠 בית חם ונעים</p>
-                    <p>🌳 עץ גדול וחזק</p>
-                    <p>☁️ ענן רך בשמיים</p>
-                    <p>🌸 גן פרחים צבעוני</p>
-                    <p>🏔️ הר גבוה ושקט</p>
-                </div>
-
-                <h3>💭 איך יוצרים מקום בטוח?</h3>
-                <div class="healing-card">
-                    <p><strong>שלב 1:</strong> עצמו עיניים ונשמו לאט ובעמק</p>
-                    <p><strong>שלב 2:</strong> תארו לעצמכם מקום שבו אתם מרגישים בטוחים לגמרי</p>
-                    <p><strong>שלב 3:</strong> הוסיפו פרטים: איזה צבעים יש שם? איזה ריחות? איזה קולות?</p>
-                    <p><strong>שלב 4:</strong> תחושו איך הגוף שלכם נרגע במקום הזה</p>
-                    <p><strong>שלב 5:</strong> תזכרו - תמיד תוכלו לחזור לכאן כשתרצו!</p>
-                </div>
-
-                <div class="tip-box">
-                    <h3>✨ טיפ מיוחד</h3>
-                    <p>אפשר לצייר את המקום הבטוח, לכתוב עליו, או אפילו ליצור אותו במציאות (פינה קטנה בחדר עם כרית ובובה)!</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- משחקי נשימה -->
-        <div class="content-section" id="breathing">
-            <h2>🫁 משחקי נשימה לריפוי</h2>
-            
-            <div class="breathing-games">
-                <!-- נשימת בלון -->
-                <div class="breathing-exercise">
-                    <h3>🎈 נשימת הבלון הקסום</h3>
-                    <div class="breathing-circle" id="breathingCircle" onclick="startBalloonBreathing()">
-                        <span id="breathingText">לחצו להתחלה</span>
-                    </div>
-                    <button class="exercise-btn" onclick="startBalloonBreathing()">התחל תרגיל</button>
-                    <button class="exercise-btn" onclick="stopBalloonBreathing()">עצור</button>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="balloonProgress"></div>
-                    </div>
-                    <p>הבלון שלנו גדל בשאיפה וקטן בנשיפה, כמו קסם!</p>
-                </div>
-
-                <!-- נשימת קופסא -->
-                <div class="breathing-exercise" style="background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 100%);">
-                    <h3>📦 נשימת הקופסא</h3>
-                    <div class="box-breathing" id="boxBreathing">
-                        <div class="box-dot top-left" id="boxDot"></div>
-                        <div style="text-align: center; margin-top: 80px; color: #4facfe; font-weight: bold;" id="boxText">לחצו להתחלה</div>
-                    </div>
-                    <button class="exercise-btn" onclick="startBoxBreathing()" style="background: #4facfe;">התחל תרגיל</button>
-                    <button class="exercise-btn" onclick="stopBoxBreathing()" style="background: #4facfe;">עצור</button>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="boxProgress" style="background: #4facfe;"></div>
-                    </div>
-                    <p>עוקבים אחרי הנקודה מסביב לקופסא ונושמים: שאיפה → החזקה → נשיפה → החזקה</p>
-                </div>
-
-                <!-- נשימת כוכב -->
-                <div class="breathing-exercise" style="background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);">
-                    <h3>⭐ נשימת הכוכב הזוהר</h3>
-                    <div class="star-breathing">
-                        <div class="star" id="breathingStar" onclick="startStarBreathing()">⭐</div>
-                    </div>
-                    <div id="starText" style="color: #f093fb; font-weight: bold; margin-bottom: 15px;">לחצו על הכוכב</div>
-                    <button class="exercise-btn" onclick="startStarBreathing()" style="background: #f093fb;">התחל תרגיל</button>
-                    <button class="exercise-btn" onclick="stopStarBreathing()" style="background: #f093fb;">עצור</button>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="starProgress" style="background: #f093fb;"></div>
-                    </div>
-                    <p>הכוכב זוהר כשאנחנו שואפים ומתעמעם כשאנחנו נושפים. כמה יפה!</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>🌊 עוד טכניקות נשימה</h3>
-                <div class="healing-card">
-                    <h4>🐝 נשימת הדבורה</h4>
-                    <p>שאפו דרך האף, ובנשיפה עשו קול "זזזז" כמו דבורה. הרעדות עוזרות לרגע את המערכת העצבית!</p>
-                </div>
-                <div class="healing-card">
-                    <h4>🌊 נשימת הגלים</h4>
-                    <p>דמיינו שאתם שוכבים על החוף... שאפו כמו גל שמגיע לחוף (4 ספירות), עצרו בנחת (2 ספירות), נשפו כמו גל שחוזר לים (6 ספירות)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- חיבור לגוף -->
-        <div class="content-section" id="body-connection">
-            <h2>🤗 חיבור לגוף שלנו</h2>
-            
-            <p>הגוף שלנו מדבר איתנו כל הזמן! צריך רק לדעת להקשיב 👂</p>
-            <p>פיתוח מודעות גופנית (Body Awareness) חיוני לתהליך הריפוי מטראומה</p>
-
-            <div class="body-connection">
-                <div class="body-part" onclick="exploreBodyPart('head')">
-                    <h3>🧠 הראש</h3>
-                    <p>כאן נמצאים הרגשות והמחשבות</p>
-                </div>
-                <div class="body-part" onclick="exploreBodyPart('chest')">
-                    <h3>💗 החזה</h3>
-                    <p>כאן מרגישים אהבה וכעס</p>
-                </div>
-                <div class="body-part" onclick="exploreBodyPart('belly')">
-                    <h3>🔥 הבטן</h3>
-                    <p>כאן נמצא הכוח שלנו</p>
-                </div>
-                <div class="body-part" onclick="exploreBodyPart('hands')">
-                    <h3>✋ הידיים</h3>
-                    <p>נותנות ומקבלות מגע</p>
-                </div>
-                <div class="body-part" onclick="exploreBodyPart('legs')">
-                    <h3>🦵 הרגליים</h3>
-                    <p>נושאות אותנו ומחוברות לאדמה</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>🔍 סריקת הגוף</h3>
-                <p>שכבו בנוחות ותעברו בתשומת לב על כל חלק בגוף:</p>
-                <div class="healing-card">
-                    <p>• איך מרגיש כל חלק?</p>
-                    <p>• איפה יש מתח?</p>
-                    <p>• איפה יש רגיעה?</p>
-                    <p>• שלחו נשימה לכל מקום שצריך ריפוי</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- תרגילי רגיעה וריפוי -->
-        <div class="content-section" id="relaxation">
-            <h2>🧘 תרגילי רגיעה וריפוי</h2>
-
-            <div class="relaxation-exercise">
-                <h3>🌳 תרגיל עץ הכוח</h3>
-                <div class="healing-card">
-                    <p><strong>עמדו זקופים כמו עץ חזק! 🌳</strong></p>
-                    <p>• השורשים שלכם נמצאים עמוק באדמה</p>
-                    <p>• הגזע (הגוף) חזק ויציב</p>
-                    <p>• הענפים (הידיים) נמתחים לשמיים</p>
-                    <p>• אתם חזקים ויכולים להתמודד עם כל רוח!</p>
-                </div>
-                <div class="tip-box">
-                    <h4>💡 למה זה עוזר?</h4>
-                    <p>תרגיל גראונדינג זה עוזר לחזק את התחושה של יציבות ובטחון. הוא מחבר אותנו לאדמה ונותן לנו כוח פנימי.</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>🦋 שחרור מתחים</h3>
-                <div class="healing-card">
-                    <p>• תכווצו את כל הגוף למשך 5 שניות</p>
-                    <p>• שחררו הכל בבת אחת</p>
-                    <p>• הרגישו איך המתח יוצא מהגוף</p>
-                    <p>• חזרו 3 פעמים</p>
-                </div>
-                <div class="tip-box">
-                    <h4>💡 למה זה עוזר?</h4>
-                    <p>כשאנחנו מכווצים ומשחררים שרירים, אנחנו מלמדים את הגוף איך להרפות ולשחרר מתח שנצבר.</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>❤️ מגע עצמי מרגיע</h3>
-                <div class="healing-card">
-                    <p>• שימו יד על הלב</p>
-                    <p>• הרגישו את הדופק</p>
-                    <p>• אמרו לעצמכם: "אני בטוח/ה עכשיו"</p>
-                    <p>• נשמו לאט ובעמק</p>
-                </div>
-                <div class="tip-box">
-                    <h4>💡 למה זה עוזר?</h4>
-                    <p>מגע עצמי מפעיל את העצב הוואגוס ועוזר למערכת העצבית להירגע. זה אומר לגוף שהוא בטוח.</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>🎨 יצירת רגשות</h3>
-                <div class="healing-card">
-                    <p><strong>ציירו איך הרגש שלכם נראה היום:</strong></p>
-                    <p>• איזה צבע הוא?</p>
-                    <p>• איזה צורה?</p>
-                    <p>• איפה בגוף אתם מרגישים אותו?</p>
-                    <p>• אפשר גם לכתוב, לרקוד, או לשיר את הרגש</p>
-                </div>
-                <div class="tip-box">
-                    <h4>💡 למה זה עוזר?</h4>
-                    <p>ביטוי יצירתי עוזר לנו לעבד רגשות קשים ולתת להם מקום. כשאנחנו יוצרים, אנחנו במצב בטוח וחברתי.</p>
-                </div>
-            </div>
-
-            <div class="relaxation-exercise">
-                <h3>🌙 הכנה לשינה מרגיעה</h3>
-                <div class="healing-card">
-                    <p>• מעברים איטיים בין הפעילויות</p>
-                    <p>• תרגילי נשימה במיטה</p>
-                    <p>• חזרה על המקום הבטוח</p>
-                    <p>• חיבוק עצמי או בובה רכה</p>
-                    <p>• מוזיקה שקטה ונעימה</p>
-                </div>
-                <div class="tip-box">
-                    <h4>💡 למה זה עוזר?</h4>
-                    <p>שינה טובה היא חלק חשוב מהריפוי. כשאנחנו ישנים, המוח מעבד ומרפא את החוויות של היום.</p>
-                </div>
-            </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner fade-in">
+    <div class="hero-tag">4 מפגשים · קבוצה קטנה · לנשים</div>
+    <h1>מע<span>ב</span>רים</h1>
+    <p class="hero-sub">
+      מעוררות לוויסות. מהיקפות לעצמך. ביחד.
+    </p>
+    <p class="hero-tagline">
+      "מעברים לא ניתנים — הם נלקחים"
+    </p>
+    <div class="hero-badges">
+      <span class="badge">גוף ותנועה</span>
+      <span class="badge">נשימה</span>
+      <span class="badge">אמנות וכתיבה</span>
+      <span class="badge">חיבור ועומק</span>
+      <span class="badge">פריקה וויסות</span>
     </div>
+    <a href="#register" class="btn-primary">הרשמה לסדנה</a>
+    <a href="#about-workshop" class="btn-secondary">ספרי לי עוד</a>
+    <div class="scroll-hint">
+      גלילה למטה
+      <span>↓</span>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // משתנים גלובליים
-        let balloonBreathingActive = false;
-        let boxBreathingActive = false;
-        let starBreathingActive = false;
+<!-- PERMISSION -->
+<section class="section-permission" id="about-workshop">
+  <div class="container">
+    <div class="permission-box fade-in">
+      <blockquote>
+        "מעברים לא ניתנים —<br>
+        <em>הם נלקחים.</em>"
+      </blockquote>
+      <div class="permission-body">
+        <p>
+          אנחנו חיות בתוך זמן שלא ביקשנו. עוררות מתמשכת, מסכים דולקים, אחריות שלא נפסקת —
+          הגוף זוכר הכול גם כשאנחנו מנסות לשכוח. מלחמה, משבר, טלטלה.
+          ורוב הזמן אנחנו ממשיכות להתפקד, כי אין ברירה.
+        </p>
+        <p>
+          אבל לפעמים מגיע רגע — רגע שבו משהו בפנים אומר: <strong>"לא כך."</strong><br>
+          לא כך אני רוצה לחיות. לא זו האישה שאני. לא זה הקצב שאני בוחרת.
+        </p>
+        <p>
+          הרשות לעצמך לעשות מעבר — היא לא מחכה לאישור של אף אחד.
+          היא לא מחכה לרגע "הנכון", לכסף הנכון, לזמן הנכון.
+          <strong>מעברים לא ניתנים. הם נלקחים.</strong>
+          ולפעמים, הדבר הכי אמיץ שאת יכולה לעשות הוא לעצור, לגעת בעצמך, ולהחליט שמגיע לך יותר.
+        </p>
+        <p>
+          ארבעה מפגשים. קבוצה קטנה. מרחב מוגן.<br>
+          ופנייה אמיתית — אל הגוף, אל הנשימה, אל מה שנשאר אחרי שמורידים את המשקל מהכתפיים.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // פונקציות ניווט
-        function showSection(sectionId) {
-            // הסתרת כל הסקשנים
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // הצגת הסקשן הנבחר
-            document.getElementById(sectionId).classList.add('active');
-            
-            // עדכון כפתורי הניווט
-            const navBtns = document.querySelectorAll('.nav-btn');
-            navBtns.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-        }
+<!-- FOR WHOM -->
+<section class="section-forwhom">
+  <div class="container">
+    <p class="section-eyebrow">למי זה מיועד</p>
+    <h2>את מוזמנת אם<span>...</span></h2>
+    <div class="divider"></div>
+    <div class="forwhom-grid fade-in">
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🌊</div>
+        <h3>את מרגישה "על אוטומט"</h3>
+        <p>מתפקדת, אבל מנותקת. עושה, אך לא נוכחת. תחושת ריחוף שמלווה אותך בשגרה.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🪨</div>
+        <h3>הגוף שלך כבד ומתוח</h3>
+        <p>מתח כרוני, עייפות שלא עוברת, ראש שלא שותק — אפילו אחרי שעות שינה.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🔁</div>
+        <h3>את עסוקה בעיקר בהישרדות</h3>
+        <p>הרגשות נדחים "להמשך", הצרכים שלך תמיד בתחתית הרשימה, והמשאבים דלים.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🕊️</div>
+        <h3>את מחפשת אנחה אחרת</h3>
+        <p>לא רק פגרה קצרה — אלא מגע אמיתי עם עצמך. שקט שמגיע מבפנים, לא מרדימה.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🤝</div>
+        <h3>את רוצה להרגיש פחות לבד</h3>
+        <p>להיות בחברת נשים שמבינות, שלא צריך להסביר להן, שמחזיקות יחד את הכובד.</p>
+      </div>
+      <div class="forwhom-card">
+        <div class="forwhom-icon">🌱</div>
+        <h3>משהו בפנים רוצה לזוז</h3>
+        <p>תחושה שמגיע לך יותר. שיש עוד משהו, משהו שמחכה. ושאת מוכנה לפגוש אותו.</p>
+      </div>
+    </div>
+    <p style="margin-top:2rem; color: var(--text-light); font-size:0.95rem;">
+      הסדנה מיועדת לנשים בגילאי 25–45. אין צורך בניסיון טיפולי קודם.
+    </p>
+  </div>
+</section>
 
-        // נשימת בלון
-        function startBalloonBreathing() {
-            if (balloonBreathingActive) return;
-            
-            balloonBreathingActive = true;
-            const circle = document.getElementById('breathingCircle');
-            const text = document.getElementById('breathingText');
-            const progress = document.getElementById('balloonProgress');
-            
-            let cycle = 0;
-            const maxCycles = 8;
-            
-            function breatheCycle() {
-                if (!balloonBreathingActive || cycle >= maxCycles) {
-                    balloonBreathingActive = false;
-                    text.textContent = 'כל הכבוד! 🌟';
-                    circle.className = 'breathing-circle';
-                    progress.style.width = '100%';
-                    setTimeout(() => {
-                        text.textContent = 'לחצו להתחלה';
-                        progress.style.width = '0%';
-                    }, 2000);
-                    return;
-                }
-                
-                // שאיפה
-                text.textContent = 'שאפו... 🌬️';
-                circle.className = 'breathing-circle inhale';
-                
-                setTimeout(() => {
-                    if (!balloonBreathingActive) return;
-                    
-                    // נשיפה
-                    text.textContent = 'נשפו... 😌';
-                    circle.className = 'breathing-circle exhale';
-                    
-                    setTimeout(() => {
-                        cycle++;
-                        progress.style.width = (cycle / maxCycles * 100) + '%';
-                        breatheCycle();
-                    }, 4000);
-                }, 4000);
-            }
-            
-            breatheCycle();
-        }
+<!-- PROCESS -->
+<section class="section-process">
+  <div class="container">
+    <div class="process-intro fade-in">
+      <p class="section-eyebrow">המסע שלנו</p>
+      <h2>מה קורה כאן, בעצם?</h2>
+      <div class="divider"></div>
+      <p class="lead">
+        מעברים הוא תהליך מונחה — לא הרצאה, לא שיעור. זה מרחב שבו הגוף, הנשם, הקול והיצירה
+        עובדים יחד כדי לפרוק מה שנצבר ולאפשר משהו חדש להיכנס.
+      </p>
+    </div>
+    <div class="process-grid fade-in">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h3>מגיעות</h3>
+        <p>כמות שאת, מה שיש לך היום. אין "נכון ולא נכון".</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h3>מחברות</h3>
+        <p>לגוף, לנשימה, לאחת השנייה. מרחב של אמון אמיתי.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h3>פורקות</h3>
+        <p>מה שנצבר — יוצא. דרך תנועה, צליל, כתיבה, נוכחות.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h3>מווסתות</h3>
+        <p>מתרגלות להיות בטוחות בגוף שלנו. כלים שנוכל לקחת הביתה.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">5</div>
+        <h3>יוצרות</h3>
+        <p>מבטאות דרך אמנות וכתיבה — לא כדי להציג, כדי לגלות.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">6</div>
+        <h3>הולכות</h3>
+        <p>עם משהו חדש בכיס. בגוף אחר. בחברת נשים שנישארות.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function stopBalloonBreathing() {
-            balloonBreathingActive = false;
-            document.getElementById('breathingText').textContent = 'לחצו להתחלה';
-            document.getElementById('breathingCircle').className = 'breathing-circle';
-            document.getElementById('balloonProgress').style.width = '0%';
-        }
+<!-- SESSIONS -->
+<section class="section-sessions" id="sessions">
+  <div class="container">
+    <p class="section-eyebrow">ארבעה מפגשים</p>
+    <h2>מה קורה בכל מפגש?</h2>
+    <div class="divider"></div>
+    <p class="lead">כל מפגש הוא עולם שלם — ויחד הם יוצרים מסע.</p>
+    <div class="sessions-grid fade-in">
+      <div class="session-card">
+        <div class="session-num">מפגש ראשון</div>
+        <h3>לפגוש את הגוף</h3>
+        <p>
+          נתחיל מכאן — מהגוף שחי את הכול. נלמד להקשיב לסומטיקה, להכיר את
+          תגובות המערכת העצבית, ולהתחיל לחוש הבדל בין עוררות לשקט.
+        </p>
+        <div class="session-tools">
+          <span class="tool-tag">עבודה גופנית</span>
+          <span class="tool-tag">נשימה</span>
+          <span class="tool-tag">שיתוף עגול</span>
+        </div>
+      </div>
+      <div class="session-card">
+        <div class="session-num">מפגש שני</div>
+        <h3>לפרוק ולהניח</h3>
+        <p>
+          לתת לגוף לפרוק מה שנשא בשקט. תנועה ספונטנית, צליל, ועבודה עם EMDR
+          עדין — כלים לעיבוד חוויות שנשארו תקועות.
+        </p>
+        <div class="session-tools">
+          <span class="tool-tag">תנועה</span>
+          <span class="tool-tag">EMDR</span>
+          <span class="tool-tag">עיבוד</span>
+        </div>
+      </div>
+      <div class="session-card">
+        <div class="session-num">מפגש שלישי</div>
+        <h3>ליצור ולגלות</h3>
+        <p>
+          אמנות וכתיבה כשפה שלא צריכה מילים. לאפשר לחלקים שלא מוצאים ביטוי —
+          למצוא צורה. מה שעולה, עולה.
+        </p>
+        <div class="session-tools">
+          <span class="tool-tag">ביטוי אמנותי</span>
+          <span class="tool-tag">כתיבה</span>
+          <span class="tool-tag">חקירה עצמית</span>
+        </div>
+      </div>
+      <div class="session-card">
+        <div class="session-num">מפגש רביעי</div>
+        <h3>לחבר ולהמשיך</h3>
+        <p>
+          חיבור לכוח הפנימי, לסיפור החדש שמתחיל להיכתב. לקחת את מה שנבנה —
+          ולהחזיק אותו גם אחרי שעוזבות.
+        </p>
+        <div class="session-tools">
+          <span class="tool-tag">אינטגרציה</span>
+          <span class="tool-tag">חיבור קבוצתי</span>
+          <span class="tool-tag">כלים להמשך</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // נשימת קופסא
-        function startBoxBreathing() {
-            if (boxBreathingActive) return;
-            
-            boxBreathingActive = true;
-            const dot = document.getElementById('boxDot');
-            const text = document.getElementById('boxText');
-            const progress = document.getElementById('boxProgress');
-            
-            let cycle = 0;
-            const maxCycles = 6;
-            
-            function boxCycle() {
-                if (!boxBreathingActive || cycle >= maxCycles) {
-                    boxBreathingActive = false;
-                    text.textContent = 'כל הכבוד! 🌟';
-                    dot.style.top = '-10px';
-                    dot.style.left = '-10px';
-                    progress.style.width = '100%';
-                    setTimeout(() => {
-                        text.textContent = 'לחצו להתחלה';
-                        progress.style.width = '0%';
-                    }, 2000);
-                    return;
-                }
-                
-                // שאיפה - מעלה
-                text.textContent = 'שאפו... ↑';
-                dot.style.top = '-10px';
-                dot.style.left = '190px';
-                
-                setTimeout(() => {
-                    if (!boxBreathingActive) return;
-                    
-                    // החזקה - ימינה
-                    text.textContent = 'החזיקו... →';
-                    dot.style.top = '190px';
-                    dot.style.left = '190px';
-                    
-                    setTimeout(() => {
-                        if (!boxBreathingActive) return;
-                        
-                        // נשיפה - למטה
-                        text.textContent = 'נשפו... ↓';
-                        dot.style.top = '190px';
-                        dot.style.left = '-10px';
-                        
-                        setTimeout(() => {
-                            if (!boxBreathingActive) return;
-                            
-                            // החזקה - שמאלה
-                            text.textContent = 'החזיקו... ←';
-                            dot.style.top = '-10px';
-                            dot.style.left = '-10px';
-                            
-                            setTimeout(() => {
-                                cycle++;
-                                progress.style.width = (cycle / maxCycles * 100) + '%';
-                                boxCycle();
-                            }, 4000);
-                        }, 4000);
-                    }, 4000);
-                }, 4000);
-            }
-            
-            boxCycle();
-        }
+<!-- METHODS -->
+<section class="section-methods">
+  <div class="container">
+    <p class="section-eyebrow">כלים ושפות</p>
+    <h2>במה נשתמש</h2>
+    <div class="divider"></div>
+    <p class="lead">
+      כל שיטה מדברת אל שכבה אחרת. ביחד הן יוצרות שלמות.
+    </p>
+    <div class="methods-grid fade-in">
+      <div class="method-item">
+        <div class="method-icon">🫁</div>
+        <span>נשימה</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🌀</div>
+        <span>תנועה</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🎨</div>
+        <span>אמנות</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">✍️</div>
+        <span>כתיבה</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">👁️</div>
+        <span>EMDR</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🤲</div>
+        <span>גוף וסומטיקה</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">💬</div>
+        <span>שיח קבוצתי</span>
+      </div>
+      <div class="method-item">
+        <div class="method-icon">🔇</div>
+        <span>שקט ופנימיות</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function stopBoxBreathing() {
-            boxBreathingActive = false;
-            document.getElementById('boxText').textContent = 'לחצו להתחלה';
-            document.getElementById('boxDot').style.top = '-10px';
-            document.getElementById('boxDot').style.left = '-10px';
-            document.getElementById('boxProgress').style.width = '0%';
-        }
+<!-- ABOUT NERIA -->
+<section class="section-about" id="about-neria">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-photo-wrap fade-in">
+        <div class="about-photo">🌿</div>
+        <div class="about-name">נריה גולד שילד</div>
+        <div class="about-title">פסיכותרפיסטית אינטגרטיבית</div>
+        <div class="about-credentials">
+          <span class="cred-tag">פסיכותרפיה גופנית</span>
+          <span class="cred-tag">CBT</span>
+          <span class="cred-tag">EMDR</span>
+          <span class="cred-tag">תרפיה באמנות MA</span>
+        </div>
+      </div>
+      <div class="about-text fade-in">
+        <p class="section-eyebrow">מי אני</p>
+        <h2>נריה גולד שילד —<br><span>מטפלת, מלווה, אחת מהנשות האלה</span></h2>
+        <div class="divider"></div>
+        <p>
+          אני פסיכותרפיסטית אינטגרטיבית עם מעל <strong>עשר שנות ניסיון</strong> בקליניקה פרטית בתל אביב.
+          הכשרתי כוללת פסיכותרפיה גופנית-סומטית, CBT, EMDR ותואר שני בטיפול באמנות —
+          כלים שאני מביאה יחד לכל פגישה וכל מפגש קבוצתי.
+        </p>
+        <p>
+          לאורך השנים ליוויתי נשים ב<strong>מסגרות קבוצתיות בבריאות הנפש</strong> — קבוצות עיבוד טראומה,
+          קבוצות ויסות רגשי, וסדנאות שילוב גוף-נפש. ידעתי מוקדם מה שחשוב לדעת:
+          קבוצה של נשים שמחזיקות יחד מרחב בטוח — היא כוח ריפוי ייחודי.
+        </p>
+        <p>
+          <strong>גישתי היא שהגוף יודע.</strong> לפני שהמילים מגיעות, הגוף כבר מחזיק את הסיפור.
+          עבודתי היא לעזור לכן להקשיב לו — לא לשתוק אותו.
+        </p>
+        <p>
+          הסדנה הזאת נולדה מתוך מה שאני רואה: <strong>נשים שמחזיקות הכול ולא מקבלות מקום להניח.</strong>
+          מעברים הוא המקום הזה.
+        </p>
+        <ul class="expertise-list">
+          <li>פסיכותרפיה אינטגרטיבית — גוף ונפש ביחד</li>
+          <li>EMDR — עיבוד טראומה ואירועי חיים קשים</li>
+          <li>CBT — מחשבות, דפוסים, שינוי ממשי</li>
+          <li>טיפול באמנות (MA) — ביטוי שעובר מעבר למילים</li>
+          <li>קבוצות טיפוליות — ניסיון בבריאות הנפש ובמסגרות קהילתיות</li>
+          <li>קליניקה פרטית בתל אביב מעל עשור</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // נשימת כוכב
-        function startStarBreathing() {
-            if (starBreathingActive) return;
-            
-            starBreathingActive = true;
-            const star = document.getElementById('breathingStar');
-            const text = document.getElementById('starText');
-            const progress = document.getElementById('starProgress');
-            
-            let cycle = 0;
-            const maxCycles = 7;
-            
-            function starCycle() {
-                if (!starBreathingActive || cycle >= maxCycles) {
-                    starBreathingActive = false;
-                    text.textContent = 'כל הכבוד! ✨';
-                    star.className = 'star';
-                    progress.style.width = '100%';
-                    setTimeout(() => {
-                        text.textContent = 'לחצו על הכוכב';
-                        progress.style.width = '0%';
-                    }, 2000);
-                    return;
-                }
-                
-                // שאיפה - זוהר
-                text.textContent = 'שאפו והכוכב זוהר... ✨';
-                star.className = 'star glow';
-                
-                setTimeout(() => {
-                    if (!starBreathingActive) return;
-                    
-                    // נשיפה - דועך
-                    text.textContent = 'נשפו והכוכב דועך... 🌟';
-                    star.className = 'star';
-                    
-                    setTimeout(() => {
-                        cycle++;
-                        progress.style.width = (cycle / maxCycles * 100) + '%';
-                        starCycle();
-                    }, 3000);
-                }, 3000);
-            }
-            
-            starCycle();
-        }
+<!-- TESTIMONIALS -->
+<section class="section-testimonials">
+  <div class="container">
+    <p class="section-eyebrow">נשים שהיו כאן</p>
+    <h2>מה אמרו</h2>
+    <div class="divider"></div>
+    <div class="testimonials-grid fade-in">
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <blockquote>
+          הגעתי עם כיבוי שריפות בגוף ויצאתי עם משהו שלא ידעתי שחיפשתי — שקט שהוא שלי.
+          לא הרגשה שניתנה לי, אלא משהו שנמצא בפנים.
+        </blockquote>
+        <div class="testimonial-author">ד', 34</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <blockquote>
+          שנתיים שהגוף שלי רץ על אדרנלין. נריה הפכה את ארבעת המפגשים האלה
+          לנחיתה רכה שלא ידעתי שאני צריכה. החיבור עם הנשים האחרות — לא ניתן לתיאור.
+        </blockquote>
+        <div class="testimonial-author">מ', 29</div>
+      </div>
+      <div class="testimonial-card">
+        <span class="quote-mark">"</span>
+        <blockquote>
+          הייתי בטיפול שנים ולא הצלחתי לגעת בדברים מסוימים. הגוף, התנועה, הצבע —
+          פתחו דלתות שדיבור לא הצליח. יצאתי עם כלים ועם חברות.
+        </blockquote>
+        <div class="testimonial-author">ש', 41</div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem; color:var(--text-light); margin-top:1.2rem; text-align:center;">
+      * השמות שונו. תוכן הדברים נשמר בהסכמה מלאה.
+    </p>
+  </div>
+</section>
 
-        function stopStarBreathing() {
-            starBreathingActive = false;
-            document.getElementById('starText').textContent = 'לחצו על הכוכב';
-            document.getElementById('breathingStar').className = 'star';
-            document.getElementById('starProgress').style.width = '0%';
-        }
+<!-- FAQ -->
+<section class="section-faq">
+  <div class="container">
+    <p class="section-eyebrow">שאלות נפוצות</p>
+    <h2>לפני שאת שואלת</h2>
+    <div class="divider"></div>
+    <div class="faq-list fade-in">
+      <div class="faq-item">
+        <div class="faq-q">האם צריך ניסיון טיפולי קודם?</div>
+        <div class="faq-a">לא. הסדנה מיועדת לנשים בכל שלב — גם לאלה שמעולם לא היו בטיפול. המרחב מונחה ובטוח ומותאם לכל נקודת התחלה.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">זה טיפול קבוצתי או סדנה?</div>
+        <div class="faq-a">זהו מרחב שנמצא בין השניים — מונחה על ידי מטפלת מוסמכת, עם עומק טיפולי, אבל בפורמט של תהליך משותף. לא כרסאות מעגל ושאלות. גוף, תנועה, יצירה ומגע אמיתי.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">כמה משתתפות יהיו?</div>
+        <div class="faq-a">הקבוצה קטנה במכוון — עד 8 נשים. כדי שיהיה אפשרי להיות. לא להיעלם בתוך קבוצה גדולה.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">מה קורה אם החמצתי מפגש?</div>
+        <div class="faq-a">אנחנו מבינות שהחיים קורים. נסו להגיע לכל ארבעת המפגשים — התהליך בנוי כרצף. מקרים חריגים ייוועצו אישית.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">איפה ומתי?</div>
+        <div class="faq-a">הפרטים נמסרים לאחר שיחת היכרות. הסדנה תתקיים בתל אביב. לתיאום פרטים ולשמוע על המועד הקרוב — צרי קשר.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">מה המחיר?</div>
+        <div class="faq-a">מחיר המסלול ייאמר בשיחה האישית. ישנה אפשרות להסדר תשלומים. הסדנה לא אמורה להיות נגישה רק לנשים עם אמצעים — צרי קשר ונמצא יחד.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // חקירת חלקי גוף
-        function exploreBodyPart(part) {
-            const messages = {
-                head: '🧠 הראש שלכם מלא ברעיונות ורגשות! כשמרגישים הרבה, אפשר לנשום ולתת לרעיונות להיות כמו עננים שעוברים בשמיים. זה בסדר לחשוב ולהרגיש!',
-                
-                chest: '💗 הלב שלכם הוא כמו תוף שמנגן את השיר של החיים! כשהוא דופק מהר, זה אומר שהגוף מתכונן למשהו. אפשר לשים יד על הלב ולנשום איתו.',
-                
-                belly: '🔥 הבטן היא המקום שבו נמצא הכוח שלכם! כמו אש קטנה שנותנת לכם אנרגיה. כשמרגישים פרפרים בבטן, זה אומר שמשהו חשוב קורה.',
-                
-                hands: '✋ הידיים שלכם יכולות לתת חיבוקים, ליצור ולגעת. הן גם יכולות להגן עליכם. כשמרגישים לא בטוחים, אפשר לחבק את עצמכם בעדינות.',
-                
-                legs: '🦵 הרגליים שלכם הן כמו שורשים של עץ! הן מחברות אתכם לאדמה ונותנות לכם כוח לעמוד חזק. הרגישו איך הן נושאות אתכם.'
-            };
-            
-            alert(messages[part] || 'חלק מיוחד בגוף שלכם! 🌟');
-        }
+<!-- REGISTER -->
+<section class="section-register" id="register">
+  <div class="container">
+    <div class="register-wrap">
+      <div class="register-info fade-in">
+        <p class="section-eyebrow">כן, אני מוכנה</p>
+        <h2>מגיעות<span> למעברים</span></h2>
+        <div class="divider"></div>
+        <p class="lead">
+          מלאי את הטופס ונחזור אליך בהקדם לשיחת היכרות קצרה.
+          ללא התחייבות — פשוט ראשית לדבר.
+        </p>
+        <ul class="detail-list">
+          <li>
+            <span class="di">📍</span>
+            <div><strong>מיקום</strong>תל אביב · פרטים ישלחו לאחר ההרשמה</div>
+          </li>
+          <li>
+            <span class="di">🗓️</span>
+            <div><strong>פורמט</strong>4 מפגשים · קבוצה של עד 8 נשים</div>
+          </li>
+          <li>
+            <span class="di">👥</span>
+            <div><strong>קהל יעד</strong>נשים בגילאי 25–45</div>
+          </li>
+          <li>
+            <span class="di">🌿</span>
+            <div><strong>גישה</strong>סומטית, EMDR, CBT, תרפיה באמנות</div>
+          </li>
+        </ul>
+        <div class="phone-cta">
+          <p>מעדיפה לדבר קודם?</p>
+          <a href="tel:0547520431">
+            📞 054-752-0431
+          </a>
+          <p style="margin-top:0.5rem; font-size:0.82rem; color:var(--text-light);">נריה · ניתן גם להשאיר הודעה</p>
+        </div>
+      </div>
 
-        // אתחול האפליקציה
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('אפליקציית הטראומה נטענה בהצלחה! 🌈');
-        });
-    </script>
+      <div class="register-form-wrap fade-in">
+        <h3>השאירי פרטים</h3>
+        <p>אחזור אליך תוך יום-יומיים לשיחת היכרות.</p>
+        <form id="registerForm" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">שם מלא *</label>
+            <input type="text" id="name" name="name" placeholder="השם שלך" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">טלפון *</label>
+            <input type="tel" id="phone" name="phone" placeholder="050-0000000" required />
+          </div>
+          <div class="form-group">
+            <label for="email">אימייל</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" />
+          </div>
+          <div class="form-group">
+            <label for="age">גיל</label>
+            <select id="age" name="age">
+              <option value="">בחרי טווח גיל</option>
+              <option>25–29</option>
+              <option>30–34</option>
+              <option>35–39</option>
+              <option>40–45</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">משהו שרצית לומר (אופציונלי)</label>
+            <textarea id="message" name="message" placeholder="מה מביא אותך אלינו? כל מה שבא לך..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">אני מגיעה למעברים →</button>
+          <p class="form-privacy">🔒 הפרטים שלך שמורים ונשמרים בסודיות מלאה</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">מעברים</div>
+  <p class="footer-tagline">"מעברים לא ניתנים — הם נלקחים."</p>
+  <div class="footer-links">
+    <a href="#about-workshop">על הסדנה</a>
+    <a href="#sessions">המפגשים</a>
+    <a href="#about-neria">נריה</a>
+    <a href="#register">הרשמה</a>
+  </div>
+  <div class="footer-phone">
+    <a href="tel:0547520431" style="color: var(--sage-light); text-decoration:none;">054-752-0431</a>
+  </div>
+  <p class="footer-copy">
+    © 2026 נריה גולד שילד · פסיכותרפיה אינטגרטיבית · תל אביב<br>
+    כל הזכויות שמורות
+  </p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Trigger hero immediately
+  const hero = document.querySelector('.hero .fade-in');
+  if (hero) setTimeout(() => hero.classList.add('visible'), 200);
+
+  // Form
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-submit');
+    btn.textContent = '✓ תודה! נחזור אליך בקרוב';
+    btn.style.background = 'var(--sage-dark)';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.textContent = 'אני מגיעה למעברים →';
+      btn.disabled = false;
+      e.target.reset();
+    }, 5000);
+  }
+</script>
+
 </body>
 </html>
