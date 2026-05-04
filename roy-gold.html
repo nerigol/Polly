@@ -75,20 +75,43 @@
     .hero {
       min-height: 100vh;
       background: var(--navy);
-      display: flex; align-items: center; justify-content: center;
-      text-align: center;
-      padding: 8rem 2rem 5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 70px;
       position: relative;
       overflow: hidden;
     }
-    .hero::before {
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 4rem 2rem;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-text-col::before {
       content: '';
       position: absolute; inset: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(42,100,150,0.12) 0%, transparent 60%);
+      background: radial-gradient(ellipse 80% 60% at 60% 30%, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
     }
-    .hero-inner { position: relative; max-width: 860px; }
+    .hero-image-col {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .hero-image-col::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to right, transparent 35%, rgba(13,27,42,0.85) 100%),
+                  linear-gradient(to top, rgba(13,27,42,0.6) 0%, transparent 40%);
+    }
     .hero-eyebrow {
       display: inline-block;
       font-size: 0.78rem;
@@ -100,9 +123,10 @@
       border: 1px solid rgba(201,168,76,0.35);
       padding: 0.45rem 1.2rem;
       border-radius: 2px;
+      width: fit-content;
     }
     .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-size: clamp(2.2rem, 3.5vw, 3.4rem);
       font-weight: 800;
       color: var(--white);
       line-height: 1.2;
@@ -111,14 +135,14 @@
     }
     .hero h1 .gold { color: var(--gold); }
     .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
       color: var(--text-light);
-      max-width: 640px;
-      margin: 0 auto 2.8rem;
+      margin-bottom: 2.5rem;
       font-weight: 300;
       line-height: 1.85;
+      max-width: 480px;
     }
-    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-primary {
       background: var(--gold);
       color: var(--navy);
@@ -144,26 +168,27 @@
     }
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
     .hero-stats {
-      display: flex; justify-content: center; gap: 3.5rem;
-      margin-top: 4.5rem;
-      padding-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+      margin-top: 3.5rem;
+      padding-top: 2.5rem;
       border-top: 1px solid rgba(255,255,255,0.08);
-      flex-wrap: wrap;
     }
-    .stat-item { text-align: center; }
+    .stat-item {}
     .stat-num {
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: 800;
       color: var(--gold);
       display: block;
       line-height: 1;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
     }
     .stat-label {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: var(--text-mid);
       font-weight: 400;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
     }
 
     /* ── SECTIONS COMMON ── */
@@ -206,32 +231,37 @@
     }
     .philosophy-quote {
       position: relative;
-      padding: 2.5rem;
-      background: var(--navy);
-      border-radius: 4px;
+      border-radius: 6px;
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      align-items: flex-end;
     }
-    .philosophy-quote::before {
-      content: '"';
-      font-size: 8rem;
-      color: rgba(201,168,76,0.15);
+    .philosophy-quote img {
       position: absolute;
-      top: -1.5rem;
-      right: 1.5rem;
-      font-family: Georgia, serif;
-      line-height: 1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .philosophy-quote-overlay {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem;
+      background: linear-gradient(to top, rgba(13,27,42,0.97) 45%, rgba(13,27,42,0.55) 75%, transparent 100%);
+      width: 100%;
     }
     .philosophy-quote blockquote {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 500;
       color: var(--white);
       line-height: 1.7;
-      position: relative;
-      z-index: 1;
     }
     .philosophy-quote cite {
       display: block;
-      margin-top: 1.2rem;
-      font-size: 0.85rem;
+      margin-top: 1rem;
+      font-size: 0.83rem;
       color: var(--gold);
       font-style: normal;
       font-weight: 600;
@@ -629,15 +659,22 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding-top: 70px; }
+      .hero-image-col { height: 55vw; order: -1; }
+      .hero-image-col::after {
+        background: linear-gradient(to top, rgba(13,27,42,0.9) 0%, transparent 60%);
+      }
+      .hero-text-col { padding: 2.5rem 1.5rem 3rem; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
       .philosophy-grid,
       .why-grid,
       .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .philosophy-quote { min-height: 280px; }
       .globe-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .hero-stats { gap: 2rem; }
     }
   </style>
 </head>
@@ -657,12 +694,12 @@
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-inner">
+  <div class="hero-text-col">
     <div class="hero-eyebrow">ייעוץ בכיר לניהול ואסטרטגיה עסקית</div>
     <h1>
-      מהמספרים<br class="br-mob" />
+      מהמספרים<br />
       <span class="gold">אל האנשים</span><br />
-      שם נמצאת הצמיחה האמיתית
+      שם נמצאת הצמיחה
     </h1>
     <p class="hero-sub">
       18 שנות מנהיגות כמנכ"ל, הקמת אופרציות בינלאומיות, וניהול מערכות מורכבות בזמן אמת –
@@ -686,10 +723,13 @@
         <span class="stat-label">עובדים בניהול ישיר</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num">∞</span>
-        <span class="stat-label">שאלות שנכון לשאול</span>
+        <span class="stat-num">0</span>
+        <span class="stat-label">תסריטים מוכנים מראש</span>
       </div>
     </div>
+  </div>
+  <div class="hero-image-col">
+    <img src="roy-hero.png" alt="רועי גולד – ייעוץ לניהול ואסטרטגיה" />
   </div>
 </section>
 
@@ -700,12 +740,15 @@
     <h2 class="section-title">ניהול הוא אמנות –<br />אסטרטגיה היא המדע שמאחוריה</h2>
     <div class="philosophy-grid">
       <div class="philosophy-quote">
-        <blockquote>
-          "הנתונים אומרים לך מה קרה.
-          הניסיון אומר לך למה.
-          החוכמה יודעת מה לעשות הלאה."
-        </blockquote>
-        <cite>— רועי גולד, מנכ"ל לשעבר, Benedict Group</cite>
+        <img src="roy-consulting.png" alt="רועי גולד בפגישת ייעוץ" />
+        <div class="philosophy-quote-overlay">
+          <blockquote>
+            "הנתונים אומרים לך מה קרה.
+            הניסיון אומר לך למה.
+            החוכמה יודעת מה לעשות הלאה."
+          </blockquote>
+          <cite>— רועי גולד, מנכ"ל לשעבר, Benedict Group</cite>
+        </div>
       </div>
       <div class="philosophy-points">
         <div class="philosophy-point">
