@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>רועי גולד – ייעוץ לניהול ואסטרטגיה</title>
+  <meta name="description" content="רועי גולד – מנכ&quot;ל בכיר עם 18 שנות ניסיון בתחום המזון והאירוח, מומחה לניהול משברים, הרחבה בינלאומית ואסטרטגיה עסקית מבוססת נתונים." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #0D1B2A;
+      --navy-mid:   #1A2E45;
+      --navy-light: #243B55;
+      --gold:       #C9A84C;
+      --gold-light: #E0C070;
+      --gold-pale:  #F5EDD0;
+      --offwhite:   #F8F6F1;
+      --white:      #FFFFFF;
+      --text-light: #B8C4CE;
+      --text-mid:   #8A9BAA;
+      --accent:     #2A6496;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--offwhite);
+      color: var(--navy);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 100;
+      background: rgba(13,27,42,0.96);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 0.5rem 1.4rem;
+      border-radius: 3px;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(42,100,150,0.12) 0%, transparent 60%);
+    }
+    .hero-inner { position: relative; max-width: 860px; }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+      border: 1px solid rgba(201,168,76,0.35);
+      padding: 0.45rem 1.2rem;
+      border-radius: 2px;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.6rem;
+      letter-spacing: -0.01em;
+    }
+    .hero h1 .gold { color: var(--gold); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-light);
+      max-width: 640px;
+      margin: 0 auto 2.8rem;
+      font-weight: 300;
+      line-height: 1.85;
+    }
+    .hero-cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 0.9rem 2.4rem;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-ghost {
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      padding: 0.9rem 2.4rem;
+      border-radius: 3px;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); transform: translateY(-1px); }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 3.5rem;
+      margin-top: 4.5rem;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-mid);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 6rem 2rem; }
+    .container { max-width: 1060px; margin: 0 auto; }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+    }
+    .section-title.light { color: var(--white); }
+    .section-lead {
+      font-size: 1.1rem;
+      color: #5A6A78;
+      max-width: 600px;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+    .section-lead.light { color: var(--text-light); }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: var(--white); }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      margin-top: 3.5rem;
+    }
+    .philosophy-quote {
+      position: relative;
+      padding: 2.5rem;
+      background: var(--navy);
+      border-radius: 4px;
+    }
+    .philosophy-quote::before {
+      content: '"';
+      font-size: 8rem;
+      color: rgba(201,168,76,0.15);
+      position: absolute;
+      top: -1.5rem;
+      right: 1.5rem;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .philosophy-quote blockquote {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .philosophy-quote cite {
+      display: block;
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-style: normal;
+      font-weight: 600;
+    }
+    .philosophy-points { display: flex; flex-direction: column; gap: 1.8rem; }
+    .philosophy-point { display: flex; gap: 1.2rem; align-items: flex-start; }
+    .point-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold-pale);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+    .point-text h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .point-text p {
+      font-size: 0.9rem;
+      color: #5A6A78;
+      line-height: 1.7;
+    }
+
+    /* ── GLOBAL SCALE ── */
+    .global { background: var(--navy); }
+    .global-header { margin-bottom: 3.5rem; }
+    .globe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .globe-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      padding: 2.2rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .globe-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .globe-flag {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .globe-country {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .globe-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+    }
+    .globe-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.7;
+    }
+    .global-bottom {
+      margin-top: 3rem;
+      padding: 2rem 2.5rem;
+      background: rgba(201,168,76,0.08);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .global-bottom-icon { font-size: 2rem; flex-shrink: 0; }
+    .global-bottom p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .global-bottom strong { color: var(--gold-light); }
+
+    /* ── SERVICES ── */
+    .services { background: var(--offwhite); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #E0D8CC;
+      border-radius: 4px;
+      padding: 2.5rem;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0; left: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .service-card:hover { border-color: transparent; box-shadow: 0 8px 32px rgba(13,27,42,0.1); transform: translateY(-3px); }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.8rem;
+    }
+    .service-card p {
+      font-size: 0.9rem;
+      color: #5A6A78;
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
+    }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .service-tag {
+      font-size: 0.75rem;
+      color: var(--navy-light);
+      background: var(--gold-pale);
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.25rem 0.75rem;
+      border-radius: 2px;
+      font-weight: 500;
+    }
+
+    /* ── WHY ME ── */
+    .why { background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+    .why-left {}
+    .timeline { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item {
+      display: flex;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 19px;
+      top: 40px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--gold), rgba(201,168,76,0.1));
+    }
+    .timeline-dot {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-content {}
+    .timeline-year {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    .timeline-content h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.3rem;
+    }
+    .timeline-content p {
+      font-size: 0.85rem;
+      color: #6A7A88;
+      line-height: 1.65;
+    }
+    .why-right { display: flex; flex-direction: column; gap: 1.2rem; }
+    .why-card {
+      background: var(--offwhite);
+      border-right: 3px solid var(--gold);
+      padding: 1.5rem 1.8rem;
+      border-radius: 0 4px 4px 0;
+    }
+    .why-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+    .why-card p {
+      font-size: 0.88rem;
+      color: #5A6A78;
+      line-height: 1.7;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--navy); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .testimonial-card {
+      background: var(--navy-mid);
+      border: 1px solid rgba(201,168,76,0.15);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+    .testimonial-stars {
+      color: var(--gold);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .testimonial-text {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--navy-light);
+      border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .testimonial-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .testimonial-role {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--offwhite); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+    .contact-info {}
+    .contact-info h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      font-size: 0.92rem;
+      color: #5A6A78;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+    }
+    .contact-detail-icon {
+      width: 38px; height: 38px;
+      background: var(--navy);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-detail-text {
+      font-size: 0.88rem;
+      color: #5A6A78;
+    }
+    .contact-detail-text strong {
+      display: block;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.1rem;
+    }
+    .contact-form {
+      background: var(--white);
+      border: 1px solid #E0D8CC;
+      border-radius: 4px;
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.45rem;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #D0C8BC;
+      border-radius: 3px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.92rem;
+      color: var(--navy);
+      background: var(--offwhite);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: var(--gold); background: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-submit {
+      width: 100%;
+      background: var(--navy);
+      color: var(--gold);
+      border: none;
+      padding: 1rem;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .form-submit:hover { background: var(--gold); color: var(--navy); }
+    .form-note {
+      font-size: 0.75rem;
+      color: #9A8C82;
+      text-align: center;
+      margin-top: 0.8rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.2);
+    }
+    .footer-logo {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-logo span { color: var(--gold); }
+    footer p {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .philosophy-grid,
+      .why-grid,
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .globe-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hero-stats { gap: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">רועי גולד <span>|</span> ייעוץ לניהול ואסטרטגיה</div>
+  <ul class="nav-links">
+    <li><a href="#about">פרופיל</a></li>
+    <li><a href="#global">ניסיון גלובלי</a></li>
+    <li><a href="#services">שירותים</a></li>
+    <li><a href="#why">למה רועי</a></li>
+    <li><a href="#contact" class="nav-cta">לייעוץ ראשוני</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">ייעוץ בכיר לניהול ואסטרטגיה עסקית</div>
+    <h1>
+      מהמספרים<br class="br-mob" />
+      <span class="gold">אל האנשים</span><br />
+      שם נמצאת הצמיחה האמיתית
+    </h1>
+    <p class="hero-sub">
+      18 שנות מנהיגות כמנכ"ל, הקמת אופרציות בינלאומיות, וניהול מערכות מורכבות בזמן אמת –
+      מלחמות, מגפות ומשברי שוק. החוכמה שנצברה בשטח, עכשיו בשירות הארגון שלך.
+    </p>
+    <div class="hero-cta-group">
+      <a href="#contact" class="btn-primary">לפגישת אסטרטגיה ראשונה</a>
+      <a href="#services" class="btn-ghost">לגלות את השירותים</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">18</span>
+        <span class="stat-label">שנות ניהול כמנכ"ל</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">יבשות, עשרות פרויקטים</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">1,000+</span>
+        <span class="stat-label">עובדים בניהול ישיר</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">∞</span>
+        <span class="stat-label">שאלות שנכון לשאול</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY / ABOUT -->
+<section class="philosophy" id="about">
+  <div class="container">
+    <div class="section-tag">הפילוסופיה</div>
+    <h2 class="section-title">ניהול הוא אמנות –<br />אסטרטגיה היא המדע שמאחוריה</h2>
+    <div class="philosophy-grid">
+      <div class="philosophy-quote">
+        <blockquote>
+          "הנתונים אומרים לך מה קרה.
+          הניסיון אומר לך למה.
+          החוכמה יודעת מה לעשות הלאה."
+        </blockquote>
+        <cite>— רועי גולד, מנכ"ל לשעבר, Benedict Group</cite>
+      </div>
+      <div class="philosophy-points">
+        <div class="philosophy-point">
+          <div class="point-icon">📊</div>
+          <div class="point-text">
+            <h4>אסטרטגיה מבוססת נתונים</h4>
+            <p>מודלים פיננסיים וניתוח כמותי הם הבסיס. אבל הנתונים לא מנהלים אנשים – תובנה כן.</p>
+          </div>
+        </div>
+        <div class="philosophy-point">
+          <div class="point-icon">🏗️</div>
+          <div class="point-text">
+            <h4>בנייה מהשורש</h4>
+            <p>מייסד מאפיות בקנה מידה גדול ורשתות מזון מובילות. ידע מעמיק של כל שלב – מהרעיון ועד הפעילות היומיומית.</p>
+          </div>
+        </div>
+        <div class="philosophy-point">
+          <div class="point-icon">🔥</div>
+          <div class="point-text">
+            <h4>מנוסה תחת אש</h4>
+            <p>קורונה, מלחמות, משברי שרשרת אספקה. חוכמת שדה שלא לומדים בבית ספר לעסקים.</p>
+          </div>
+        </div>
+        <div class="philosophy-point">
+          <div class="point-icon">🤝</div>
+          <div class="point-text">
+            <h4>ערכים ככלי עסקי</h4>
+            <p>מנהיגות ערכית אינה "nice to have" – היא הדרך הפרקטית ביותר לבנות ארגון שמחזיק לאורך זמן.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOBAL SCALE -->
+<section class="global" id="global">
+  <div class="container">
+    <div class="global-header">
+      <div class="section-tag">ניסיון גלובלי</div>
+      <h2 class="section-title light">פרויקטים שנבנו<br />ממרכז ישראל ועד קצוות העולם</h2>
+      <p class="section-lead light">ניהול אופרציות הזנה בינלאומיות עבור חברות הייטק מובילות – כולל תכנון מערכות, גיוס כוח אדם מקומי, ניהול ספקים ועמידה בסטנדרטים גלובליים.</p>
+    </div>
+    <div class="globe-grid">
+      <div class="globe-card">
+        <span class="globe-flag">🇮🇳</span>
+        <div class="globe-country">הודו</div>
+        <h3>הקמת אופרציות הזנה בהיקף גדול</h3>
+        <p>ניהול אתרי הזנה לאלפי עובדי היי-טק. בנייה מאפס של תהליכים, ספקים, צוותים ותקנים תפעוליים – בסביבה תרבותית ומשפטית שונה לחלוטין.</p>
+      </div>
+      <div class="globe-card">
+        <span class="globe-flag">🇪🇺</span>
+        <div class="globe-country">אירופה</div>
+        <h3>הרחבה אירופאית ותאימות רגולטורית</h3>
+        <p>התאמת מודלים עסקיים ישראלים לשווקים אירופאיים. ניווט בין רגולציות מורכבות, תרבויות שירות שונות ודרישות איכות קפדניות.</p>
+      </div>
+      <div class="globe-card">
+        <span class="globe-flag">🇺🇸</span>
+        <div class="globe-country">ארצות הברית</div>
+        <h3>שותפויות אסטרטגיות עם ענקי טכנולוגיה</h3>
+        <p>שיתוף פעולה עם חברות Fortune 500 בתחום הזנה תאגידית. הבנה עמוקה של ציפיות התפעול האמריקאי ותרבות מקום העבודה.</p>
+      </div>
+    </div>
+    <div class="global-bottom">
+      <div class="global-bottom-icon">💡</div>
+      <p>
+        <strong>מה זה אומר לעסק שלך?</strong> ניסיון בינלאומי אמיתי – לא תיאורטי. היכרות עם הפערים שחברות ישראליות פוגשות כשהן מנסות לצמוח מעבר לגבולות, ופתרונות שנבדקו בשטח.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-tag">שירותים</div>
+    <h2 class="section-title">מה אפשר לעשות יחד</h2>
+    <p class="section-lead">כל מעורבות מותאמת אישית. אין תבניות מוכנות – יש חשיבה מעמיקה על האתגר הספציפי של הארגון שלך.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3>צמיחה והרחבה בינלאומית</h3>
+        <p>מהניתוח הפיננסי הראשוני, דרך בחירת שווקים ועד הוצאה לפועל – ליווי מלא של תהליך הכניסה לשוק חדש. כולל מיפוי סיכונים, מודל עסקי מותאם ובניית תשתית ניהולית מקומית.</p>
+        <div class="service-tags">
+          <span class="service-tag">כניסה לשווקים חדשים</span>
+          <span class="service-tag">מודלים פיננסיים</span>
+          <span class="service-tag">Due Diligence</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3>ניהול משברים וחוסן ארגוני</h3>
+        <p>כשהמצב לא "לפי התכנון" – זה הרגע שבו ניסיון אמיתי מכריע. ליווי מנהלים בניהול משברים תפעוליים, מוניטין וכלכליים. בניית מערכות חוסן מוסדי לפני שהמשבר מגיע.</p>
+        <div class="service-tags">
+          <span class="service-tag">ניהול תחת לחץ</span>
+          <span class="service-tag">תכנית המשכיות עסקית</span>
+          <span class="service-tag">ניהול סיכונים</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3>מצוינות תפעולית – מזון וטק</h3>
+        <p>ייעוץ ספציפי לחברות בתחומי המזון, השירות והאירוח הארגוני. בניית תהליכים תפעוליים יעילים, מבנה עלויות אופטימלי, ניהול שרשרת אספקה ותקינה.</p>
+        <div class="service-tags">
+          <span class="service-tag">F&B Operations</span>
+          <span class="service-tag">ניהול ספקים</span>
+          <span class="service-tag">בקרת עלויות</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-num">04</div>
+        <h3>מנטורינג למנהלים בכירים</h3>
+        <p>מרחב חשיבה אישי ואמין למנכ"לים ומנהלי C-Suite. שיחות עומק על דילמות ניהוליות, קבלת החלטות בחוסר ודאות, בניית תרבות ארגונית ומנהיגות ערכית שמניעה תוצאות.</p>
+        <div class="service-tags">
+          <span class="service-tag">Executive Coaching</span>
+          <span class="service-tag">מנהיגות ערכית</span>
+          <span class="service-tag">קבלת החלטות</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-tag">למה רועי גולד</div>
+    <h2 class="section-title">18 שנה לא רק ניהלתי –<br />בניתי, פירקתי, למדתי וחזרתי</h2>
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">🏢</div>
+            <div class="timeline-content">
+              <div class="timeline-year">ראשית הדרך</div>
+              <h4>ניהול בכיר ב-Benedict</h4>
+              <p>קריירה של 18 שנה בניהול אחת מקבוצות המזון המובילות בישראל. בניית מנגנוני ניהול, הרחבת רשת, גיוס וקידום מנהלים.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">🏭</div>
+            <div class="timeline-content">
+              <div class="timeline-year">יזמות</div>
+              <h4>הקמת מאפיות בקנה מידה גדול</h4>
+              <p>מייסד ובונה של מפעלי מזון. ידע מלא של כל שלב – ממיקום, ציוד וכוח אדם ועד שיווק, תמחור ורווחיות.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">🌍</div>
+            <div class="timeline-content">
+              <div class="timeline-year">גלובלי</div>
+              <h4>אופרציות בינלאומיות בטק</h4>
+              <p>ניהול פרויקטי הזנה מורכבים בהודו, אירופה וארה"ב עבור חברות הייטק גלובליות. ניסיון ממשי בבניית צוותים רב-תרבותיים.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">💪</div>
+            <div class="timeline-content">
+              <div class="timeline-year">מבחן השטח</div>
+              <h4>קורונה, מלחמות, אי-ודאות</h4>
+              <p>ניהול ארגונים בזמן אמת בתקופות מחיות. שמירה על רלוונטיות, רווחיות ומוראל הצוות כשהעולם עוצר.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right">
+        <div class="why-card">
+          <h4>לא יועץ שמגיע מהאקדמיה</h4>
+          <p>כל המודלים, הפריימוורקים והכלים שאני מביא – נבדקו בפועל. אני מדבר על דברים שעשיתי, לא על דברים שלמדתי עליהם.</p>
+        </div>
+        <div class="why-card">
+          <h4>רלוונטיות שנשמרה לאורך זמן</h4>
+          <p>18 שנה בענף דינמי ותחרותי. להישאר רלוונטי ויצירתי בעולם שמשתנה – זה כשלעצמו מיומנות שניתן ללמד.</p>
+        </div>
+        <div class="why-card">
+          <h4>תוצאות, לא מצגות</h4>
+          <p>אני מגיע לפגישה הראשונה עם שאלות חדות ותובנות ספציפיות. לא עם מצגת כללית שמתאימה לכל לקוח.</p>
+        </div>
+        <div class="why-card">
+          <h4>רשת קשרים גלובלית ואמיתית</h4>
+          <p>שנים של עבודה עם מנהלים, ספקים, רגולטורים וחברות מרחבי העולם – פותחות דלתות שמצגות לא פותחות.</p>
+        </div>
+        <div class="why-card">
+          <h4>נגיש, ישיר, בלי BS</h4>
+          <p>אין כאן ז'רגון ניהולי מיותר. אם יש בעיה – נאמר אותה ישירות. אם יש פתרון – נגיע אליו ביחד.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-tag">מה אומרים</div>
+    <h2 class="section-title light">מנהלים שעבדו יחד</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"רועי הביא איתו משהו שקשה למצוא – נסיון אמיתי. לא תיאוריות. הוא ראה את הבעיה שלנו לפני שאנחנו ראינו אותה, ונתן לנו כלים לטפל בה."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">א.כ</div>
+          <div>
+            <div class="testimonial-name">א. כהן</div>
+            <div class="testimonial-role">מנכ"ל, חברת מזון מובילה</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"כשנכנסנו לשוק ההודי, לא ידענו מה לא ידענו. רועי עזר לנו למפות את הסיכונים האמיתיים ולבנות תכנית שעמדה במבחן המציאות."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">ד.ל</div>
+          <div>
+            <div class="testimonial-name">ד. לוי</div>
+            <div class="testimonial-role">VP Operations, חברת טכנולוגיה</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"בתקופת הקורונה, כשכולם קפאו, הוא עזר לנו לקבל החלטות מהירות ונכונות. השיחות האסטרטגיות איתו שמרו על העסק שלנו."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">מ.ש</div>
+          <div>
+            <div class="testimonial-name">מ. שמיר</div>
+            <div class="testimonial-role">בעלים, רשת מסעדות</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-tag">צור קשר</div>
+    <h2 class="section-title">מוכן לשיחה ישירה?</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>הפגישה הראשונה היא שיחת היכרות</h3>
+        <p>
+          לא מצגת, לא מכירה. שיחת 30 דקות שבה אני שומע על האתגר שלך ואתה שומע אם יש לי משהו רלוונטי להגיד.
+          אם יש התאמה – נבנה יחד את המסגרת הנכונה.
+        </p>
+        <div class="contact-details">
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📧</div>
+            <div class="contact-detail-text">
+              <strong>אימייל</strong>
+              roy@gold-strategy.co.il
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📱</div>
+            <div class="contact-detail-text">
+              <strong>טלפון / ווטסאפ</strong>
+              +972-50-000-0000
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-detail-icon">📍</div>
+            <div class="contact-detail-text">
+              <strong>בסיס פעילות</strong>
+              תל אביב, ישראל | זמין לפגישות גלובליות
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <form>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">שם מלא</label>
+              <input type="text" id="name" placeholder="ישראל ישראלי" />
+            </div>
+            <div class="form-group">
+              <label for="company">חברה / ארגון</label>
+              <input type="text" id="company" placeholder="שם החברה" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">אימייל</label>
+              <input type="email" id="email" placeholder="name@company.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">טלפון</label>
+              <input type="tel" id="phone" placeholder="050-000-0000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="topic">נושא הפנייה</label>
+            <select id="topic">
+              <option value="">בחר נושא...</option>
+              <option>צמיחה והרחבה בינלאומית</option>
+              <option>ניהול משבר</option>
+              <option>מצוינות תפעולית</option>
+              <option>מנטורינג למנהלים</option>
+              <option>אחר</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">ספר לי בקצרה על האתגר</label>
+            <textarea id="message" placeholder="מה הסיטואציה, מה מנסים להשיג, מה עצר אתכם עד עכשיו..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">שליחת הפנייה ←</button>
+          <p class="form-note">מתחייב לחזור תוך 24 שעות. ללא התחייבות ולא מכירות.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">רועי גולד <span>|</span> ייעוץ לניהול ואסטרטגיה</div>
+  <p>© 2025 רועי גולד. כל הזכויות שמורות.</p>
+</footer>
+
+</body>
+</html>
