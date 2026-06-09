@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>פולי | עיצוב ופיתוח אתרים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #080b14;
+      --bg-secondary: #0e1424;
+      --bg-card: #131929;
+      --bg-card-hover: #1a2235;
+      --accent-purple: #8b5cf6;
+      --accent-blue: #3b82f6;
+      --accent-gold: #f59e0b;
+      --accent-teal: #14b8a6;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --border: rgba(139, 92, 246, 0.15);
+      --border-glow: rgba(139, 92, 246, 0.35);
+      --gradient-main: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+      --gradient-gold: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      --gradient-teal: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
+      --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.15);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+      --radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(8, 11, 20, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--gradient-main);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-weight: 600 !important;
+    }
+    .nav-cta:hover { opacity: 0.9; }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-secondary);
+      transition: var(--transition);
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 32px 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(139, 92, 246, 0.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 40% at 80% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
+    }
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: float 8s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 400px; height: 400px;
+      background: rgba(139, 92, 246, 0.12);
+      top: -10%; right: -5%;
+      animation-delay: 0s;
+    }
+    .hero-orb-2 {
+      width: 300px; height: 300px;
+      background: rgba(59, 130, 246, 0.1);
+      bottom: 10%; left: 5%;
+      animation-delay: 3s;
+    }
+    .hero-orb-3 {
+      width: 200px; height: 200px;
+      background: rgba(245, 158, 11, 0.08);
+      top: 40%; right: 20%;
+      animation-delay: 5s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-30px) scale(1.05); }
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      max-width: 900px;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      color: #a78bfa;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #8b5cf6;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.5); }
+    }
+    .hero h1 {
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    .hero h1 .name-gradient {
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 48px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-tagline strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient-main);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      transition: var(--transition);
+      box-shadow: 0 4px 24px rgba(139, 92, 246, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.5);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: 1px solid var(--border-glow);
+      transition: var(--transition);
+    }
+    .btn-secondary:hover {
+      background: rgba(139, 92, 246, 0.08);
+      border-color: var(--accent-purple);
+    }
+    .hero-scroll {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounceDown 2s ease-in-out infinite;
+    }
+    .hero-scroll::after {
+      content: '';
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--accent-purple), transparent);
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 100px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-full {
+      max-width: 100%;
+      padding: 100px 0;
+    }
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-purple);
+      margin-bottom: 16px;
+    }
+    .section-label::before {
+      content: '';
+      width: 20px;
+      height: 2px;
+      background: var(--accent-purple);
+    }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 64px;
+    }
+    .about-text p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin-bottom: 20px;
+    }
+    .about-text p strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .highlight-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .highlight-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .highlight-text strong {
+      display: block;
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-main {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-card-main::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      right: 0; height: 3px;
+      background: var(--gradient-main);
+    }
+    .code-block {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      direction: ltr;
+      text-align: left;
+    }
+    .code-line { display: flex; gap: 12px; }
+    .code-keyword { color: #c084fc; }
+    .code-string { color: #86efac; }
+    .code-var { color: #7dd3fc; }
+    .code-comment { color: #475569; }
+    .code-punct { color: #e2e8f0; }
+    .about-card-float {
+      position: absolute;
+      bottom: -24px;
+      left: -24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glow);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      box-shadow: var(--shadow-card);
+    }
+    .float-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .float-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: var(--bg-secondary);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .skill-category {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      transition: var(--transition);
+    }
+    .skill-category:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-4px);
+    }
+    .skill-cat-icon {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .skill-cat-icon.purple { background: rgba(139, 92, 246, 0.15); }
+    .skill-cat-icon.blue { background: rgba(59, 130, 246, 0.15); }
+    .skill-cat-icon.teal { background: rgba(20, 184, 166, 0.15); }
+    .skill-cat-icon.gold { background: rgba(245, 158, 11, 0.15); }
+    .skill-cat-icon.rose { background: rgba(244, 63, 94, 0.15); }
+    .skill-cat-icon.green { background: rgba(34, 197, 94, 0.15); }
+    .skill-cat-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .skill-cat-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-secondary);
+    }
+
+    /* ── PORTFOLIO ── */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-top: 64px;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .project-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .project-preview {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-neria {
+      background: linear-gradient(135deg, #faf7f2 0%, #f0ebe0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-neria-inner {
+      text-align: center;
+      direction: rtl;
+    }
+    .preview-neria-inner .p-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #5c6e5a;
+      margin-bottom: 8px;
+    }
+    .preview-neria-inner .p-sub {
+      font-size: 0.8rem;
+      color: #8a9e88;
+    }
+    .preview-neria-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 16px;
+    }
+    .preview-neria-dots span {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .preview-neria-tag {
+      display: inline-block;
+      background: rgba(139, 120, 91, 0.15);
+      color: #8a7a5c;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .preview-roy {
+      background: linear-gradient(135deg, #0f1e3c 0%, #1a3160 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-roy-inner {
+      text-align: center;
+      direction: rtl;
+    }
+    .preview-roy-inner .p-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #c9a94e;
+      margin-bottom: 8px;
+    }
+    .preview-roy-inner .p-sub {
+      font-size: 0.8rem;
+      color: #8a9bbf;
+    }
+    .preview-roy-line {
+      width: 40px;
+      height: 2px;
+      background: #c9a94e;
+      margin: 12px auto;
+    }
+    .preview-roy-tag {
+      display: inline-block;
+      background: rgba(201, 169, 78, 0.15);
+      color: #c9a94e;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(201, 169, 78, 0.3);
+    }
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 11, 20, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .project-card:hover .project-overlay { opacity: 1; }
+    .overlay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gradient-main);
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    .project-info { padding: 28px; }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .tag-wellness {
+      background: rgba(134, 239, 172, 0.1);
+      color: #86efac;
+      border: 1px solid rgba(134, 239, 172, 0.2);
+    }
+    .tag-business {
+      background: rgba(251, 191, 36, 0.1);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.2);
+    }
+    .tag-html { background: rgba(249, 115, 22, 0.1); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.2); }
+    .tag-css { background: rgba(59, 130, 246, 0.1); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.2); }
+    .tag-js { background: rgba(234, 179, 8, 0.1); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.2); }
+    .project-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── PROCESS ── */
+    .process-section {
+      background: var(--bg-secondary);
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      right: 12.5%;
+      left: 12.5%;
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--border-glow), transparent);
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .step-num {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+    .step-num-1 { background: rgba(139, 92, 246, 0.2); border: 2px solid rgba(139, 92, 246, 0.4); color: #a78bfa; }
+    .step-num-2 { background: rgba(59, 130, 246, 0.2); border: 2px solid rgba(59, 130, 246, 0.4); color: #60a5fa; }
+    .step-num-3 { background: rgba(20, 184, 166, 0.2); border: 2px solid rgba(20, 184, 166, 0.4); color: #2dd4bf; }
+    .step-num-4 { background: rgba(245, 158, 11, 0.2); border: 2px solid rgba(245, 158, 11, 0.4); color: #fcd34d; }
+    .step-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 0.87rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 64px;
+    }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .contact-item-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      direction: rtl;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--accent-purple);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-group select option { background: var(--bg-card); }
+    .form-submit {
+      margin-top: 20px;
+      width: 100%;
+      background: var(--gradient-main);
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 24px rgba(139, 92, 246, 0.3);
+    }
+    .form-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(139, 92, 246, 0.5);
+    }
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+    .form-success .success-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .form-success p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 48px 32px;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+    .footer-tagline {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+    .footer-copy {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-delay-1 { transition-delay: 0.1s; }
+    .fade-delay-2 { transition-delay: 0.2s; }
+    .fade-delay-3 { transition-delay: 0.3s; }
+    .fade-delay-4 { transition-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+      .about-grid { gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      section { padding: 64px 20px; }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 11, 20, 0.97);
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        font-size: 1.4rem;
+        z-index: 999;
+      }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-highlights { grid-template-columns: 1fr; }
+      .about-card-float { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; }
+      .form-grid { grid-template-columns: 1fr; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .hero h1 { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">פולי</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#skills">כישורים</a></li>
+        <li><a href="#portfolio">פורטפוליו</a></li>
+        <li><a href="#process">תהליך</a></li>
+        <li><a href="#contact" class="nav-cta">צרו קשר</a></li>
+      </ul>
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-content">
+      <div class="hero-badge">עיצוב ופיתוח אתרים</div>
+      <h1>
+        שלום, אני<br>
+        <span class="name-gradient">פולי</span>
+      </h1>
+      <p class="hero-tagline">
+        אני <strong>מעצבת ומפתחת אתרים</strong> שיוצרת חוויות דיגיטליות ייחודיות.<br>
+        מאמינה שכל פרויקט מספר סיפור — ואני כאן כדי לספר אותו בצורה הכי יפה שיש.
+      </p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-primary">הפרויקטים שלי ↓</a>
+        <a href="#contact" class="btn-secondary">בואו נדבר</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number">+10</div>
+          <div class="stat-label">פרויקטים שהושלמו</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">לקוחות מרוצים</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">RTL</div>
+          <div class="stat-label">מתמחה בעברית</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">AI</div>
+          <div class="stat-label">פיתוח מבוסס בינה מלאכותית</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">גלול למטה</div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-label fade-in">אודותי</div>
+    <h2 class="section-title fade-in fade-delay-1">יצירתיות פוגשת<br>דיוק טכני</h2>
+    <div class="about-grid">
+      <div class="about-text fade-in fade-delay-2">
+        <p>
+          אני פולי — מעצבת ומפתחת אתרים שמאמינה שאתר טוב הוא הרבה יותר מדפים יפים.
+          זה <strong>כלי עסקי אמיתי</strong> שמחבר בין אנשים לבין השירותים שהם צריכים.
+        </p>
+        <p>
+          אני בונה אתרים מה<strong>HTML הראשון ועד הפרט האחרון</strong> — בלי תבניות, בלי פשרות.
+          כל פרויקט מקבל ממני מחשבה, עיצוב מותאם, ואנימציות שגורמות לו לחיות.
+        </p>
+        <p>
+          מתמחה ב<strong>ממשקים בעברית (RTL)</strong>, בעיצוב רספונסיבי לכל מסך, ובשילוב
+          כלי <strong>בינה מלאכותית</strong> בתהליך הפיתוח — כי הטכנולוגיה הטובה ביותר היא
+          זו שמשרתת יצירתיות.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">🎨</div>
+            <div class="highlight-text">
+              <strong>עיצוב מותאם אישית</strong>
+              כל אתר מעוצב מאפס
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">📱</div>
+            <div class="highlight-text">
+              <strong>מובייל ראשון</strong>
+              מושלם בכל מסך
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">✨</div>
+            <div class="highlight-text">
+              <strong>אנימציות חלקות</strong>
+              חוויה שמרגישה מושלמת
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🤖</div>
+            <div class="highlight-text">
+              <strong>AI בתהליך</strong>
+              פיתוח מהיר ומדויק
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual fade-in fade-delay-3">
+        <div class="about-card-main">
+          <div class="code-block">
+            <div class="code-line">
+              <span class="code-keyword">const</span>
+              <span class="code-var">polly</span>
+              <span class="code-punct">= {</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-var">שם</span><span class="code-punct">:</span>
+              <span class="code-string">"פולי"</span><span class="code-punct">,</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-var">תפקיד</span><span class="code-punct">:</span>
+              <span class="code-string">"מעצבת + מפתחת"</span><span class="code-punct">,</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-var">כישורים</span><span class="code-punct">:</span>
+              <span class="code-punct">[</span>
+            </div>
+            <div class="code-line" style="padding-right:40px">
+              <span class="code-string">"HTML"</span><span class="code-punct">,</span>
+              <span class="code-string">"CSS"</span><span class="code-punct">,</span>
+              <span class="code-string">"JS"</span><span class="code-punct">,</span>
+            </div>
+            <div class="code-line" style="padding-right:40px">
+              <span class="code-string">"RTL"</span><span class="code-punct">,</span>
+              <span class="code-string">"UX"</span><span class="code-punct">,</span>
+              <span class="code-string">"AI"</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-punct">],</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-var">שפה</span><span class="code-punct">:</span>
+              <span class="code-string">"עברית"</span><span class="code-punct">,</span>
+            </div>
+            <div class="code-line" style="padding-right:20px">
+              <span class="code-var">זמינות</span><span class="code-punct">:</span>
+              <span class="code-string">"פתוחה לפרויקטים"</span>
+            </div>
+            <div class="code-line">
+              <span class="code-punct">}</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-card-float">
+          <div class="float-label">סטטוס</div>
+          <div class="float-value">● פנויה לפרויקט חדש</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <div class="section-full skills-section" id="skills">
+    <div class="section-inner">
+      <div class="section-label fade-in">מה אני יודעת לעשות</div>
+      <h2 class="section-title fade-in fade-delay-1">כישורים ויכולות</h2>
+      <p class="section-subtitle fade-in fade-delay-2">
+        שילוב של עיצוב, טכנולוגיה, וחשיבה אסטרטגית — הכל בשביל אתר שעובד באמת.
+      </p>
+      <div class="skills-grid">
+        <div class="skill-category fade-in">
+          <div class="skill-cat-icon purple">🎨</div>
+          <div class="skill-cat-title">עיצוב UI/UX</div>
+          <div class="skill-cat-desc">עיצוב ממשקים אינטואיטיביים שמוביל את המשתמש לפעולה</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Layout</span>
+            <span class="skill-tag">Typography</span>
+            <span class="skill-tag">Color Theory</span>
+            <span class="skill-tag">Animations</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in fade-delay-1">
+          <div class="skill-cat-icon blue">💻</div>
+          <div class="skill-cat-title">פיתוח Frontend</div>
+          <div class="skill-cat-desc">קוד נקי, מהיר, ונגיש — ללא תבניות מוכנות</div>
+          <div class="skill-tags">
+            <span class="skill-tag">HTML5</span>
+            <span class="skill-tag">CSS3</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Flexbox</span>
+            <span class="skill-tag">Grid</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in fade-delay-2">
+          <div class="skill-cat-icon teal">🌐</div>
+          <div class="skill-cat-title">עברית RTL</div>
+          <div class="skill-cat-desc">מומחיות בממשקים עבריים — מימין לשמאל, בצורה מושלמת</div>
+          <div class="skill-tags">
+            <span class="skill-tag">RTL Direction</span>
+            <span class="skill-tag">Hebrew Fonts</span>
+            <span class="skill-tag">Heebo</span>
+            <span class="skill-tag">Bidirectional</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in fade-delay-3">
+          <div class="skill-cat-icon gold">📱</div>
+          <div class="skill-cat-title">עיצוב רספונסיבי</div>
+          <div class="skill-cat-desc">אתרים שנראים מושלמים על כל מסך — פלאפון, טאבלט, דסקטופ</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Mobile-First</span>
+            <span class="skill-tag">Media Queries</span>
+            <span class="skill-tag">Breakpoints</span>
+            <span class="skill-tag">Fluid Layout</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in fade-delay-1">
+          <div class="skill-cat-icon rose">✨</div>
+          <div class="skill-cat-title">אנימציות ואינטראקציות</div>
+          <div class="skill-cat-desc">תנועה שמוסיפה חיים — Scroll effects, Hover states, Transitions</div>
+          <div class="skill-tags">
+            <span class="skill-tag">CSS Animations</span>
+            <span class="skill-tag">IntersectionObserver</span>
+            <span class="skill-tag">Transitions</span>
+            <span class="skill-tag">Keyframes</span>
+          </div>
+        </div>
+        <div class="skill-category fade-in fade-delay-2">
+          <div class="skill-cat-icon green">🤖</div>
+          <div class="skill-cat-title">AI בתהליך הפיתוח</div>
+          <div class="skill-cat-desc">שימוש בכלי בינה מלאכותית לפיתוח מהיר, review קוד, ואבטחה</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Claude Code</span>
+            <span class="skill-tag">Code Review</span>
+            <span class="skill-tag">Security Review</span>
+            <span class="skill-tag">GitHub Copilot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PORTFOLIO ── -->
+  <section id="portfolio">
+    <div class="section-label fade-in">עבודות נבחרות</div>
+    <h2 class="section-title fade-in fade-delay-1">פרויקטים אחרונים</h2>
+    <p class="section-subtitle fade-in fade-delay-2">
+      כל פרויקט הוא עולם בפני עצמו — עיצוב, סגנון, וסיפור ייחודי.
+    </p>
+    <div class="portfolio-grid">
+      <div class="project-card fade-in fade-delay-1">
+        <div class="project-preview preview-neria">
+          <div class="preview-neria-inner">
+            <div class="preview-neria-tag">קבוצת מעבר לנשים</div>
+            <div class="p-title">מעברים</div>
+            <div class="p-sub">נריה גולד-שילד | פסיכותרפיסטית</div>
+            <div class="preview-neria-dots">
+              <span style="background:#c8a97e"></span>
+              <span style="background:#9cb08a"></span>
+              <span style="background:#c4a5b8"></span>
+              <span style="background:#a8b9d4"></span>
+            </div>
+          </div>
+          <div class="project-overlay">
+            <a href="Index.html" class="overlay-btn">צפייה בפרויקט ←</a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag tag-wellness">רווחה ובריאות</span>
+            <span class="project-tag tag-html">HTML</span>
+            <span class="project-tag tag-css">CSS</span>
+            <span class="project-tag tag-js">JS</span>
+          </div>
+          <div class="project-title">מעברים — דף נחיתה לקבוצת נשים</div>
+          <div class="project-desc">
+            דף נחיתה עשיר ומרגש לפסיכותרפיסטית נריה גולד-שילד.
+            עיצוב בגוונים חמים ורכים, עם טפסי הרשמה, עדויות, ותוכן שמוביל לפעולה.
+          </div>
+        </div>
+      </div>
+      <div class="project-card fade-in fade-delay-2">
+        <div class="project-preview preview-roy">
+          <div class="preview-roy-inner">
+            <div class="preview-roy-tag">ייעוץ ניהולי בכיר</div>
+            <div class="p-title">רועי גולד</div>
+            <div class="preview-roy-line"></div>
+            <div class="p-sub">אסטרטגיה עסקית | הרחבה בינלאומית</div>
+          </div>
+          <div class="project-overlay">
+            <a href="roy-gold.html" class="overlay-btn">צפייה בפרויקט ←</a>
+          </div>
+        </div>
+        <div class="project-info">
+          <div class="project-tags">
+            <span class="project-tag tag-business">עסקים</span>
+            <span class="project-tag tag-html">HTML</span>
+            <span class="project-tag tag-css">CSS</span>
+            <span class="project-tag tag-js">JS</span>
+          </div>
+          <div class="project-title">רועי גולד — אתר ייעוץ ניהולי</div>
+          <div class="project-desc">
+            אתר ייצוגי ומקצועי ליועץ אסטרטגי בכיר עם 18 שנות ניסיון.
+            עיצוב בגוונים כחול-נייבי וזהב, עם סקשנים לשירותים, פילוסופיה, ועדויות.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <div class="section-full process-section" id="process">
+    <div class="section-inner">
+      <div class="section-label fade-in">איך אני עובדת</div>
+      <h2 class="section-title fade-in fade-delay-1">התהליך שלי</h2>
+      <p class="section-subtitle fade-in fade-delay-2">
+        מהפגישה הראשונה ועד לאתר החי — תהליך ברור, שקוף, ונעים.
+      </p>
+      <div class="process-steps">
+        <div class="process-step fade-in">
+          <div class="step-num step-num-1">01</div>
+          <div class="step-title">גילוי והבנה</div>
+          <div class="step-desc">
+            פגישה ראשונה להבנת הצרכים, הקהל, והמטרות.
+            מה האתר צריך להשיג? מי הלקוח האידיאלי?
+          </div>
+        </div>
+        <div class="process-step fade-in fade-delay-1">
+          <div class="step-num step-num-2">02</div>
+          <div class="step-title">עיצוב ואסטרטגיה</div>
+          <div class="step-desc">
+            בחירת פלטת צבעים, טיפוגרפיה, ומבנה דפים.
+            כל החלטה מעוצבת סביב חוויית המשתמש.
+          </div>
+        </div>
+        <div class="process-step fade-in fade-delay-2">
+          <div class="step-num step-num-3">03</div>
+          <div class="step-title">פיתוח ובנייה</div>
+          <div class="step-desc">
+            קוד נקי מאפס, אנימציות, ורספונסיביות מלאה.
+            כולל שימוש בכלי AI לדיוק ומהירות מרביים.
+          </div>
+        </div>
+        <div class="process-step fade-in fade-delay-3">
+          <div class="step-num step-num-4">04</div>
+          <div class="step-title">השקה ותמיכה</div>
+          <div class="step-desc">
+            בדיקות על כל מסך ודפדפן, העלאה לאוויר,
+            ותמיכה לאחר ההשקה לפי הצורך.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-label fade-in">יצירת קשר</div>
+    <h2 class="section-title fade-in fade-delay-1">בואו נבנה משהו<br>מדהים יחד</h2>
+    <div class="contact-wrapper">
+      <div class="contact-info fade-in fade-delay-1">
+        <h3>מוכנים להתחיל?</h3>
+        <p>
+          אני מקבלת פרויקטים חדשים ושמחה לשמוע על הרעיון שלכם.
+          השאירו פרטים ואחזור אליכם תוך 24 שעות.
+        </p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <span>פנו אליי דרך הטופס</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">⏱️</div>
+            <span>תגובה תוך 24 שעות</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🌍</div>
+            <span>עובדת עם לקוחות בכל הארץ</span>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <span>שיחת ייעוץ ראשונה — חינם</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-card fade-in fade-delay-2">
+        <form id="contactForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="name">שם מלא</label>
+              <input type="text" id="name" placeholder="השם שלך" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">טלפון</label>
+              <input type="tel" id="phone" placeholder="מספר טלפון">
+            </div>
+            <div class="form-group full">
+              <label for="email">אימייל</label>
+              <input type="email" id="email" placeholder="כתובת האימייל שלך" required>
+            </div>
+            <div class="form-group full">
+              <label for="service">סוג הפרויקט</label>
+              <select id="service">
+                <option value="">בחר סוג פרויקט</option>
+                <option>דף נחיתה</option>
+                <option>אתר עסקי</option>
+                <option>אתר אישי / פורטפוליו</option>
+                <option>עיצוב מחדש לאתר קיים</option>
+                <option>אחר</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="message">ספרו לי על הפרויקט</label>
+              <textarea id="message" placeholder="מה אתם רוצים לבנות? מה המטרה? מה הלוח זמנים שלכם?" required></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">שלח הודעה ←</button>
+        </form>
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">🎉</div>
+          <h3 style="margin-bottom:8px">ההודעה נשלחה!</h3>
+          <p>תודה שפנית אליי. אחזור אליך תוך 24 שעות.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">פולי</div>
+      <div class="footer-tagline">עיצוב ופיתוח אתרים | חוויות דיגיטליות ייחודיות</div>
+      <ul class="footer-links">
+        <li><a href="#about">אודות</a></li>
+        <li><a href="#skills">כישורים</a></li>
+        <li><a href="#portfolio">פורטפוליו</a></li>
+        <li><a href="#process">תהליך</a></li>
+        <li><a href="#contact">צרו קשר</a></li>
+      </ul>
+      <div class="footer-copy">© 2025 פולי · כל הזכויות שמורות</div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Mobile menu
+    function toggleMenu() {
+      const links = document.getElementById('navLinks');
+      const hamburger = document.getElementById('hamburger');
+      links.classList.toggle('open');
+      hamburger.classList.toggle('open');
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+        document.getElementById('hamburger').classList.remove('open');
+      });
+    });
+
+    // Contact form
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    });
+
+    // Counter animation for stats
+    function animateCounter(el, target, suffix = '') {
+      let start = 0;
+      const duration = 1500;
+      const step = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = Math.min((timestamp - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        if (typeof target === 'number') {
+          el.textContent = Math.floor(eased * target) + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
