@@ -3,1532 +3,1094 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="נריה גולד שילד — פסיכותרפיסטית אינטגרטיבית בתל אביב. טיפול בטראומה (EMDR), חרדה, דיכאון, עבודה עם גוף ורגש. פגישות בפרנקפורט 7, תל אביב.">
-  <meta name="keywords" content="פסיכותרפיה אינטגרטיבית, טיפול רגשי בתל אביב, EMDR ישראל, טיפול בטראומה, טיפול גוף נפש, פסיכותרפיה בתל אביב, נריה גולד שילד, טיפול somatic, טיפול באמנות">
-  <title>נריה גולד שילד | פסיכותרפיה אינטגרטיבית, תל אביב</title>
+  <meta name="description" content="נריה גולד שילד — פסיכותרפיסטית התייחסותית-אינטגרטיבית בתל אביב. EMDR, טיפול באמנות, CBT, עבודה ממוקדת גוף. קליניקה בפרנקפורט 7.">
+  <meta name="keywords" content="פסיכותרפיה התייחסותית, EMDR תל אביב, טיפול בטראומה, פסיכותרפיה אינטגרטיבית, נריה גולד שילד, טיפול גוף נפש, CBT תל אביב, טיפול באמנות">
+  <title>נריה גולד שילד | פסיכותרפיה התייחסותית-אינטגרטיבית</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --cream: #FAF7F2;
-      --cream-2: #F4EDE1;
-      --sand: #EAD9C0;
-      --sage: #7A9168;
-      --sage-mid: #92A87E;
-      --sage-light: #B8CEAC;
-      --sage-pale: #D8EAD2;
-      --earth: #C4A87E;
-      --earth-dark: #8B6B42;
-      --stone: #B0A090;
-      --brown: #5C4030;
-      --text-dark: #2A1E14;
-      --text-med: #5A4030;
-      --text-soft: #7A6050;
-      --text-muted: #9A8878;
-      --border: #E4D8C8;
-      --border-sage: #C8D8C0;
-      --white: #FFFFFF;
-      --radius: 18px;
-      --radius-sm: 10px;
-      --transition: all 0.35s ease;
+      --cream:       #FAF5EC;
+      --warm:        #F2E8D6;
+      --warm-2:      #E8D8C0;
+      --sage:        #5C7850;
+      --sage-mid:    #789668;
+      --sage-light:  #A4BC92;
+      --sage-pale:   #D0E4C4;
+      --earth:       #B8926A;
+      --earth-mid:   #9A7250;
+      --earth-dark:  #7A5238;
+      --night:       #1A120A;
+      --text:        #1E1208;
+      --text-mid:    #4A3020;
+      --text-soft:   #6A5040;
+      --text-muted:  #8A7060;
+      --border:      #DDD0BC;
+      --border-sage: #B8D0AE;
+      --white:       #FFFFFF;
+      --r:           18px;
+      --r-sm:        10px;
+      --ease:        cubic-bezier(0.4, 0, 0.2, 1);
+      --t:           all 0.35s var(--ease);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Heebo', sans-serif;
-      background-color: var(--cream);
-      color: var(--text-dark);
-      line-height: 1.75;
+      background: var(--cream);
+      color: var(--text);
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* ─── NAV ─── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(250, 247, 242, 0);
-      transition: var(--transition);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      transition: var(--t);
     }
     nav.scrolled {
-      background: rgba(250, 247, 242, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(250, 245, 236, 0.92);
+      backdrop-filter: blur(14px);
       box-shadow: 0 1px 0 var(--border);
     }
     .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 22px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      max-width: 1100px; margin: 0 auto;
+      padding: 20px 40px;
+      display: flex; justify-content: space-between; align-items: center;
     }
-    .nav-logo {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-dark);
-      letter-spacing: 0.5px;
-    }
-    .nav-logo span { color: var(--sage); }
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 36px;
-    }
+    .nav-brand { font-size: 0.95rem; font-weight: 600; color: var(--text); }
+    .nav-brand span { color: var(--sage); }
+    .nav-links { list-style: none; display: flex; gap: 32px; }
     .nav-links a {
-      color: var(--text-soft);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      color: var(--text-soft); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500; transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--text-dark); }
-    .nav-phone {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--sage);
-      color: var(--white) !important;
-      padding: 8px 18px;
-      border-radius: 50px;
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--sage); color: var(--white) !important;
+      padding: 8px 18px; border-radius: 50px;
       font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: background 0.2s !important;
-      text-decoration: none;
+      transition: background 0.2s, transform 0.2s !important;
     }
-    .nav-phone:hover { background: var(--sage-mid) !important; color: var(--white); }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--text-med); border-radius: 2px;
-      transition: var(--transition);
-    }
+    .nav-cta:hover { background: var(--earth-dark) !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text-soft); border-radius: 2px; transition: var(--t); }
 
-    /* ── HERO ── */
+    /* ─── HERO ─── */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(160deg, var(--cream) 0%, var(--cream-2) 60%, #ede4d8 100%);
-      position: relative;
+      position: relative; height: 100vh; min-height: 640px;
+      display: flex; align-items: center; justify-content: center;
       overflow: hidden;
-      padding: 120px 40px 80px;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background:
-        radial-gradient(ellipse 60% 50% at 10% 20%, rgba(122, 145, 104, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 90% 80%, rgba(196, 168, 126, 0.1) 0%, transparent 60%);
-      pointer-events: none;
+    .hero-bg {
+      position: absolute; inset: -20%; z-index: 0;
+      background-image: url('https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      will-change: transform;
     }
-    .hero-leaf-1, .hero-leaf-2, .hero-leaf-3 {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        160deg,
+        rgba(26, 18, 10, 0.72) 0%,
+        rgba(26, 18, 10, 0.55) 50%,
+        rgba(92, 120, 80, 0.3) 100%
+      );
     }
-    .hero-leaf-1 {
-      width: 320px; height: 320px;
-      background: radial-gradient(circle, rgba(184, 206, 172, 0.2) 0%, transparent 70%);
-      top: -80px; left: -80px;
+    .hero-grain {
+      position: absolute; inset: 0; z-index: 2;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
     }
-    .hero-leaf-2 {
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(196, 168, 126, 0.15) 0%, transparent 70%);
-      bottom: 10%; right: 5%;
+    .hero-content {
+      position: relative; z-index: 3;
+      text-align: center; padding: 0 24px;
+      max-width: 820px; width: 100%;
     }
-    .hero-leaf-3 {
-      width: 140px; height: 140px;
-      background: radial-gradient(circle, rgba(122, 145, 104, 0.12) 0%, transparent 70%);
-      top: 30%; left: 60%;
-    }
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      width: 100%;
-    }
-    .hero-text {}
-    .hero-pretag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--sage);
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
+    .hero-kicker {
+      display: inline-block;
+      color: var(--sage-light); font-size: 0.8rem;
+      font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
       margin-bottom: 24px;
-    }
-    .hero-pretag::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--sage);
+      opacity: 0; animation: fadeUp 0.8s 0.3s var(--ease) forwards;
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.3;
-      color: var(--text-dark);
-      margin-bottom: 24px;
-      letter-spacing: -0.5px;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 700; line-height: 1.3; color: var(--white);
+      margin-bottom: 28px; letter-spacing: -0.5px;
+      opacity: 0; animation: fadeUp 0.9s 0.6s var(--ease) forwards;
     }
     .hero h1 em {
       font-style: normal;
-      color: var(--sage);
+      background: linear-gradient(90deg, #A4BC92, #C8A87A);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    .hero-desc {
-      font-size: 1.05rem;
-      color: var(--text-soft);
-      line-height: 1.85;
-      margin-bottom: 40px;
-      max-width: 480px;
+    .hero-sub {
+      font-size: 1.05rem; color: rgba(255,255,255,0.72);
+      line-height: 1.8; max-width: 560px; margin: 0 auto 44px;
+      opacity: 0; animation: fadeUp 0.9s 0.9s var(--ease) forwards;
     }
     .hero-actions {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.9s 1.1s var(--ease) forwards;
     }
-    .btn-main {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--sage);
-      color: var(--white);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 13px 28px;
-      border-radius: 50px;
-      transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(122, 145, 104, 0.3);
+    .btn-light {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--text);
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      padding: 13px 28px; border-radius: 50px;
+      transition: var(--t); box-shadow: 0 4px 24px rgba(0,0,0,0.2);
     }
-    .btn-main:hover {
-      background: var(--earth-dark);
-      box-shadow: 0 6px 28px rgba(139, 107, 66, 0.35);
+    .btn-light:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .btn-outline-white {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.85);
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      padding: 13px 28px; border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,0.35);
+      transition: var(--t);
     }
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: transparent;
-      color: var(--text-med);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      padding: 13px 28px;
-      border-radius: 50px;
-      border: 1.5px solid var(--border);
-      transition: var(--transition);
+    .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.6); }
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+      z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px;
     }
-    .btn-ghost:hover {
-      border-color: var(--sage);
-      color: var(--sage);
+    .hero-scroll-line {
+      width: 1px; height: 52px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+      animation: scrollBounce 2s ease-in-out infinite;
     }
-    .hero-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px;
-      box-shadow: 0 12px 48px rgba(90, 64, 48, 0.08);
-      position: relative;
-    }
-    .hero-card::before {
-      content: '';
-      position: absolute;
-      top: 0; right: 0; left: 0;
-      height: 4px;
-      background: linear-gradient(to left, var(--sage), var(--earth));
-      border-radius: var(--radius) var(--radius) 0 0;
-    }
-    .hero-card-name {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-    }
-    .hero-card-title {
-      font-size: 0.85rem;
-      color: var(--sage);
-      font-weight: 500;
-      margin-bottom: 28px;
-    }
-    .hero-card-methods {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .method-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .method-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--sage-light);
-      flex-shrink: 0;
-    }
-    .method-label {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-    }
-    .hero-card-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 24px 0;
-    }
-    .hero-card-info {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .info-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.88rem;
-      color: var(--text-soft);
-    }
-    .info-icon {
-      width: 28px; height: 28px;
-      border-radius: 8px;
-      background: var(--sage-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-    }
-    .hero-scroll-hint {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
+    .hero-scroll-text { color: rgba(255,255,255,0.45); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase; }
+    @keyframes scrollBounce { 0%,100%{transform:scaleY(1);transform-origin:top;} 50%{transform:scaleY(1.3);transform-origin:top;} }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+    /* ─── PULL QUOTE ─── */
+    .pull-quote {
+      background: var(--night);
+      padding: 80px 40px;
       text-align: center;
+      position: relative; overflow: hidden;
     }
-    .scroll-line {
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, var(--sage-light), transparent);
-      margin: 0 auto;
-      animation: scrollPulse 2s ease-in-out infinite;
+    .pull-quote::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(92,120,80,0.12) 0%, transparent 70%);
     }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; height: 50px; }
-      50% { opacity: 1; height: 60px; }
+    .pull-quote blockquote {
+      position: relative; z-index: 1;
+      max-width: 740px; margin: 0 auto;
+      font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+      font-weight: 300; color: rgba(255,255,255,0.88);
+      line-height: 1.8; letter-spacing: 0.2px;
+    }
+    .pull-quote blockquote strong {
+      font-weight: 600; color: var(--sage-light);
+    }
+    .pull-quote cite {
+      display: block; margin-top: 24px;
+      color: rgba(255,255,255,0.35); font-size: 0.82rem;
+      font-style: normal; letter-spacing: 1px;
     }
 
-    /* ── SECTION BASE ── */
-    .section {
-      padding: 96px 40px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-alt {
-      background: var(--cream-2);
-      padding: 96px 0;
-    }
-    .section-alt .section { padding-top: 0; padding-bottom: 0; }
-    .section-sage {
-      background: linear-gradient(160deg, #F0F5EC 0%, #E4EEE0 100%);
-      padding: 96px 0;
-    }
-    .section-sage .section { padding-top: 0; padding-bottom: 0; }
+    /* ─── SECTIONS ─── */
+    .sec { padding: 96px 40px; max-width: 1100px; margin: 0 auto; }
+    .sec-bg-warm { background: var(--warm); }
+    .sec-bg-sage { background: linear-gradient(160deg, #E8F0E4 0%, #D8EAD0 100%); }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
     .sec-label {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--sage); margin-bottom: 14px;
+      display: inline-flex; align-items: center; gap: 12px;
     }
-    .sec-label::after {
-      content: '';
-      flex: 1;
-      max-width: 40px;
-      height: 1px;
-      background: var(--sage-light);
-    }
-    .sec-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--text-dark);
-      margin-bottom: 20px;
-      letter-spacing: -0.5px;
-    }
-    .sec-desc {
-      font-size: 1rem;
-      color: var(--text-soft);
-      max-width: 580px;
-      line-height: 1.9;
-    }
+    .sec-label::before { content: ''; width: 24px; height: 1.5px; background: var(--sage); }
+    .sec-h { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .sec-p { font-size: 1rem; color: var(--text-soft); line-height: 1.9; max-width: 600px; }
 
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 72px;
-      align-items: start;
-      margin-top: 56px;
-    }
-    .about-text p {
-      font-size: 1rem;
-      color: var(--text-soft);
-      line-height: 1.9;
-      margin-bottom: 18px;
-    }
-    .about-text p strong { color: var(--text-dark); font-weight: 600; }
-    .about-quote {
-      border-right: 3px solid var(--sage);
-      padding-right: 20px;
-      margin: 28px 0;
-      font-size: 1.05rem;
-      color: var(--text-med);
-      font-style: italic;
-      line-height: 1.8;
-    }
-    .about-visual {}
-    .about-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px;
-      border: 1px solid var(--border);
-      margin-bottom: 20px;
-      box-shadow: 0 4px 24px rgba(90, 64, 48, 0.06);
-    }
-    .about-card h4 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--sage);
-      margin-bottom: 18px;
-    }
-    .edu-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 14px;
-    }
-    .edu-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--earth);
-      margin-top: 9px;
-      flex-shrink: 0;
-    }
-    .edu-text {
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-    .edu-text strong { color: var(--text-dark); font-weight: 600; }
-    .about-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
-    }
-    .about-badge {
-      font-size: 0.78rem;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 50px;
-      background: var(--sage-pale);
-      color: var(--sage);
-      border: 1px solid var(--border-sage);
-    }
-
-    /* ── TREATMENTS ── */
-    .treatments-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 56px;
-    }
-    .treatment-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 32px 28px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
+    /* ─── ABOUT ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; margin-top: 56px; }
+    .about-img-wrap { position: relative; }
+    .about-img {
+      width: 100%; aspect-ratio: 3/4;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 24px 64px rgba(60,36,16,0.15);
       position: relative;
-      overflow: hidden;
     }
-    .treatment-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; right: 0; left: 0;
-      height: 3px;
-      background: linear-gradient(to left, var(--sage), var(--sage-light));
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: transform 0.4s ease;
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+    .about-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, #C8D8C0 0%, #D8C8A8 60%, #C8A878 100%);
+      display: flex; align-items: center; justify-content: center;
     }
-    .treatment-card:hover {
-      border-color: var(--border-sage);
-      box-shadow: 0 8px 32px rgba(90, 64, 48, 0.08);
-      transform: translateY(-3px);
+    .about-img-placeholder span { font-size: 4rem; opacity: 0.4; }
+    .about-img-badge {
+      position: absolute; bottom: -20px; right: -20px;
+      background: var(--white); border-radius: 16px;
+      padding: 16px 20px; box-shadow: 0 8px 32px rgba(60,36,16,0.12);
+      border: 1px solid var(--border);
     }
-    .treatment-card:hover::before { transform: scaleX(1); }
-    .treatment-icon {
-      font-size: 1.6rem;
-      margin-bottom: 16px;
-      display: block;
+    .aib-label { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 4px; letter-spacing: 0.5px; }
+    .aib-value { font-size: 0.95rem; font-weight: 700; color: var(--sage); }
+    .about-text p {
+      font-size: 1rem; color: var(--text-soft); line-height: 1.95;
+      margin-bottom: 18px;
     }
-    .treatment-title {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 10px;
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .about-quote {
+      border-right: 3px solid var(--sage-light);
+      padding: 16px 20px; margin: 28px 0;
+      font-size: 1.05rem; color: var(--text-mid);
+      line-height: 1.8; font-style: italic;
+      background: rgba(164,188,146,0.08);
+      border-radius: 0 8px 8px 0;
     }
-    .treatment-desc {
-      font-size: 0.87rem;
-      color: var(--text-soft);
-      line-height: 1.75;
+    .credentials {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px;
     }
-    .treatment-method {
-      margin-top: 14px;
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--sage);
-      background: var(--sage-pale);
-      padding: 3px 10px;
-      border-radius: 50px;
+    .cred {
+      font-size: 0.78rem; font-weight: 500; padding: 5px 14px;
+      border-radius: 50px; background: var(--sage-pale);
+      color: var(--sage); border: 1px solid var(--border-sage);
     }
 
-    /* ── APPROACH ── */
-    .approach-content {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      margin-top: 56px;
+    /* ─── METHODS ─── */
+    .methods-section { padding: 96px 0; background: var(--night); position: relative; overflow: hidden; }
+    .methods-bg-img {
+      position: absolute; inset: 0; z-index: 0;
+      background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80');
+      background-size: cover; background-position: center;
+      opacity: 0.12;
     }
-    .approach-visual {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .methods-inner { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .methods-header { margin-bottom: 64px; }
+    .methods-header .sec-label { color: var(--sage-light); }
+    .methods-header .sec-label::before { background: var(--sage-light); }
+    .methods-header .sec-h { color: var(--white); }
+    .methods-header .sec-p { color: rgba(255,255,255,0.55); }
+    .method-list { display: flex; flex-direction: column; gap: 2px; }
+    .method-item {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 36px 40px;
+      transition: var(--t);
+      position: relative; overflow: hidden;
     }
-    .approach-block {
-      background: var(--white);
-      border-radius: var(--radius-sm);
-      padding: 24px 20px;
-      border: 1px solid var(--border);
-      text-align: center;
-      transition: var(--transition);
+    .method-item::before {
+      content: '';
+      position: absolute; top: 0; right: 0; bottom: 0; width: 3px;
+      background: var(--sage-light); opacity: 0;
+      transition: opacity 0.3s;
     }
-    .approach-block:hover {
-      border-color: var(--border-sage);
-      box-shadow: 0 6px 24px rgba(122, 145, 104, 0.1);
+    .method-item:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(164,188,146,0.25);
+      transform: translateX(-4px);
     }
-    .approach-block.full { grid-column: 1 / -1; }
-    .approach-block .ab-icon { font-size: 1.8rem; margin-bottom: 10px; }
-    .approach-block .ab-title { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
-    .approach-block .ab-desc { font-size: 0.8rem; color: var(--text-soft); line-height: 1.6; }
-    .approach-text {}
-    .approach-text p {
-      font-size: 0.97rem;
-      color: var(--text-soft);
-      line-height: 1.9;
-      margin-bottom: 16px;
-    }
-    .approach-text strong { color: var(--text-dark); font-weight: 600; }
-    .methods-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 24px;
-    }
-    .methods-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+    .method-item:hover::before { opacity: 1; }
+    .method-head {
+      display: flex; align-items: flex-start; gap: 24px;
+      margin-bottom: 18px;
     }
     .method-num {
-      width: 26px; height: 26px;
-      border-radius: 50%;
-      background: var(--sage-pale);
-      border: 1.5px solid var(--border-sage);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--sage);
-      flex-shrink: 0;
-      margin-top: 2px;
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 2px;
+      color: var(--sage-light); opacity: 0.6; padding-top: 4px;
+      flex-shrink: 0; width: 28px;
     }
-    .method-text {
-      font-size: 0.9rem;
-      color: var(--text-soft);
-      line-height: 1.65;
+    .method-name {
+      font-size: 1.15rem; font-weight: 700; color: var(--white); line-height: 1.3;
     }
-    .method-text strong { color: var(--text-dark); font-weight: 600; }
+    .method-name small {
+      display: block; font-size: 0.78rem; font-weight: 400;
+      color: rgba(255,255,255,0.45); letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+    .method-body { padding-right: 52px; }
+    .method-body p {
+      font-size: 0.95rem; color: rgba(255,255,255,0.62);
+      line-height: 1.9;
+    }
+    .method-body p em { font-style: italic; color: rgba(255,255,255,0.8); }
 
-    /* ── FOR WHOM ── */
-    .for-whom-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 56px;
+    /* ─── TREATMENTS ─── */
+    .treatments-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+    .t-card {
+      background: var(--white); border-radius: var(--r);
+      border: 1px solid var(--border); padding: 32px 28px;
+      transition: var(--t); position: relative; overflow: hidden;
+      cursor: default;
     }
-    .whom-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-      transition: var(--transition);
+    .t-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(to left, var(--sage), var(--sage-light));
+      transform: scaleX(0); transform-origin: right;
+      transition: transform 0.4s var(--ease);
     }
-    .whom-card:hover {
-      border-color: var(--border-sage);
-      box-shadow: 0 6px 24px rgba(122, 145, 104, 0.08);
-    }
-    .whom-icon {
-      width: 44px; height: 44px;
-      border-radius: 12px;
-      background: var(--sage-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .whom-text {}
-    .whom-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-    .whom-desc {
-      font-size: 0.85rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-    }
-    .for-whom-closing {
-      background: linear-gradient(135deg, var(--sage-pale) 0%, #ddecd8 100%);
+    .t-card:hover { border-color: var(--border-sage); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(60,36,16,0.1); }
+    .t-card:hover::after { transform: scaleX(1); }
+    .t-icon { font-size: 1.5rem; margin-bottom: 14px; display: block; }
+    .t-title { font-size: 1rem; font-weight: 700; margin-bottom: 10px; }
+    .t-desc { font-size: 0.87rem; color: var(--text-soft); line-height: 1.75; }
+    .t-tag {
+      display: inline-block; margin-top: 14px;
+      font-size: 0.73rem; font-weight: 600;
+      color: var(--sage); background: var(--sage-pale);
+      padding: 3px 10px; border-radius: 50px;
       border: 1px solid var(--border-sage);
-      border-radius: var(--radius);
-      padding: 40px;
+    }
+
+    /* ─── FOR WHOM ─── */
+    .whom-section { padding: 96px 0; }
+    .whom-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .whom-list {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; margin-top: 56px;
+      border: 1px solid var(--border); border-radius: var(--r);
+      overflow: hidden; background: var(--white);
+    }
+    .whom-item {
+      padding: 36px 32px;
+      border-bottom: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      transition: background 0.25s;
+    }
+    .whom-item:nth-child(odd) { border-left: none; }
+    .whom-item:last-child, .whom-item:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+    .whom-item:hover { background: linear-gradient(160deg, #F5F2EC, #F0EAE0); }
+    .whom-stem {
+      font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .whom-stem::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--sage-light); flex-shrink: 0; }
+    .whom-body { font-size: 0.87rem; color: var(--text-soft); line-height: 1.75; padding-right: 16px; }
+    .whom-cta {
+      margin-top: 48px; padding: 44px;
+      background: linear-gradient(135deg, #E4F0DC 0%, #D8EAD0 100%);
+      border-radius: var(--r); border: 1px solid var(--border-sage);
       text-align: center;
-      margin-top: 28px;
     }
-    .for-whom-closing p {
-      font-size: 1.1rem;
-      color: var(--text-med);
-      line-height: 1.85;
-      max-width: 560px;
-      margin: 0 auto 24px;
+    .whom-cta p {
+      font-size: 1.1rem; color: var(--text-mid); line-height: 1.85;
+      max-width: 580px; margin: 0 auto 28px;
     }
-    .for-whom-closing p em {
-      font-style: normal;
-      color: var(--sage);
-      font-weight: 600;
-    }
+    .whom-cta p em { font-style: normal; color: var(--sage); font-weight: 600; }
 
-    /* ── CONTACT ── */
-    .contact-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 64px;
-      align-items: start;
-      margin-top: 56px;
+    /* ─── BTN MAIN ─── */
+    .btn-main {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sage); color: var(--white);
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      padding: 13px 28px; border-radius: 50px;
+      transition: var(--t); box-shadow: 0 4px 20px rgba(92,120,80,0.3);
     }
-    .contact-left h3 {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 14px;
+    .btn-main:hover { background: var(--earth-dark); box-shadow: 0 8px 32px rgba(122,82,56,0.3); transform: translateY(-2px); }
+
+    /* ─── BLOG ─── */
+    .blog-section { padding: 96px 0; background: var(--warm); }
+    .blog-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .blog-coming {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(92,120,80,0.1); border: 1px solid var(--border-sage);
+      color: var(--sage); font-size: 0.8rem; font-weight: 600;
+      padding: 5px 14px; border-radius: 50px; margin-bottom: 20px;
     }
-    .contact-left p {
-      font-size: 0.97rem;
-      color: var(--text-soft);
-      line-height: 1.85;
-      margin-bottom: 32px;
+    .blog-coming::before { content: '✦'; font-size: 0.65rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+    .blog-card {
+      background: var(--white); border-radius: var(--r);
+      border: 1px solid var(--border); overflow: hidden;
+      transition: var(--t); position: relative;
     }
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(60,36,16,0.1); border-color: var(--border-sage); }
+    .blog-card-img {
+      height: 180px; overflow: hidden;
+      background: linear-gradient(160deg, var(--sage-pale), var(--warm-2));
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
     }
-    .cdetail {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s var(--ease); }
+    .blog-card:hover .blog-card-img img { transform: scale(1.04); }
+    .blog-soon {
+      position: absolute; top: 12px; left: 12px;
+      background: rgba(26,18,10,0.7); color: rgba(255,255,255,0.8);
+      font-size: 0.7rem; font-weight: 600; letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 50px; backdrop-filter: blur(4px);
     }
-    .cdetail-icon {
-      width: 42px; height: 42px;
-      border-radius: 12px;
-      background: var(--sage-pale);
-      border: 1px solid var(--border-sage);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      flex-shrink: 0;
+    .blog-card-body { padding: 24px; }
+    .blog-cat { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--sage); margin-bottom: 8px; }
+    .blog-title { font-size: 0.97rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 10px; }
+    .blog-teaser { font-size: 0.84rem; color: var(--text-soft); line-height: 1.7; }
+
+    /* ─── CONTACT ─── */
+    .contact-section { padding: 96px 0; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; padding: 0 40px; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 64px; align-items: start; margin-top: 56px; }
+    .contact-left {}
+    .contact-left h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 14px; }
+    .contact-left p { font-size: 0.97rem; color: var(--text-soft); line-height: 1.85; margin-bottom: 32px; }
+    .clist { display: flex; flex-direction: column; gap: 14px; }
+    .ci { display: flex; align-items: flex-start; gap: 14px; }
+    .ci-icon {
+      width: 42px; height: 42px; border-radius: 12px;
+      background: var(--sage-pale); border: 1px solid var(--border-sage);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
     }
-    .cdetail-content {}
-    .cdetail-label {
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 2px;
+    .ci-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+    .ci-val { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    .ci-val a { color: var(--sage); text-decoration: none; font-weight: 700; }
+    .ci-val a:hover { color: var(--earth-dark); }
+    .price-box { background: var(--warm); border: 1px solid var(--border); border-radius: 12px; padding: 20px 22px; margin-top: 28px; }
+    .price-box-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--earth-mid); margin-bottom: 12px; }
+    .price-row { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 8px; }
+    .price-row .pl { color: var(--text-soft); }
+    .price-row .pv { font-weight: 700; color: var(--text); }
+    .price-row .pv-free { font-weight: 700; color: var(--sage); }
+    .contact-form-wrap {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 44px;
+      box-shadow: 0 8px 40px rgba(60,36,16,0.06);
     }
-    .cdetail-value {
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 500;
+    .form-hd { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .form-sh { font-size: 0.87rem; color: var(--text-soft); line-height: 1.7; margin-bottom: 28px; }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .fg.full { grid-column: 1/-1; }
+    .fg label { font-size: 0.82rem; font-weight: 600; color: var(--text-soft); }
+    .fg input, .fg textarea, .fg select {
+      width: 100%; background: var(--cream); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 11px 14px; direction: rtl;
+      font-family: 'Heebo', sans-serif; font-size: 0.93rem; color: var(--text);
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
     }
-    .cdetail-value a {
-      color: var(--sage);
-      text-decoration: none;
-      font-weight: 600;
+    .fg input::placeholder, .fg textarea::placeholder { color: var(--text-muted); }
+    .fg input:focus, .fg textarea:focus, .fg select:focus {
+      border-color: var(--sage); background: var(--white);
+      box-shadow: 0 0 0 3px rgba(92,120,80,0.12);
     }
-    .cdetail-value a:hover { color: var(--earth-dark); }
-    .price-note {
-      background: linear-gradient(135deg, var(--cream-2), var(--sand));
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 20px 22px;
-      margin-top: 28px;
-    }
-    .price-note .pn-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--earth-dark);
-      margin-bottom: 10px;
-    }
-    .price-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-      margin-bottom: 8px;
-    }
-    .price-item .pi-label { color: var(--text-soft); }
-    .price-item .pi-value { font-weight: 700; color: var(--text-dark); }
-    .price-item .pi-free { font-weight: 700; color: var(--sage); }
-    .contact-form {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 44px;
-      box-shadow: 0 6px 32px rgba(90, 64, 48, 0.06);
-    }
-    .form-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 6px;
-    }
-    .form-subtitle {
-      font-size: 0.88rem;
-      color: var(--text-soft);
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-    }
-    .fgroup {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .fgroup.full { grid-column: 1 / -1; }
-    .fgroup label {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--text-soft);
-    }
-    .fgroup input,
-    .fgroup textarea,
-    .fgroup select {
-      width: 100%;
-      background: var(--cream);
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 11px 14px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 0.93rem;
-      color: var(--text-dark);
-      outline: none;
-      direction: rtl;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .fgroup input::placeholder,
-    .fgroup textarea::placeholder { color: var(--text-muted); }
-    .fgroup input:focus,
-    .fgroup textarea:focus,
-    .fgroup select:focus {
-      border-color: var(--sage);
-      box-shadow: 0 0 0 3px rgba(122, 145, 104, 0.12);
-      background: var(--white);
-    }
-    .fgroup textarea { min-height: 110px; resize: vertical; }
-    .fgroup select option { background: var(--white); }
-    .form-consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin: 6px 0 18px;
-    }
-    .form-consent input[type="checkbox"] {
-      width: 16px; height: 16px;
-      margin-top: 2px;
-      flex-shrink: 0;
-      accent-color: var(--sage);
-    }
-    .form-consent label {
-      font-size: 0.82rem;
-      color: var(--text-soft);
-      line-height: 1.6;
-    }
-    .form-consent label em {
-      font-style: normal;
-      color: var(--sage);
-    }
+    .fg textarea { min-height: 110px; resize: vertical; }
+    .fg select option { background: var(--white); }
+    .form-consent { display: flex; align-items: flex-start; gap: 10px; margin: 4px 0 18px; }
+    .form-consent input[type="checkbox"] { width: 16px; height: 16px; margin-top: 2px; flex-shrink: 0; accent-color: var(--sage); }
+    .form-consent label { font-size: 0.82rem; color: var(--text-soft); line-height: 1.6; }
+    .form-consent label em { font-style: normal; color: var(--sage); }
     .btn-submit {
-      width: 100%;
-      background: var(--sage);
-      color: var(--white);
-      border: none;
-      padding: 14px 32px;
-      border-radius: 50px;
-      font-family: 'Heebo', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 20px rgba(122, 145, 104, 0.3);
+      width: 100%; background: var(--sage); color: var(--white); border: none;
+      padding: 14px 32px; border-radius: 50px;
+      font-family: 'Heebo', sans-serif; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: var(--t);
+      box-shadow: 0 4px 20px rgba(92,120,80,0.3);
     }
-    .btn-submit:hover {
-      background: var(--earth-dark);
-      box-shadow: 0 6px 28px rgba(139, 107, 66, 0.35);
-    }
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 48px 20px;
-    }
-    .form-success-icon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .form-success h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 10px;
-    }
-    .form-success p {
-      font-size: 0.95rem;
-      color: var(--text-soft);
-      line-height: 1.7;
-    }
+    .btn-submit:hover { background: var(--earth-dark); box-shadow: 0 8px 32px rgba(122,82,56,0.3); transform: translateY(-2px); }
+    .form-success { display: none; text-align: center; padding: 48px 20px; }
+    .form-success-icon { font-size: 2.8rem; margin-bottom: 16px; }
+    .form-success h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+    .form-success p { font-size: 0.95rem; color: var(--text-soft); line-height: 1.7; }
 
-    /* ── FOOTER ── */
+    /* ─── FOOTER ─── */
     footer {
-      background: var(--text-dark);
-      padding: 56px 40px 40px;
+      background: var(--night); padding: 56px 40px 36px;
       text-align: center;
     }
     .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--cream);
-      margin-bottom: 6px;
-    }
-    .footer-sub {
-      font-size: 0.85rem;
-      color: var(--stone);
-      margin-bottom: 28px;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      list-style: none;
-      margin-bottom: 28px;
-    }
-    .footer-links a {
-      color: var(--stone);
-      text-decoration: none;
-      font-size: 0.88rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--cream); }
-    .footer-divider {
-      border: none;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 24px;
-    }
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--text-soft);
-    }
-    .footer-phone-row {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    .footer-phone-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: var(--cream);
-      text-decoration: none;
-      padding: 10px 24px;
-      border-radius: 50px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
-    .footer-phone-btn:hover { background: rgba(255,255,255,0.12); }
+    .footer-name { font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .footer-sub { font-size: 0.82rem; color: rgba(255,255,255,0.35); margin-bottom: 32px; }
+    .footer-links { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 24px; margin-bottom: 28px; }
+    .footer-links a { color: rgba(255,255,255,0.38); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.8); }
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin-bottom: 24px; }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
 
-    /* ── FADE IN ── */
-    .fade {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
+    /* ─── REVEAL ─── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-    .fade.in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .d1 { transition-delay: 0.1s; }
-    .d2 { transition-delay: 0.2s; }
-    .d3 { transition-delay: 0.3s; }
-    .d4 { transition-delay: 0.4s; }
-    .d5 { transition-delay: 0.5s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+    .d4{transition-delay:.4s} .d5{transition-delay:.5s}
 
-    /* ── RESPONSIVE ── */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
-      .treatments-grid { grid-template-columns: repeat(2, 1fr); }
-      .approach-content { grid-template-columns: 1fr; }
-      .approach-visual { order: -1; }
-      .hero-inner { gap: 48px; }
+      .treatments-grid { grid-template-columns: repeat(2,1fr); }
+      .blog-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        position: fixed;
-        inset: 0;
-        background: var(--cream);
-        align-items: center;
-        justify-content: center;
-        gap: 36px;
-        font-size: 1.2rem;
-        z-index: 99;
+        display: flex; flex-direction: column;
+        position: fixed; inset: 0;
+        background: var(--cream); align-items: center;
+        justify-content: center; gap: 36px;
+        font-size: 1.2rem; z-index: 199;
       }
       .hamburger { display: flex; }
-      .nav-inner { padding: 18px 20px; }
-      .hero { padding: 100px 20px 60px; }
-      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
-      .hero h1 { font-size: 2rem; }
-      .section { padding: 64px 20px; }
-      .section-alt, .section-sage { padding: 64px 0; }
+      .nav-inner { padding: 16px 20px; }
+      .sec { padding: 64px 20px; }
+      .wrap { padding: 0 20px; }
+      .methods-inner, .blog-inner, .whom-inner, .contact-inner { padding: 0 20px; }
+      .methods-section, .blog-section, .whom-section, .contact-section { padding: 64px 0; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-img-badge { bottom: -14px; right: -10px; }
       .treatments-grid { grid-template-columns: 1fr; }
-      .for-whom-grid { grid-template-columns: 1fr; }
-      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
-      .form-row { grid-template-columns: 1fr; }
-      .contact-form { padding: 28px 20px; }
+      .whom-list { grid-template-columns: 1fr; }
+      .whom-item { border-left: none !important; }
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .frow { grid-template-columns: 1fr; }
+      .contact-form-wrap { padding: 28px 20px; }
+      .blog-grid { grid-template-columns: 1fr; }
       footer { padding: 48px 20px 32px; }
+      .pull-quote { padding: 60px 20px; }
+      .method-item { padding: 28px 24px; }
+      .method-body { padding-right: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav id="mainNav">
-    <div class="nav-inner">
-      <div class="nav-logo">נריה גולד שילד <span>|</span> פסיכותרפיסטית</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">אודות</a></li>
-        <li><a href="#treatments">תחומי טיפול</a></li>
-        <li><a href="#approach">הגישה</a></li>
-        <li><a href="#for-whom">למי</a></li>
-        <li><a href="tel:054-7520431" class="nav-phone">📞 054-7520431</a></li>
-      </ul>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- ── HERO ── -->
-  <section class="hero" id="home">
-    <div class="hero-leaf-1"></div>
-    <div class="hero-leaf-2"></div>
-    <div class="hero-leaf-3"></div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-pretag">פסיכותרפיה אינטגרטיבית</div>
-        <h1>
-          מרחב שקט<br>
-          לחזור <em>אל עצמך</em>
-        </h1>
-        <p class="hero-desc">
-          כשהגוף, הרגש והמחשבה מדברים יחד — מתאפשר שינוי אמיתי.
-          אני מלווה תהליכים מעמיקים, בקצב שלך, עם גישה שרואה אותך שלם.
-        </p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn-main">לקביעת שיחת היכרות</a>
-          <a href="#about" class="btn-ghost">הכירו אותי</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <div class="hero-card-name">נריה גולד שילד</div>
-        <div class="hero-card-title">MA טיפול באמנות חזותית | פסיכותרפיסטית</div>
-        <div class="hero-card-methods">
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">פסיכותרפיה אינטגרטיבית</span>
-          </div>
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">Somatic Therapy — עבודה ממוקדת גוף</span>
-          </div>
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">EMDR לטיפול בטראומה</span>
-          </div>
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">CBT וכלים קוגניטיביים</span>
-          </div>
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">מיינדפולנס ונוכחות</span>
-          </div>
-          <div class="method-item">
-            <div class="method-dot"></div>
-            <span class="method-label">טיפול באמנות ודמיון</span>
-          </div>
-        </div>
-        <hr class="hero-card-divider">
-        <div class="hero-card-info">
-          <div class="info-row">
-            <div class="info-icon">📍</div>
-            פרנקפורט 7, תל אביב
-          </div>
-          <div class="info-row">
-            <div class="info-icon">📞</div>
-            <a href="tel:054-7520431" style="color: var(--sage); font-weight: 600; text-decoration: none;">054-7520431</a>
-          </div>
-          <div class="info-row">
-            <div class="info-icon">💬</div>
-            שיחת היכרות ראשונה — ללא עלות
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <div class="section-alt" id="about">
-    <div class="section">
-      <div class="sec-label fade">אודות</div>
-      <h2 class="sec-title fade d1">עמוקה, מקצועית,<br>ממקום של אנושיות אמיתית</h2>
-      <div class="about-grid">
-        <div class="about-text fade d2">
-          <p>
-            אני נריה גולד שילד, פסיכותרפיסטית אינטגרטיבית עם תואר MA בטיפול באמנות חזותית.
-            <strong>עבדתי שנים עם אנשים בתהליכים מורכבים</strong> — טראומה, חרדה, ניתוק,
-            קשיים ביחסים ותחושת תקיעות — ולמדתי שאין שני אנשים שצריכים בדיוק את אותו הטיפול.
-          </p>
-          <p>
-            הגישה שלי משלבת בין <strong>עומק פסיכודינמי</strong> לבין כלים מעשיים ומבוססי מחקר.
-            אני מאמינה שהגוף אינו רקע לנפש — הוא חלק בלתי נפרד ממנה. לכן עבודה עם
-            <strong>תחושות גופניות, תמונות פנימיות, ודמיון</strong> היא מרכז ולא תוספת.
-          </p>
-          <blockquote class="about-quote">
-            "הטיפול לא מסיר את הכאב — הוא עוזר לך להכיל אותו,
-            לתת לו מקום, ולהפסיק לחיות נגדו."
-          </blockquote>
-          <p>
-            בנוסף ל-EMDR לטיפול בטראומה, אני משתמשת ב-CBT, מיינדפולנס, וטיפול באמנות
-            כשיטות שמאפשרות <strong>גישה לחוויה שפחות מושגת דרך מילים בלבד</strong>.
-          </p>
-          <div class="about-badge-row">
-            <span class="about-badge">EMDR</span>
-            <span class="about-badge">Somatic Therapy</span>
-            <span class="about-badge">CBT</span>
-            <span class="about-badge">מיינדפולנס</span>
-            <span class="about-badge">טיפול באמנות</span>
-          </div>
-        </div>
-        <div class="about-visual fade d3">
-          <div class="about-card">
-            <h4>השכלה והכשרה</h4>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>MA טיפול באמנות חזותית</strong><br>הכשרה מלאה ומוסמכת</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>הכשרה ב-EMDR</strong><br>לטיפול בטראומה, טראומה מורכבת ו-PTSD</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>Somatic Experiencing</strong><br>טיפול ממוקד גוף ומערכת עצבים</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>CBT ומיינדפולנס</strong><br>גישות פרקטיות ומבוססות מחקר</div>
-            </div>
-          </div>
-          <div class="about-card">
-            <h4>פרטי קליניקה</h4>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>מיקום:</strong> פרנקפורט 7, תל אביב</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>פגישה:</strong> 400 ש"ח</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>שיחת היכרות:</strong> ללא עלות</div>
-            </div>
-            <div class="edu-item">
-              <div class="edu-dot"></div>
-              <div class="edu-text"><strong>קהל:</strong> מבוגרים — נשים וגברים</div>
-            </div>
-          </div>
-        </div>
-      </div>
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">נריה גולד שילד <span>|</span> פסיכותרפיסטית</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#methods">גישה וכלים</a></li>
+      <li><a href="#treatments">תחומי עבודה</a></li>
+      <li><a href="#blog">בלוג</a></li>
+      <li><a href="tel:054-7520431" class="nav-cta">📞 054-7520431</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
     </div>
   </div>
+</nav>
 
-  <!-- ── TREATMENTS ── -->
-  <section class="section" id="treatments">
-    <div class="sec-label fade">מה מטפלים</div>
-    <h2 class="sec-title fade d1">תחומי טיפול</h2>
-    <p class="sec-desc fade d2">
-      כל אחד מגיע עם הסיפור שלו. כאן יש מקום לכולם.
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-kicker">פסיכותרפיה התייחסותית–אינטגרטיבית</div>
+    <h1>
+      הפצע התרחש<br>
+      ביחס. <em>הריפוי,</em><br>
+      גם הוא, קורה שם.
+    </h1>
+    <p class="hero-sub">
+      מרחב טיפולי שמתכוון לכל מה שאתה/את — לא רק למה שמפריע,
+      אלא למי שיש מאחוריו.
     </p>
-    <div class="treatments-grid">
-      <div class="treatment-card fade d1">
-        <span class="treatment-icon">🌊</span>
-        <div class="treatment-title">טראומה וטראומה מורכבת</div>
-        <div class="treatment-desc">
-          עבודה עם חוויות קשות שנשארו "קפואות" בגוף ובנפש.
-          טיפול EMDR ועבודה סומטית מאפשרים עיבוד רגשי עמוק ובטוח.
-        </div>
-        <span class="treatment-method">EMDR + Somatic</span>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-light">לשיחת היכרות ←</a>
+      <a href="#about" class="btn-outline-white">הכירו אותי</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span class="hero-scroll-text">גלול</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── PULL QUOTE ─── -->
+<div class="pull-quote">
+  <blockquote>
+    לא כולנו גדלנו עם מספיק מרחב לכל מה שהיינו.<br>
+    לפעמים אנחנו מגיעים לטיפול כשאנחנו, לראשונה, <strong>מוכנים לגלות
+    מה היה שם כל הזמן.</strong>
+  </blockquote>
+  <cite>— על הרגע שבו מחליטים לפנות לעזרה</cite>
+</div>
+
+<!-- ─── ABOUT ─── -->
+<section class="sec" id="about">
+  <div class="sec-label reveal">אודות</div>
+  <h2 class="sec-h reveal d1">לא מומחית מחוץ לחדר —<br>שותפה בתוכו</h2>
+  <div class="about-grid">
+    <div class="about-img-wrap reveal d2">
+      <div class="about-img">
+        <div class="about-img-placeholder"><span>🌿</span></div>
       </div>
-      <div class="treatment-card fade d2">
-        <span class="treatment-icon">🌀</span>
-        <div class="treatment-title">חרדה ולחץ</div>
-        <div class="treatment-desc">
-          הבנת מקורות החרדה, ויסות מערכת העצבים, ופיתוח כלים מעשיים
-          לניהול מצבי עומס בחיי היומיום.
-        </div>
-        <span class="treatment-method">CBT + מיינדפולנס</span>
-      </div>
-      <div class="treatment-card fade d3">
-        <span class="treatment-icon">🌑</span>
-        <div class="treatment-title">דיכאון ותחושת תקיעות</div>
-        <div class="treatment-desc">
-          כשהחיים מאבדים טעם ואנרגיה. עבודה על שורשי הכאב,
-          תנועה קטנה ומשמעותית לכיוון שינוי.
-        </div>
-        <span class="treatment-method">אינטגרטיבי</span>
-      </div>
-      <div class="treatment-card fade d1">
-        <span class="treatment-icon">🤝</span>
-        <div class="treatment-title">זוגיות והורות</div>
-        <div class="treatment-desc">
-          דפוסי קשר, פצעים ביחסים, ושינוי אופן החיבור לאחרים.
-          עבודה על הקשר עם עצמך כבסיס לכל מערכת יחסים.
-        </div>
-        <span class="treatment-method">פסיכודינמי</span>
-      </div>
-      <div class="treatment-card fade d2">
-        <span class="treatment-icon">🌿</span>
-        <div class="treatment-title">עבודה עם גוף ורגש</div>
-        <div class="treatment-desc">
-          ניתוק גוף-נפש, תגובות גופניות לא מובנות, ביקורת עצמית גבוהה.
-          חיבור מחדש בין גוף, רגש ומחשבה.
-        </div>
-        <span class="treatment-method">Somatic Therapy</span>
-      </div>
-      <div class="treatment-card fade d3">
-        <span class="treatment-icon">🦋</span>
-        <div class="treatment-title">תהליכי שינוי וזהות</div>
-        <div class="treatment-desc">
-          מעברי חיים, שאלות של מי אני, תחושת "לא מוצא/ת את עצמי".
-          ליווי מעמיק בתהליכי גדילה והתפתחות.
-        </div>
-        <span class="treatment-method">אינטגרטיבי + דמיון</span>
+      <div class="about-img-badge">
+        <div class="aib-label">קליניקה</div>
+        <div class="aib-value">פרנקפורט 7, תל אביב</div>
       </div>
     </div>
-  </section>
-
-  <!-- ── APPROACH ── -->
-  <div class="section-sage" id="approach">
-    <div class="section">
-      <div class="sec-label fade">הגישה הטיפולית</div>
-      <h2 class="sec-title fade d1">טיפול שמדבר<br>אל כל שכבות הנפש</h2>
-      <div class="approach-content">
-        <div class="approach-visual fade d2">
-          <div class="approach-block">
-            <div class="ab-icon">🧠</div>
-            <div class="ab-title">מחשבה</div>
-            <div class="ab-desc">CBT, מיינדפולנס, כלים קוגניטיביים</div>
-          </div>
-          <div class="approach-block">
-            <div class="ab-icon">💗</div>
-            <div class="ab-title">רגש</div>
-            <div class="ab-desc">עיבוד רגשי, מרחב לחוויה, עומק פסיכודינמי</div>
-          </div>
-          <div class="approach-block">
-            <div class="ab-icon">🫀</div>
-            <div class="ab-title">גוף</div>
-            <div class="ab-desc">Somatic Therapy, ויסות עצבי, תחושות גופניות</div>
-          </div>
-          <div class="approach-block">
-            <div class="ab-icon">✨</div>
-            <div class="ab-title">דמיון ויצירה</div>
-            <div class="ab-desc">טיפול באמנות, תמונות פנימיות, EMDR</div>
-          </div>
-        </div>
-        <div class="approach-text fade d3">
-          <p>
-            אני עובדת מתוך אמונה שהגוף הוא לא רק "הבית" של הנפש — הוא מחזיק זיכרונות,
-            רגשות וחכמה שלעיתים אינם מגיעים לרמת המילים.
-            <strong>עבודה ממוקדת גוף</strong> היא לכן חלק מרכזי בתהליך.
-          </p>
-          <p>
-            בכל טיפול אני שואפת לשלב כמה רמות:
-            <strong>מחשבה, רגש, גוף, ודמיון</strong> — כי שינוי אמיתי קורה כשכל השכבות
-            מעורבות בתהליך.
-          </p>
-          <ul class="methods-list">
-            <li>
-              <div class="method-num">01</div>
-              <div class="method-text">
-                <strong>EMDR</strong> — עיבוד טראומה דרך תנועות עיניים מובנות.
-                פרוטוקול מבוסס-מחקר עם תוצאות מוכחות.
-              </div>
-            </li>
-            <li>
-              <div class="method-num">02</div>
-              <div class="method-text">
-                <strong>Somatic Therapy</strong> — האזנה לגוף כדי לשחרר מה שתקוע
-                ברמה הפיזיולוגית.
-              </div>
-            </li>
-            <li>
-              <div class="method-num">03</div>
-              <div class="method-text">
-                <strong>טיפול באמנות</strong> — גישה לחוויה פנימית דרך יצירה, תמונה
-                ודמיון מודרך.
-              </div>
-            </li>
-            <li>
-              <div class="method-num">04</div>
-              <div class="method-text">
-                <strong>CBT + מיינדפולנס</strong> — כלים מעשיים לניהול מחשבות,
-                חרדה ולחץ בחיי היומיום.
-              </div>
-            </li>
-          </ul>
-        </div>
+    <div class="about-text reveal d3">
+      <p>
+        אני נריה גולד שילד, פסיכותרפיסטית התייחסותית-אינטגרטיבית,
+        בעלת תואר <strong>MA בטיפול באמנות חזותית</strong>.
+        עבדתי עם אנשים בתהליכים שנמשכו שנים — ולמדתי שהדבר שמרפא
+        אינו השיטה. הוא <strong>המפגש</strong>.
+      </p>
+      <p>
+        הגישה ההתייחסותית שאני עובדת ממנה מניחה שהפצעים שרובנו נושאים
+        נוצרו בתוך קשרים — עם הורים, עם בני זוג, עם הסביבה שעיצבה אותנו.
+        לפיכך, גם ריפויים מצריך קשר. <strong>הקשר הטיפולי עצמו</strong> —
+        מה שנבנה בין שנינו בתוך החדר — הוא לב העבודה.
+      </p>
+      <blockquote class="about-quote">
+        "אני לא עומדת מחוץ לתהליך כמי שיודעת מה נכון לך.
+        אני נוכחת בתוכו — מלאה, מקשיבה, ומשתנה גם אני."
+      </blockquote>
+      <p>
+        "אינטגרטיבי" פירושו גמישות: אנחנו מתאימים את הכלים לאדם,
+        לא את האדם לכלים. לפעמים נדבר. לפעמים נצייר. לפעמים נשב
+        ברגע גופני קטן שמחזיק יותר ממה שנחשב.
+      </p>
+      <div class="credentials">
+        <span class="cred">פסיכותרפיה התייחסותית</span>
+        <span class="cred">EMDR מוסמכת</span>
+        <span class="cred">MA טיפול באמנות</span>
+        <span class="cred">CBT</span>
+        <span class="cred">מיינדפולנס</span>
+        <span class="cred">עבודה ממוקדת גוף</span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ── FOR WHOM ── -->
-  <div class="section-alt" id="for-whom">
-    <div class="section">
-      <div class="sec-label fade">למי הטיפול מתאים</div>
-      <h2 class="sec-title fade d1">אולי אתה/את מכיר/ה<br>את התחושה הזו</h2>
-      <div class="for-whom-grid">
-        <div class="whom-card fade d1">
-          <div class="whom-icon">🌊</div>
-          <div class="whom-text">
-            <div class="whom-title">עומס רגשי והצפה</div>
-            <div class="whom-desc">
-              כשהרגשות "גדולים מדי", קשה לנוח, ולפעמים גם קשה לדעת בדיוק מה מרגישים.
-            </div>
+<!-- ─── METHODS ─── -->
+<div class="methods-section" id="methods">
+  <div class="methods-bg-img"></div>
+  <div class="methods-inner">
+    <div class="methods-header">
+      <div class="sec-label reveal">גישה וכלים</div>
+      <h2 class="sec-h reveal d1">שש דרכים לאותו מקום</h2>
+      <p class="sec-p reveal d2">
+        הכלים שאני עובדת איתם נבחרים לפי מי שיושב/ת מולי —
+        ולפי מה שהרגע מזמין.
+      </p>
+    </div>
+    <div class="method-list">
+
+      <div class="method-item reveal">
+        <div class="method-head">
+          <div class="method-num">01</div>
+          <div class="method-name">
+            פסיכותרפיה התייחסותית–אינטגרטיבית
+            <small>הגישה המרכזית</small>
           </div>
         </div>
-        <div class="whom-card fade d2">
-          <div class="whom-icon">🧩</div>
-          <div class="whom-text">
-            <div class="whom-title">טראומה — גלויה או שקטה</div>
-            <div class="whom-desc">
-              חוויות ישנות שממשיכות להשפיע, או תחושה שמשהו "לא נגמר" — גם בלי לזכור בדיוק מה.
-            </div>
-          </div>
-        </div>
-        <div class="whom-card fade d1">
-          <div class="whom-icon">🔍</div>
-          <div class="whom-text">
-            <div class="whom-title">ביקורת עצמית גבוהה</div>
-            <div class="whom-desc">
-              קול פנימי שתמיד שופט, מקטין, ולא נותן מנוח. תחושה שאף פעם "לא מספיק".
-            </div>
-          </div>
-        </div>
-        <div class="whom-card fade d2">
-          <div class="whom-icon">🚧</div>
-          <div class="whom-text">
-            <div class="whom-title">ניתוק — גופני או רגשי</div>
-            <div class="whom-desc">
-              תחושה של "לא ממש כאן", חוסר חיבור לגוף, קושי להרגיש או לקרוא את עצמי.
-            </div>
-          </div>
-        </div>
-        <div class="whom-card fade d1">
-          <div class="whom-icon">🌱</div>
-          <div class="whom-text">
-            <div class="whom-title">רצון לתהליך עומק</div>
-            <div class="whom-desc">
-              לא רק "להרגיש טוב יותר" — אלא להבין, לשנות דפוסים, ולצמוח מתוך תהליך אמיתי.
-            </div>
-          </div>
-        </div>
-        <div class="whom-card fade d2">
-          <div class="whom-icon">↗️</div>
-          <div class="whom-text">
-            <div class="whom-title">מעברי חיים ושינוי</div>
-            <div class="whom-desc">
-              שאלות של זהות, כיוון, שינוי מערכת יחסים, עבודה, משפחה — ולצידם בלבול ופחד.
-            </div>
-          </div>
+        <div class="method-body">
+          <p>
+            לב העבודה שלי. הגישה ההתייחסותית גורסת שאנחנו נוצרים בתוך יחסים —
+            ולכן מה שנפגע ביחסים, יכול להתרפא ביחסים. המשמעות: הקשר שנבנה בינינו
+            בחדר הטיפולי הוא לא "כלי" — הוא עצמו המרפא. אנחנו מביאים לחדר
+            את הדפוסים שלנו, את ההיסטוריה, את מה שנאמר ומה שנשתק —
+            ואנחנו עובדים עם כל אלה <em>בזמן אמת</em>, בתוך המפגש.
+            האינטגרטיביות מאפשרת לי להביא כלים שונים לתוך הגישה הזו,
+            בהתאם לאדם ולשלב שהוא נמצא בו.
+          </p>
         </div>
       </div>
-      <div class="for-whom-closing fade d3">
-        <p>
-          אם משהו כאן <em>נוגע בך</em> — גם אם לא ידעת לנסח את זה בדיוק —
-          אפשר פשוט ליצור קשר. שיחת ההיכרות היא ללא עלות, וללא התחייבות.
-        </p>
-        <a href="#contact" class="btn-main">אני רוצה ליצור קשר</a>
+
+      <div class="method-item reveal d1">
+        <div class="method-head">
+          <div class="method-num">02</div>
+          <div class="method-name">
+            EMDR
+            <small>Eye Movement Desensitization and Reprocessing</small>
+          </div>
+        </div>
+        <div class="method-body">
+          <p>
+            EMDR פותח לטיפול בטראומה, ומאז הוכח כיעיל גם עבור טראומה מורכבת,
+            פוביות, ביקורת עצמית שורשית, ואובדן. השיטה עובדת ישירות עם
+            הזיכרון הגלום — אותן חוויות שנשארו "קפואות", ממשיכות להדהד
+            בגוף ובמחשבה כאילו הן קורות עכשיו. באמצעות פרוטוקול של
+            תנועות עיניים דו-צדדיות, המוח מקבל הזדמנות <em>לעבד מחדש</em>
+            את שלא עובד בזמנו — ולשלב אותו בסיפור החיים בצורה שפחות שולטת.
+          </p>
+        </div>
       </div>
+
+      <div class="method-item reveal d2">
+        <div class="method-head">
+          <div class="method-num">03</div>
+          <div class="method-name">
+            עבודה ממוקדת גוף
+            <small>Body-Oriented Psychotherapy</small>
+          </div>
+        </div>
+        <div class="method-body">
+          <p>
+            הגוף זוכר לפני שהייתה שפה. לפני שנוסחה המחשבה, לפני שסופר הסיפור —
+            הייתה חוויה. עבודה ממוקדת גוף מבקשת לשים לב לאיתותים שמגיעים
+            מהכיוון הזה: ההידוק בחזה, הנשימה שנעצרת, הרפיון שמגיע כשמשהו
+            נפתח. הגוף אינו רקע לסיפור הטיפולי — הוא נוכח בו. שילוב
+            המודעות הגופנית בשיחה מאפשר גישה לשכבות שפסיכותרפיה מדוברת
+            בלבד לא תמיד מגיעה אליהן — ומעניק <em>מקום ממשי לחוויה</em>,
+            ולא רק לפרשנות שלה.
+          </p>
+        </div>
+      </div>
+
+      <div class="method-item reveal d1">
+        <div class="method-head">
+          <div class="method-num">04</div>
+          <div class="method-name">
+            CBT — טיפול קוגניטיבי-התנהגותי
+            <small>Cognitive Behavioral Therapy</small>
+          </div>
+        </div>
+        <div class="method-body">
+          <p>
+            הגישה הקוגניטיבית-התנהגותית מניחה קשר הדוק בין מחשבות, רגשות,
+            והתנהגויות. לפעמים אנחנו לכודים בדפוסי חשיבה שנוצרו בתנאים
+            ישנים ולא משרתים אותנו יותר — ביקורת עצמית שרירותית, הנחות
+            שנבלעו לפני שהיה לנו שיקול דעת, קטסטרופיזציה שנולדה מהצורך
+            להישמר. CBT מציע מבנה: לזהות, לבחון, ולעדכן. אני משתמשת
+            בכלים הקוגניטיביים לא כ"תיקון" אלא כ<em>הזמנה לסקרנות</em>
+            כלפי הסיפורים שאנחנו מספרים לעצמנו.
+          </p>
+        </div>
+      </div>
+
+      <div class="method-item reveal d2">
+        <div class="method-head">
+          <div class="method-num">05</div>
+          <div class="method-name">
+            מיינדפולנס
+            <small>Mindfulness-Based Approaches</small>
+          </div>
+        </div>
+        <div class="method-body">
+          <p>
+            מיינדפולנס אינו רק "להיות בהווה" — זו יכולת שניתן לאמן,
+            ולה השפעות עמוקות על מערכת העצבים ועל היכולת לשאת חוויה קשה
+            מבלי להיבלע בה. בטיפול, מיינדפולנס מאפשר להתבונן בחוויה —
+            במחשבה, בתחושה הגופנית, ברגש — <em>בסקרנות ובאדיבות</em>,
+            לפני שאנחנו ממהרים להגיב אליה. זה לא פיתרון, ולא "להרגיש
+            טוב". זה דרך לקרוא פחות מאיים את מה שנמצא בפנים.
+          </p>
+        </div>
+      </div>
+
+      <div class="method-item reveal d3">
+        <div class="method-head">
+          <div class="method-num">06</div>
+          <div class="method-name">
+            טיפול באמנות ודמיון מודרך
+            <small>Art Therapy · MA בטיפול באמנות חזותית</small>
+          </div>
+        </div>
+        <div class="method-body">
+          <p>
+            חלק מהחוויה הפנימית שלנו אינה מנוסחת במילים.
+            היא מנוסחת בצבעים, בצורות, בדימויים שעולים ממקום שמילים
+            לא תמיד מגיעות אליו. טיפול באמנות — ודמיון מודרך שצומח ממנו —
+            אינו מיועד ל"אמנים". הוא מזמין את החלקים הלא-מנוסחים
+            להתבטא מחוץ לשפה, ולפעמים <em>דווקא שם מתרחש משהו</em>
+            שלא קרה עשרות פגישות דיבור. הרישום, הצבע, הדימוי —
+            כולם שפות נוספות בחדר.
+          </p>
+        </div>
+      </div>
+
+    </div><!-- /method-list -->
+  </div>
+</div>
+
+<!-- ─── TREATMENTS ─── -->
+<section class="sec" id="treatments">
+  <div class="sec-label reveal">תחומי עבודה</div>
+  <h2 class="sec-h reveal d1">מה מביא אנשים</h2>
+  <p class="sec-p reveal d2">
+    אין רשימה מלאה — חיים מורכבים. אבל אלה הנושאים שאנשים מביאים לעיתים קרובות.
+  </p>
+  <div class="treatments-grid">
+    <div class="t-card reveal">
+      <span class="t-icon">🌊</span>
+      <div class="t-title">טראומה ופצע מוקדם</div>
+      <div class="t-desc">חוויות שחרטו את עצמן לפני שהייתה שפה, וממשיכות לעצב את ההווה — גם מבלי שנדע בדיוק כיצד.</div>
+      <span class="t-tag">EMDR + עבודה עם גוף</span>
+    </div>
+    <div class="t-card reveal d1">
+      <span class="t-icon">🌀</span>
+      <div class="t-title">חרדה ועומס רגשי</div>
+      <div class="t-desc">כשמערכת העצבים רצה מהר מדי, וקשה לדעת מתי "בסדר" ומתי לא. לפני הכלים — צריך להבין את המקור.</div>
+      <span class="t-tag">CBT · מיינדפולנס · גוף</span>
+    </div>
+    <div class="t-card reveal d2">
+      <span class="t-icon">🌑</span>
+      <div class="t-title">דיכאון ותחושת תקיעות</div>
+      <div class="t-desc">כשהאנרגיה נעלמת, הטעם מתרוקן, ומה שפעם עבד — מפסיק. לא חולשה, אלא הודעה שמשהו צריך לזוז.</div>
+      <span class="t-tag">פסיכותרפיה התייחסותית</span>
+    </div>
+    <div class="t-card reveal">
+      <span class="t-icon">🤲</span>
+      <div class="t-title">קשרים ודפוסים חוזרים</div>
+      <div class="t-desc">כשאנחנו מוצאים את עצמנו שוב באותו מקום — עם בן/בת זוג שונים, בסיטואציות שונות. הדפוס קורא לחקירה.</div>
+      <span class="t-tag">פסיכותרפיה התייחסותית</span>
+    </div>
+    <div class="t-card reveal d1">
+      <span class="t-icon">🫀</span>
+      <div class="t-title">ניתוק גופני ורגשי</div>
+      <div class="t-desc">כשמרגישים "לא ממש כאן", רחוקים מהגוף, מהרגשות, מהאנשים שליד. ניתוק הוא אסטרטגיה שפעם עזרה.</div>
+      <span class="t-tag">עבודה עם גוף · EMDR</span>
+    </div>
+    <div class="t-card reveal d2">
+      <span class="t-icon">🦋</span>
+      <div class="t-title">שינוי, מעבר, זהות</div>
+      <div class="t-desc">שאלות של "מי אני?", "לאן?", "מה אני רוצה?" — לעיתים נשאלות כשמשהו כבר לא מחזיק. ואז אפשר לבנות מחדש.</div>
+      <span class="t-tag">טיפול אינטגרטיבי · אמנות</span>
     </div>
   </div>
+</section>
 
-  <!-- ── CONTACT ── -->
-  <section class="section" id="contact">
-    <div class="sec-label fade">יצירת קשר</div>
-    <h2 class="sec-title fade d1">מוכן/ה להתחיל?</h2>
-    <p class="sec-desc fade d2">
-      השאר/י פרטים ואחזור אליך תוך 24 שעות לתיאום שיחת היכרות.
+<!-- ─── FOR WHOM ─── -->
+<div class="whom-section" id="for-whom">
+  <div class="whom-inner">
+    <div class="sec-label reveal">למי מתאים</div>
+    <h2 class="sec-h reveal d1">אולי גם אתה/את<br>מכיר/ה את הרגש הזה</h2>
+    <div class="whom-list reveal d2">
+      <div class="whom-item">
+        <div class="whom-stem">אתה/את מרגיש/ה "תקוע/ה" זמן רב מדי</div>
+        <div class="whom-body">לא שקורה משהו מאוד רע — פשוט כלום לא זז. ומשהו בך יודע שאפשר אחרת.</div>
+      </div>
+      <div class="whom-item">
+        <div class="whom-stem">הגוף מגיב לפני שהמחשבה מגיעה</div>
+        <div class="whom-body">דפיקות לב, ידיים קרות, נשימה רדודה — בסיטואציות שאמורות להיות "בסדר".</div>
+      </div>
+      <div class="whom-item">
+        <div class="whom-stem">הקול הפנימי קשה יותר ממה שהיית רוצה</div>
+        <div class="whom-body">ביקורת שאתה/את לא היית אומר/ת לאף אחד אחר. ואתה/את עייף/ה ממנו.</div>
+      </div>
+      <div class="whom-item">
+        <div class="whom-stem">יש משהו ישן שלא עיבדת</div>
+        <div class="whom-body">לא חייב שיהיה דרמטי. לפעמים זה משהו ש"לא היה כל כך נורא" — ובכל זאת לא עזב.</div>
+      </div>
+      <div class="whom-item">
+        <div class="whom-stem">אתה/את רוצה קשר עמוק יותר — עם אנשים, עם עצמך</div>
+        <div class="whom-body">תחושה של מרחק, גם כשאנשים קרובים. שאלה שחוזרת בשקט על מי אתה/את.</div>
+      </div>
+      <div class="whom-item">
+        <div class="whom-stem">אתה/את מוכן/ה לעבוד באמת</div>
+        <div class="whom-body">לא רק לשמוע שמישהו מבין אותך. אלא להיות בתהליך שמאתגר, מחזיק — ומשנה.</div>
+      </div>
+    </div>
+    <div class="whom-cta reveal d3">
+      <p>
+        אם משהו מכאן <em>נוגע בך</em> — גם אם אתה/את לא יודע/ת לנסח בדיוק מה —
+        זה מספיק כדי ליצור קשר. שיחת ההיכרות היא ללא עלות, ובלי שום התחייבות.
+      </p>
+      <a href="#contact" class="btn-main">לשיחת היכרות ←</a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── BLOG ─── -->
+<div class="blog-section" id="blog">
+  <div class="blog-inner">
+    <div class="blog-coming reveal">בקרוב</div>
+    <div class="sec-label reveal d1">בלוג</div>
+    <h2 class="sec-h reveal d2">כתיבה על נפש, גוף, ויחסים</h2>
+    <p class="sec-p reveal d3">
+      מאמרים קצרים על מה שמעסיק אותי — פסיכולוגיה, טראומה, תהליכי שינוי, ומה שנמצא בין השורות.
     </p>
-    <div class="contact-wrap">
-      <div class="contact-left fade d2">
+    <div class="blog-grid">
+      <div class="blog-card reveal d1">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&w=600&q=75" alt="">
+          <span class="blog-soon">בקרוב</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-cat">טראומה</div>
+          <div class="blog-title">כשהגוף מסרב לשכוח: על מה שנחרט מתחת לשפה</div>
+          <div class="blog-teaser">לא כל טראומה נראית כמו טראומה. לפעמים היא נוכחת כחרדה כרונית, כניתוק, כדפוס שחוזר שוב ושוב.</div>
+        </div>
+      </div>
+      <div class="blog-card reveal d2">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=75" alt="">
+          <span class="blog-soon">בקרוב</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-cat">ביקורת עצמית</div>
+          <div class="blog-title">על הקול שנולד מוקדם מדי — ולמה הוא כל כך קשה לשנות</div>
+          <div class="blog-teaser">הביקורת העצמית לא הגיעה מהאוויר. היא נבנתה בתנאים מסוימים, כדי לשרת צורך. הבנת הצורך הזה — זו ההתחלה.</div>
+        </div>
+      </div>
+      <div class="blog-card reveal d3">
+        <div class="blog-card-img">
+          <img src="https://images.unsplash.com/photo-1473081556163-2a17de81fc97?auto=format&fit=crop&w=600&q=75" alt="">
+          <span class="blog-soon">בקרוב</span>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-cat">הקשר הטיפולי</div>
+          <div class="blog-title">למה לא מספיק להיות מומחה: על הנוכחות שמרפאת</div>
+          <div class="blog-teaser">המחקר ברור: גורם השינוי המשמעותי בטיפול אינו השיטה. הוא האיכות של הקשר שנבנה בין המטפל למטופל.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONTACT ─── -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div class="sec-label reveal">יצירת קשר</div>
+    <h2 class="sec-h reveal d1">מוכן/ה לדבר?</h2>
+    <p class="sec-p reveal d2">
+      שיחת ההיכרות היא ללא עלות. מקשיבה, ובלי שיפוטיות.
+    </p>
+    <div class="contact-grid">
+      <div class="contact-left reveal d2">
         <h3>דרכי יצירת קשר</h3>
         <p>
-          השיחה הראשונה היא ללא עלות.
-          נדבר על מה שמביא אותך, ונראה יחד אם זה הזמן והמקום הנכון.
+          אם משהו כאן נגע בך — אפשר פשוט לשלוח הודעה או להתקשר.
+          לא צריך לדעת בדיוק מה להגיד.
         </p>
-        <div class="contact-details">
-          <div class="cdetail">
-            <div class="cdetail-icon">📞</div>
-            <div class="cdetail-content">
-              <div class="cdetail-label">טלפון</div>
-              <div class="cdetail-value"><a href="tel:054-7520431">054-7520431</a></div>
+        <div class="clist">
+          <div class="ci">
+            <div class="ci-icon">📞</div>
+            <div>
+              <div class="ci-lbl">טלפון</div>
+              <div class="ci-val"><a href="tel:054-7520431">054-7520431</a></div>
             </div>
           </div>
-          <div class="cdetail">
-            <div class="cdetail-icon">📍</div>
-            <div class="cdetail-content">
-              <div class="cdetail-label">כתובת הקליניקה</div>
-              <div class="cdetail-value">פרנקפורט 7, תל אביב</div>
+          <div class="ci">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-lbl">כתובת</div>
+              <div class="ci-val">פרנקפורט 7, תל אביב</div>
             </div>
           </div>
-          <div class="cdetail">
-            <div class="cdetail-icon">🕐</div>
-            <div class="cdetail-content">
-              <div class="cdetail-label">זמן מענה</div>
-              <div class="cdetail-value">תוך 24 שעות</div>
+          <div class="ci">
+            <div class="ci-icon">⏱</div>
+            <div>
+              <div class="ci-lbl">זמן מענה</div>
+              <div class="ci-val">תוך 24 שעות</div>
             </div>
           </div>
-          <div class="cdetail">
-            <div class="cdetail-icon">💬</div>
-            <div class="cdetail-content">
-              <div class="cdetail-label">שיחת היכרות</div>
-              <div class="cdetail-value" style="color: var(--sage);">ללא עלות</div>
+          <div class="ci">
+            <div class="ci-icon">💬</div>
+            <div>
+              <div class="ci-lbl">שיחת היכרות</div>
+              <div class="ci-val" style="color:var(--sage);font-weight:700">ללא עלות</div>
             </div>
           </div>
         </div>
-        <div class="price-note">
-          <div class="pn-title">מחיר פגישות</div>
-          <div class="price-item">
-            <span class="pi-label">פגישה אישית (50 דקות)</span>
-            <span class="pi-value">400 ש"ח</span>
-          </div>
-          <div class="price-item">
-            <span class="pi-label">שיחת היכרות טלפונית</span>
-            <span class="pi-free">ללא עלות</span>
-          </div>
+        <div class="price-box">
+          <div class="price-box-title">מחיר פגישות</div>
+          <div class="price-row"><span class="pl">פגישה אישית (50 דקות)</span><span class="pv">400 ש"ח</span></div>
+          <div class="price-row"><span class="pl">שיחת היכרות טלפונית</span><span class="pv-free">ללא עלות</span></div>
         </div>
       </div>
-      <div class="contact-form fade d3">
+      <div class="contact-form-wrap reveal d3">
         <form id="contactForm">
-          <div class="form-title">השאירו פרטים</div>
-          <div class="form-subtitle">
-            אם משהו כאן נוגע בך — אפשר פשוט ליצור קשר.
-            אחזור אליך בהקדם.
-          </div>
-          <div class="form-row">
-            <div class="fgroup">
-              <label for="fname">שם פרטי</label>
-              <input type="text" id="fname" placeholder="השם שלך" required>
+          <div class="form-hd">השאר/י פרטים</div>
+          <div class="form-sh">לא צריך לנסח הכל. גם מילה אחת — "רוצה לדבר" — מספיקה.</div>
+          <div class="frow">
+            <div class="fg">
+              <label for="fn">שם</label>
+              <input type="text" id="fn" placeholder="השם שלך" required>
             </div>
-            <div class="fgroup">
-              <label for="fphone">טלפון</label>
-              <input type="tel" id="fphone" placeholder="050-0000000" required>
+            <div class="fg">
+              <label for="fp">טלפון</label>
+              <input type="tel" id="fp" placeholder="050-0000000" required>
             </div>
           </div>
-          <div class="fgroup full">
-            <label for="femail">אימייל (אופציונלי)</label>
-            <input type="email" id="femail" placeholder="your@email.com">
+          <div class="fg full">
+            <label for="fe">אימייל (אופציונלי)</label>
+            <input type="email" id="fe" placeholder="your@email.com">
           </div>
-          <div class="fgroup full">
-            <label for="fwhat">במה אני יכולה לעזור?</label>
-            <select id="fwhat">
-              <option value="">בחר / בחרי נושא</option>
-              <option>טראומה או חוויות קשות מהעבר</option>
-              <option>חרדה, לחץ ועומס רגשי</option>
+          <div class="fg full">
+            <label for="fs">מה מביא אותך?</label>
+            <select id="fs">
+              <option value="">אפשר לבחור נושא, או לא</option>
+              <option>טראומה או חוויות קשות</option>
+              <option>חרדה ועומס רגשי</option>
               <option>דיכאון ותחושת תקיעות</option>
-              <option>קשיים בזוגיות / יחסים</option>
-              <option>עבודה עם גוף ורגש</option>
-              <option>תהליך שינוי וצמיחה</option>
-              <option>אחר</option>
+              <option>קשרים ודפוסים חוזרים</option>
+              <option>ניתוק — גופני או רגשי</option>
+              <option>שינוי, מעבר, זהות</option>
+              <option>לא בטוח/ה — פשוט רוצה לדבר</option>
             </select>
           </div>
-          <div class="fgroup full">
-            <label for="fmessage">רוצה לספר משהו? (אופציונלי)</label>
-            <textarea id="fmessage" placeholder="מה מביא אותך? אין חובה לפרט — גם מילה אחת מספיקה."></textarea>
+          <div class="fg full">
+            <label for="fm">רוצה להוסיף משהו? (אופציונלי)</label>
+            <textarea id="fm" placeholder="גם מילה אחת תספיק. כאן אין תשובה נכונה."></textarea>
           </div>
           <div class="form-consent">
-            <input type="checkbox" id="consent" required>
-            <label for="consent">
-              אני מאשר/ת קבלת פנייה חזרה מנריה.
-              <em>הפרטים שלך ישמרו בסודיות מוחלטת.</em>
-            </label>
+            <input type="checkbox" id="fc" required>
+            <label for="fc">אני מסכים/ה לקבל פנייה חזרה מנריה. <em>הפרטים ישמרו בסודיות מוחלטת.</em></label>
           </div>
-          <button type="submit" class="btn-submit">שלח/י ואחכה לשמוע ←</button>
+          <button type="submit" class="btn-submit">שלח/י — אקשיב/ה ←</button>
         </form>
         <div class="form-success" id="formSuccess">
           <div class="form-success-icon">🌿</div>
-          <h3>ההודעה התקבלה</h3>
-          <p>
-            תודה שפנית אליי.<br>
-            אחזור אליך תוך 24 שעות לתיאום שיחת ההיכרות.
-          </p>
+          <h3>ההודעה הגיעה</h3>
+          <p>תודה. אחזור אליך תוך 24 שעות.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-name">נריה גולד שילד</div>
-      <div class="footer-sub">פסיכותרפיסטית אינטגרטיבית | MA טיפול באמנות חזותית | תל אביב</div>
-      <div class="footer-phone-row">
-        <a href="tel:054-7520431" class="footer-phone-btn">📞 054-7520431</a>
-      </div>
-      <ul class="footer-links">
-        <li><a href="#about">אודות</a></li>
-        <li><a href="#treatments">תחומי טיפול</a></li>
-        <li><a href="#approach">הגישה</a></li>
-        <li><a href="#for-whom">למי מתאים</a></li>
-        <li><a href="#contact">יצירת קשר</a></li>
-      </ul>
-      <hr class="footer-divider">
-      <div class="footer-copy">
-        © 2025 נריה גולד שילד | פסיכותרפיה אינטגרטיבית, תל אביב | פרנקפורט 7
-      </div>
-    </div>
-  </footer>
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-name">נריה גולד שילד</div>
+    <div class="footer-sub">פסיכותרפיה התייחסותית–אינטגרטיבית · MA טיפול באמנות חזותית · תל אביב</div>
+    <ul class="footer-links">
+      <li><a href="#about">אודות</a></li>
+      <li><a href="#methods">גישה וכלים</a></li>
+      <li><a href="#treatments">תחומי עבודה</a></li>
+      <li><a href="#blog">בלוג</a></li>
+      <li><a href="#contact">יצירת קשר</a></li>
+    </ul>
+    <hr class="footer-divider">
+    <div class="footer-copy">© 2025 נריה גולד שילד · פסיכותרפיה · פרנקפורט 7, תל אביב · 054-7520431</div>
+  </div>
+</footer>
 
-  <script>
-    // Sticky nav
-    const nav = document.getElementById('mainNav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 50);
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // Hero parallax
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * 0.45}px)`;
+  }, { passive: true });
+
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const t = document.querySelector(this.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
+  });
 
-    // Fade-in on scroll
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('in');
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-    document.querySelectorAll('.fade').forEach(el => observer.observe(el));
-
-    // Mobile menu
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('open');
-    }
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('navLinks').classList.remove('open');
-      });
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', function(e) {
-        const t = document.querySelector(this.getAttribute('href'));
-        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-      });
-    });
-
-    // Form
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      this.style.display = 'none';
-      document.getElementById('formSuccess').style.display = 'block';
-    });
-  </script>
+  // Form
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
 </body>
 </html>
