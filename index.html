@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polly | עיצוב ופיתוח אתרים</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080b14;
+      --card: #111827;
+      --purple: #8b5cf6;
+      --blue: #3b82f6;
+      --gold: #f59e0b;
+      --teal: #14b8a6;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(139,92,246,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
+    }
+    .tagline {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      max-width: 720px;
+      width: 100%;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .card-1::before { background: linear-gradient(to left, #8b5cf6, #3b82f6); }
+    .card-2::before { background: linear-gradient(to left, #7a9168, #14b8a6); }
+    .card-3::before { background: linear-gradient(to left, #c8a97e, #9cb08a); }
+    .card-4::before { background: linear-gradient(to left, #0f1e3c, #c9a94e); }
+    .card:hover {
+      border-color: rgba(139,92,246,0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 12px; display: block; }
+    .card-title { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .card-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+    .card-arrow {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      font-size: 1rem;
+      color: var(--muted);
+      transition: transform 0.2s;
+    }
+    .card:hover .card-arrow { transform: translateX(-4px); color: var(--purple); }
+    .footer-text {
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="logo">Polly</div>
+  <div class="tagline">עיצוב ופיתוח אתרים | חוויות דיגיטליות בעברית</div>
+  <div class="grid">
+    <a href="polly.html" class="card card-1">
+      <span class="card-icon">🎨</span>
+      <div class="card-title">פולי — פורטפוליו</div>
+      <div class="card-desc">אתר אישי ופורטפוליו של מעצבת ומפתחת אתרים</div>
+      <span class="card-arrow">←</span>
+    </a>
+    <a href="neria-gold.html" class="card card-2">
+      <span class="card-icon">🌿</span>
+      <div class="card-title">נריה גולד שילד</div>
+      <div class="card-desc">פסיכותרפיסטית אינטגרטיבית | תל אביב</div>
+      <span class="card-arrow">←</span>
+    </a>
+    <a href="Index.html" class="card card-3">
+      <span class="card-icon">✨</span>
+      <div class="card-title">מעברים</div>
+      <div class="card-desc">קבוצות מעבר לנשים | נריה גולד שילד</div>
+      <span class="card-arrow">←</span>
+    </a>
+    <a href="roy-gold.html" class="card card-4">
+      <span class="card-icon">💼</span>
+      <div class="card-title">רועי גולד</div>
+      <div class="card-desc">ייעוץ ניהולי ואסטרטגי בכיר</div>
+      <span class="card-arrow">←</span>
+    </a>
+  </div>
+  <div class="footer-text">© 2025 Polly · כל הזכויות שמורות</div>
+</body>
+</html>
