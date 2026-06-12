@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>יכולת הסימבוליזציה — מ"חלימה" קרוסה ל"השבת נפש"</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:        #0f0f14;
+      --bg2:       #17171f;
+      --bg3:       #1e1e2a;
+      --accent:    #a78bfa;
+      --accent2:   #7c3aed;
+      --gold:      #d4a853;
+      --gold-pale: #e8c97a;
+      --text:      #e8e4f0;
+      --text-mid:  #b8b0cc;
+      --text-soft: #7a7090;
+      --border:    rgba(167,139,250,.18);
+      --r:         16px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      font-family: 'Heebo', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    /* ── deck container ── */
+    #deck {
+      width: 100%; height: 100%;
+      position: relative;
+    }
+
+    /* ── individual slide ── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 64px 80px 80px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(40px);
+      transition: opacity .45s cubic-bezier(.4,0,.2,1),
+                  transform .45s cubic-bezier(.4,0,.2,1);
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+    .slide.exit {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    /* ── slide number tag ── */
+    .slide-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+      opacity: .7;
+    }
+
+    /* ── title ── */
+    .slide h1 {
+      font-size: clamp(28px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 20px;
+      max-width: 820px;
+    }
+    .slide h1 .accent { color: var(--accent); }
+    .slide h1 .gold   { color: var(--gold); }
+
+    /* ── subtitle / lead ── */
+    .lead {
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 400;
+      line-height: 1.75;
+      color: var(--text-mid);
+      max-width: 760px;
+      margin-bottom: 32px;
+    }
+
+    /* ── key term chips ── */
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .chip {
+      background: rgba(167,139,250,.1);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 18px;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── bullet list ── */
+    .bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      max-width: 780px;
+    }
+    .bullets li {
+      display: flex;
+      gap: 16px;
+      font-size: clamp(14px, 1.6vw, 18px);
+      line-height: 1.7;
+      color: var(--text-mid);
+    }
+    .bullets li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 10px;
+    }
+    .bullets li strong {
+      color: var(--gold-pale);
+      font-weight: 600;
+    }
+    .bullets li em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* ── 3-column card row (slide 4) ── */
+    .tri {
+      display: flex;
+      gap: 24px;
+      max-width: 1000px;
+      margin-top: 8px;
+    }
+    .tri-card {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 28px 24px;
+    }
+    .tri-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: .06em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .tri-card p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text-mid);
+    }
+    .tri-card p strong { color: var(--gold-pale); font-weight: 600; }
+    .tri-card p em    { color: var(--accent); font-style: italic; }
+
+    /* ── convergence line (slide 4 footer) ── */
+    .convergence {
+      margin-top: 24px;
+      padding: 18px 24px;
+      background: rgba(212,168,83,.07);
+      border-right: 3px solid var(--gold);
+      border-radius: 0 var(--r) var(--r) 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-mid);
+      max-width: 860px;
+    }
+    .convergence strong { color: var(--gold-pale); }
+
+    /* ── quote pull (slide 6) ── */
+    .pull-quote {
+      border-right: 4px solid var(--accent);
+      padding: 16px 28px;
+      margin: 24px 0;
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--text);
+      max-width: 740px;
+      font-style: italic;
+    }
+
+    /* ── slide-specific backgrounds ── */
+    .slide::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    #s1::after { background: radial-gradient(ellipse 60% 50% at 85% 50%, rgba(124,58,237,.12) 0%, transparent 70%); }
+    #s2::after { background: radial-gradient(ellipse 50% 60% at 90% 30%, rgba(167,139,250,.10) 0%, transparent 65%); }
+    #s3::after { background: radial-gradient(ellipse 55% 50% at 80% 70%, rgba(239,68,68,.08) 0%, transparent 65%); }
+    #s4::after { background: radial-gradient(ellipse 60% 55% at 85% 40%, rgba(212,168,83,.08) 0%, transparent 65%); }
+    #s5::after { background: radial-gradient(ellipse 50% 60% at 88% 55%, rgba(167,139,250,.10) 0%, transparent 65%); }
+    #s6::after { background: radial-gradient(ellipse 55% 50% at 82% 45%, rgba(124,58,237,.13) 0%, transparent 65%); }
+
+    /* ── nav bar ── */
+    #nav {
+      position: fixed;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(23,23,31,.9);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 10px 20px;
+      backdrop-filter: blur(12px);
+      z-index: 100;
+      user-select: none;
+    }
+    #nav button {
+      background: none;
+      border: none;
+      color: var(--text-mid);
+      cursor: pointer;
+      font-size: 20px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, color .15s;
+    }
+    #nav button:hover { background: rgba(167,139,250,.15); color: var(--accent); }
+    #nav button:disabled { opacity: .25; cursor: default; }
+
+    #dots { display: flex; gap: 8px; }
+    .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--text-soft);
+      cursor: pointer;
+      transition: background .2s, transform .2s;
+    }
+    .dot.on { background: var(--accent); transform: scale(1.3); }
+
+    #counter {
+      font-size: 12px;
+      color: var(--text-soft);
+      min-width: 36px;
+      text-align: center;
+    }
+
+    /* ── progress bar ── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent2), var(--accent));
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+      z-index: 200;
+    }
+  </style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<div id="deck">
+
+  <!-- ── Slide 1 ── -->
+  <section class="slide active" id="s1">
+    <div class="slide-num">שקף 01 / 06</div>
+    <h1>מה היא <span class="accent">סימבוליזציה</span></h1>
+    <p class="lead">
+      פעולה נפשית מתמשכת — <strong>פונקציית האלפא</strong> (ביון):<br>
+      היכולת להפוך חוויה גולמית, לא-מעובדת (<em>אלמנטי בטא</em>)<br>
+      ל‑<strong>אלמנטי אלפא</strong>: חומר שניתן לחשוב עליו, לחלום אותו, ליצור ממנו.
+    </p>
+    <div class="chips">
+      <span class="chip">פונקציית אלפא — ביון</span>
+      <span class="chip">אלמנטי בטא → אלמנטי אלפא</span>
+      <span class="chip">עיבוד חוויה</span>
+    </div>
+    <ul class="bullets">
+      <li>זו לא "חלימה" כתופעת שינה, אלא <strong>יכולת ערה מתמדת</strong> לתת פשר וצורה לחוויה.</li>
+      <li>בלי סימבוליזציה — הגוף והנפש מוצפים ברעש גולמי שאינו ניתן לחשיבה.</li>
+    </ul>
+  </section>
+
+  <!-- ── Slide 2 ── -->
+  <section class="slide" id="s2">
+    <div class="slide-num">שקף 02 / 06</div>
+    <h1>מתי <span class="accent">מתפתחת</span></h1>
+    <p class="lead">
+      מהפוזיציה הפרנואידית-סכיזואידית (קליין) — עולם של <strong>זהות מוחלטת</strong> —
+      אל <strong>המרחב הסימבולי</strong>.
+    </p>
+    <ul class="bullets">
+      <li><strong>פרנואידית-סכיזואידית:</strong> אין "אמא נעדרת" — יש שד-טוב / שד-רע בלבד. הסמל הוא הדבר עצמו.</li>
+      <li>דרך חוויות חוזרות של <em>נוכחות–היעדרות–חזרה</em> ואובייקט מספיק טוב —</li>
+      <li>נולד <strong>המרחב המעברי</strong> (ויניקוט): דברים יכולים <em>לייצג</em> מבלי <em>להיות</em>.</li>
+    </ul>
+    <div class="chips" style="margin-top:28px;">
+      <span class="chip">קליין — פוזיציה פרנואידית-סכיזואידית</span>
+      <span class="chip">ויניקוט — מרחב מעברי</span>
+      <span class="chip">אובייקט מספיק טוב</span>
+    </div>
+  </section>
+
+  <!-- ── Slide 3 ── -->
+  <section class="slide" id="s3">
+    <div class="slide-num">שקף 03 / 06</div>
+    <h1>מתי <span class="accent">קורסת</span> או מאותגרת</h1>
+    <p class="lead">
+      טראומה מחזירה ל<strong>קונקרטיות</strong> — <em>השוואה סמלית</em> (סגל):
+      הסמל מתמזג עם המסומל, הגבול בין מסמן ומסומן נמחק.
+    </p>
+    <ul class="bullets">
+      <li>כינור הופך ל<strong>איבר מין עצמו</strong>; מילים על המסך "כואבות", "אמיתיות", "כבדות" מכדי לכתוב.</li>
+      <li>החלום <em>"נכשל"</em> — נשאר <strong>"לא-חלום"</strong> (אוגדן): רעש גולמי שלא עבר עיבוד.</li>
+      <li>או לחלופין: חלום-חזרה <strong>פוטוגרפי</strong> — ללא עיבוד, ללא מרחק.</li>
+    </ul>
+    <div class="chips" style="margin-top:28px;">
+      <span class="chip">סגל — השוואה סמלית</span>
+      <span class="chip">אוגדן — לא-חלום</span>
+      <span class="chip">טראומה וקונקרטיות</span>
+    </div>
+  </section>
+
+  <!-- ── Slide 4 ── -->
+  <section class="slide" id="s4">
+    <div class="slide-num">שקף 04 / 06</div>
+    <h1>טראומה — <span class="gold">שילוש</span> טיפולי</h1>
+    <div class="tri">
+      <div class="tri-card">
+        <h3>פסיכודינמי</h3>
+        <p>עיבוד דרך <strong><em>reverie</em></strong> — המטפל "מחלים בשביל" המטופל את מה שהוא לא הצליח לחלום בעצמו <em>(אוגדן)</em>.</p>
+      </div>
+      <div class="tri-card">
+        <h3>סומטי</h3>
+        <p>הגוף מאחסן את <strong>האלמנט הבטא</strong> לפני שיש לו מילה. מיפוי גוף וזיכרון חיוּת הם הדרך לגעת בחומר הגולמי לפני סימבוליזציה מילולית.</p>
+      </div>
+      <div class="tri-card">
+        <h3>אמנות</h3>
+        <p>התהליך היצירתי טעון ב<strong>אנרגיה של ריפוי ותוקפנות-יוצרת</strong> — יוצר <em>מרחק בטוח</em> בין הכאב לבין הצורה. אין "אדמה רודפנית".</p>
+      </div>
+    </div>
+    <div class="convergence">
+      <strong>שלוש הדרכים נפגשות:</strong> יצירת מרחק מספיק — לא קרבה מוחלטת ולא ניתוק מוחלט — בין החוויה לבין הסמל שלה.
+    </div>
+  </section>
+
+  <!-- ── Slide 5 ── -->
+  <section class="slide" id="s5">
+    <div class="slide-num">שקף 05 / 06</div>
+    <h1>ה<span class="accent">שלישי</span> שמחזיק את ההסמלה</h1>
+    <p class="lead">
+      לא יכול לקרות ביחיד.<br>
+      צריך <strong>משולש: אני – חומר/אובייקט – אחר</strong> (מטפל/קשר).
+    </p>
+    <ul class="bullets">
+      <li>השלישי מאפשר את <strong>התנועה הדיאלקטית</strong> בין מציאות פנימית לחיצונית.</li>
+      <li>הוא מחזיק את המרחב כך שהסמל <em>לא קורס</em> לזהות מוחלטת.</li>
+      <li>הקשר עצמו הוא התשתית שמאפשרת <strong>"ליקוט"</strong> — איסוף חומרים, רגשות, רגעים — והרכבתם מחדש לכלל בעל פשר.</li>
+    </ul>
+    <div class="chips" style="margin-top:28px;">
+      <span class="chip">I–object–Other</span>
+      <span class="chip">אינטר-סובייקטיביות</span>
+      <span class="chip">ליקוט וחיבור</span>
+    </div>
+  </section>
+
+  <!-- ── Slide 6 ── -->
+  <section class="slide" id="s6">
+    <div class="slide-num">שקף 06 / 06</div>
+    <h1>השבת נפש — <span class="accent">חזרה לחלום</span></h1>
+    <div class="pull-quote">
+      "השבת נפש = השבת היכולת <em>לחלום</em> — לא במובן של שינה, אלא במובן של יצירת אמנות וחשיבה סימבולית."
+    </div>
+    <ul class="bullets">
+      <li>שיקום מתרחש לא מתוך <strong>פירוש</strong>, אלא מתוך <em>אינטר-סובייקטיביות חיה</em> ויצירה משותפת.</li>
+      <li>פשר שניתן <strong>בזמן הנכון</strong> — לא מוקדם מדי, לא מאוחר מדי.</li>
+      <li>מרחב מעבר שבו אפשר, מחדש: <strong>שדבר ייצג דבר אחר מבלי להיות הוא</strong>.</li>
+    </ul>
+    <div class="chips" style="margin-top:28px;">
+      <span class="chip">אינטר-סובייקטיביות</span>
+      <span class="chip">יצירה משותפת</span>
+      <span class="chip">מרחב מעבר מחודש</span>
+    </div>
+  </section>
+
+</div><!-- /deck -->
+
+<!-- ── Navigation ── -->
+<nav id="nav">
+  <button id="btn-prev" disabled title="הקודם (←)">&#8592;</button>
+  <div id="dots"></div>
+  <button id="btn-next" title="הבא (→)">&#8594;</button>
+  <span id="counter">1 / 6</span>
+</nav>
+
+<script>
+(function(){
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const dotsEl  = document.getElementById('dots');
+  const counter = document.getElementById('counter');
+  const progress= document.getElementById('progress');
+  const N = slides.length;
+  let cur = 0;
+
+  /* build dots */
+  slides.forEach((_,i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i===0?' on':'');
+    d.addEventListener('click', () => go(i));
+    dotsEl.appendChild(d);
+  });
+
+  function go(n) {
+    if (n < 0 || n >= N || n === cur) return;
+    slides[cur].classList.remove('active');
+    slides[cur].classList.add('exit');
+    const prev = cur;
+    cur = n;
+    slides[cur].classList.add('active');
+    setTimeout(() => slides[prev].classList.remove('exit'), 460);
+    sync();
+  }
+
+  function sync() {
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === N - 1;
+    counter.textContent = (cur+1) + ' / ' + N;
+    progress.style.width = ((cur+1)/N*100) + '%';
+    dotsEl.querySelectorAll('.dot').forEach((d,i) =>
+      d.classList.toggle('on', i === cur));
+  }
+
+  btnPrev.addEventListener('click', () => go(cur - 1));
+  btnNext.addEventListener('click', () => go(cur + 1));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp')   go(cur - 1);
+    if (e.key === 'ArrowLeft'  || e.key === 'ArrowDown') go(cur + 1);
+  });
+
+  sync();
+})();
+</script>
+
+<!-- deck-edit-mode:start -->
+<style id="deck-editor-css">
+/* ── Deck Edit Mode — toolbar & states ── */
+
+#deck-edit-toggle {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9990;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,.35);
+  transition: transform .15s, box-shadow .15s;
+}
+#deck-edit-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,.4);
+}
+
+/* ── toolbar ── */
+#deck-editor-toolbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
+  background: #1a1a2e;
+  box-shadow: 0 2px 12px rgba(0,0,0,.4);
+  font-family: system-ui, sans-serif;
+}
+
+#deck-editor-toolbar button {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  transition: background .12s;
+}
+#deck-editor-toolbar button:hover {
+  background: rgba(255,255,255,.15);
+}
+
+#deck-editor-toolbar .sep {
+  width: 1px;
+  height: 22px;
+  background: rgba(255,255,255,.2);
+  margin: 0 4px;
+}
+
+#dte-save-btn {
+  margin-right: auto;
+  background: #2ecc71 !important;
+  border-color: #27ae60 !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+#dte-save-btn:hover { background: #27ae60 !important; }
+
+#dte-exit-btn {
+  background: rgba(231,76,60,.7) !important;
+  border-color: #c0392b !important;
+}
+#dte-exit-btn:hover { background: rgba(231,76,60,1) !important; }
+
+/* ── edit-mode body offset ── */
+body.dte-mode { padding-top: 48px !important; }
+body.dte-mode nav { top: 48px !important; }
+
+/* ── editable element states ── */
+.dte-hover {
+  outline: 2px dashed rgba(46,204,113,.7) !important;
+  outline-offset: 2px;
+  cursor: text !important;
+}
+
+.dte-active {
+  outline: 2px solid #2ecc71 !important;
+  outline-offset: 2px;
+  background: rgba(46,204,113,.06) !important;
+  cursor: text !important;
+}
+
+[contenteditable="true"]:focus { outline: 2px solid #3498db !important; }
+
+</style>
+<script id="deck-editor-js">
+(function () {
+  'use strict';
+
+  /* ── state ── */
+  let active = false;
+  let selectedEl = null;
+  let toolbar = null;
+
+  /* ── editable selectors ── */
+  const EDITABLE = [
+    'h1','h2','h3','h4','h5','h6',
+    'p','li','a','span','label',
+    '.hero-title','.hero-subtitle','.section-title',
+    '.card-title','.card-text','.nav-link',
+    '[data-editable]'
+  ].join(',');
+
+  /* ── build toolbar ── */
+  function buildToolbar() {
+    const bar = document.createElement('div');
+    bar.id = 'deck-editor-toolbar';
+    bar.dir = 'ltr';
+    bar.innerHTML = `
+      <button data-cmd="bold"        title="Bold"><b>B</b></button>
+      <button data-cmd="italic"      title="Italic"><i>I</i></button>
+      <button data-cmd="underline"   title="Underline"><u>U</u></button>
+      <button data-cmd="strikeThrough" title="Strike">S̶</button>
+      <span class="sep"></span>
+      <button data-cmd="justifyRight"  title="Align right">⇥</button>
+      <button data-cmd="justifyCenter" title="Center">≡</button>
+      <button data-cmd="justifyLeft"   title="Align left">⇤</button>
+      <span class="sep"></span>
+      <button id="dte-color-btn"    title="Text color">A</button>
+      <input  id="dte-color-input"  type="color" value="#000000" style="display:none">
+      <span class="sep"></span>
+      <button id="dte-save-btn"     title="Save HTML to file">💾 שמור</button>
+      <button id="dte-exit-btn"     title="Exit edit mode">✕ יציאה</button>
+    `;
+    document.body.appendChild(bar);
+
+    bar.querySelectorAll('[data-cmd]').forEach(btn => {
+      btn.addEventListener('mousedown', e => {
+        e.preventDefault();
+        document.execCommand(btn.dataset.cmd, false, null);
+      });
+    });
+
+    bar.querySelector('#dte-color-btn').addEventListener('click', () => {
+      bar.querySelector('#dte-color-input').click();
+    });
+    bar.querySelector('#dte-color-input').addEventListener('input', e => {
+      document.execCommand('foreColor', false, e.target.value);
+    });
+
+    bar.querySelector('#dte-save-btn').addEventListener('click', saveHTML);
+    bar.querySelector('#dte-exit-btn').addEventListener('click', exitEditMode);
+
+    return bar;
+  }
+
+  /* ── highlight hover ── */
+  function onMouseOver(e) {
+    const el = e.target.closest(EDITABLE);
+    if (el && el !== selectedEl) el.classList.add('dte-hover');
+  }
+  function onMouseOut(e) {
+    const el = e.target.closest(EDITABLE);
+    if (el) el.classList.remove('dte-hover');
+  }
+
+  /* ── select element for editing ── */
+  function onElementClick(e) {
+    const el = e.target.closest(EDITABLE);
+    if (!el) return;
+    if (el.tagName === 'A') e.preventDefault();
+
+    if (selectedEl && selectedEl !== el) deselect(selectedEl);
+    selectedEl = el;
+    el.contentEditable = 'true';
+    el.classList.add('dte-active');
+    el.focus();
+  }
+
+  function deselect(el) {
+    el.contentEditable = 'false';
+    el.classList.remove('dte-active','dte-hover');
+  }
+
+  /* ── click outside deselects ── */
+  function onDocClick(e) {
+    if (!selectedEl) return;
+    if (toolbar && toolbar.contains(e.target)) return;
+    if (!selectedEl.contains(e.target)) deselect(selectedEl);
+  }
+
+  /* ── save ── */
+  function saveHTML() {
+    const clone = document.documentElement.cloneNode(true);
+    /* strip editor artefacts */
+    clone.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
+    clone.querySelectorAll('.dte-hover,.dte-active').forEach(el => {
+      el.classList.remove('dte-hover','dte-active');
+    });
+    clone.querySelector('#deck-editor-toolbar')?.remove();
+    const blob = new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], {type:'text/html'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = location.pathname.split('/').pop() || 'page.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  /* ── enter / exit ── */
+  function enterEditMode() {
+    if (active) return;
+    active = true;
+    document.body.classList.add('dte-mode');
+    toolbar = buildToolbar();
+    document.addEventListener('mouseover', onMouseOver);
+    document.addEventListener('mouseout',  onMouseOut);
+    document.addEventListener('click',     onElementClick, true);
+    document.addEventListener('click',     onDocClick);
+  }
+
+  function exitEditMode() {
+    if (!active) return;
+    active = false;
+    document.body.classList.remove('dte-mode');
+    if (selectedEl) deselect(selectedEl);
+    selectedEl = null;
+    toolbar?.remove();
+    toolbar = null;
+    document.removeEventListener('mouseover', onMouseOver);
+    document.removeEventListener('mouseout',  onMouseOut);
+    document.removeEventListener('click',     onElementClick, true);
+    document.removeEventListener('click',     onDocClick);
+  }
+
+  /* ── floating toggle button ── */
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'deck-edit-toggle';
+  toggleBtn.textContent = '✏️ עריכה';
+  toggleBtn.title = 'Toggle edit mode';
+  toggleBtn.addEventListener('click', () => active ? exitEditMode() : enterEditMode());
+  document.body.appendChild(toggleBtn);
+})();
+
+</script>
+<!-- deck-edit-mode:end -->
+</body>
+</html>
