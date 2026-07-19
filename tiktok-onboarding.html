@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>המדריך שלך לטיקטוק</title>
+<meta name="description" content="מדריך פתיחה לטיקטוק, בשבילך. איך האפליקציה עובדת מאחורי הקלעים, ואיך להשתמש בה מתוך בחירה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf7f1;
+    --bg-card:#ffffff;
+    --bg-soft:#f2ece0;
+    --ink:#2e2b27;
+    --muted:#746c5e;
+    --sage:#6f8a63;
+    --sage-soft:#e3ebde;
+    --rose:#b8828c;
+    --rose-soft:#f3e3e1;
+    --lavender:#8f7fb0;
+    --lavender-soft:#ece6f5;
+    --line:#e6ddcc;
+    --shadow:0 10px 30px rgba(46,43,39,0.07);
+    --radius:18px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+  body{
+    font-family:'Heebo',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:640px;margin-inline:auto;padding-inline:20px;}
+
+  /* ---------- nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,247,241,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    max-width:640px; margin-inline:auto; padding:14px 20px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-weight:700; font-size:1rem; text-decoration:none; color:var(--ink);}
+  #nav-toggle{position:absolute; opacity:0; pointer-events:none;}
+  .nav-btn{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:999px;
+    padding:8px 16px; font-family:inherit; font-size:0.85rem; font-weight:600;
+    color:var(--ink); cursor:pointer;
+  }
+  .nav-drawer{
+    display:none; border-top:1px solid var(--line); background:var(--bg-card);
+  }
+  #nav-toggle:checked ~ .nav-drawer{ display:block; }
+  .nav-drawer ul{list-style:none;}
+  .nav-drawer li{border-bottom:1px solid var(--line);}
+  .nav-drawer a{
+    display:block; padding:14px 20px; text-decoration:none; font-size:0.95rem;
+    max-width:640px; margin-inline:auto;
+  }
+  .nav-drawer a span.num{color:var(--sage); font-weight:700; margin-inline-end:8px;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:56px 0 40px;}
+  .hero h1{
+    font-size:1.7rem; font-weight:800; line-height:1.4; margin-bottom:18px;
+  }
+  .hero p{font-size:1.02rem; color:var(--ink); margin-bottom:14px;}
+  .hero p.muted{color:var(--muted); font-size:0.95rem;}
+  .opening-q{
+    margin-top:24px; background:var(--lavender-soft); border-radius:var(--radius);
+    padding:20px 22px; font-size:0.98rem;
+  }
+  .opening-q .tag{display:block; font-size:0.75rem; font-weight:700; color:var(--lavender); margin-bottom:8px; letter-spacing:0.02em;}
+
+  /* ---------- section index cards on home ---------- */
+  .index-grid{margin:44px 0; display:grid; gap:12px;}
+  .index-card{
+    display:flex; gap:14px; align-items:flex-start;
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 20px; text-decoration:none; color:var(--ink);
+    box-shadow:var(--shadow);
+  }
+  .index-card .n{
+    font-size:1.3rem; font-weight:800; color:var(--sage); min-width:2.2em;
+  }
+  .index-card h3{font-size:1rem; font-weight:700; margin-bottom:4px;}
+  .index-card p{font-size:0.87rem; color:var(--muted); line-height:1.6;}
+  .index-card.checklist-card .n{color:var(--rose);}
+
+  /* ---------- ritual (optional tool on home) ---------- */
+  .ritual{
+    margin:40px 0; background:var(--sage-soft); border-radius:var(--radius); padding:22px 22px 8px;
+  }
+  .ritual h2{font-size:1.05rem; font-weight:700; margin-bottom:8px;}
+  .ritual > p{font-size:0.9rem; color:var(--muted); margin-bottom:16px;}
+  .ritual details{
+    background:var(--bg-card); border-radius:14px; padding:14px 16px; margin-bottom:12px;
+  }
+  .ritual summary{font-weight:600; cursor:pointer; font-size:0.93rem;}
+  .ritual details p{margin-top:10px; font-size:0.88rem; color:var(--muted);}
+
+  /* ---------- generic section ---------- */
+  section.section{
+    padding:56px 0; border-top:1px solid var(--line);
+  }
+  .section-kicker{
+    font-size:0.8rem; font-weight:700; color:var(--sage); letter-spacing:0.06em; margin-bottom:8px;
+  }
+  section.section h2{font-size:1.5rem; font-weight:800; margin-bottom:6px;}
+  .section-sub{color:var(--muted); font-size:0.95rem; margin-bottom:22px;}
+  .lead{font-size:1rem; margin-bottom:26px;}
+  .lead + .lead{margin-top:-14px;}
+
+  .mech-card{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; margin-bottom:14px; box-shadow:var(--shadow);
+  }
+  .mech-card h3{font-size:1.02rem; font-weight:700; margin-bottom:8px;}
+  .mech-card p{font-size:0.93rem; color:var(--ink);}
+
+  details.reflect{
+    margin-top:14px; background:var(--lavender-soft); border-radius:12px; padding:2px 16px;
+  }
+  details.reflect[open]{padding-bottom:14px;}
+  details.reflect summary{
+    cursor:pointer; padding:12px 0; font-size:0.87rem; font-weight:600; color:var(--lavender);
+    list-style:none;
+  }
+  details.reflect summary::-webkit-details-marker{display:none;}
+  details.reflect summary::before{content:"⤷  "; opacity:0.6;}
+  details.reflect p{font-size:0.9rem; color:var(--ink); margin:0;}
+
+  .closing-note{
+    margin-top:22px; font-size:0.92rem; color:var(--muted); border-inline-start:3px solid var(--sage);
+    padding-inline-start:14px;
+  }
+
+  .finding-list{list-style:none; display:grid; gap:12px; margin-bottom:22px;}
+  .finding-list li{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; font-size:0.92rem; box-shadow:var(--shadow);
+  }
+  .callout{
+    background:var(--sage-soft); border-radius:var(--radius); padding:20px 22px; font-size:0.95rem;
+  }
+  .callout strong{display:block; margin-bottom:6px; font-size:0.85rem; color:var(--sage); letter-spacing:0.02em;}
+
+  .principle{margin-bottom:20px;}
+  .principle h3{font-size:1rem; font-weight:700; margin-bottom:6px;}
+  .principle p{font-size:0.93rem;}
+
+  .warm-item{margin-bottom:22px; padding-inline-start:16px; border-inline-start:3px solid var(--rose);}
+  .warm-item h3{font-size:1rem; font-weight:700; margin-bottom:6px;}
+  .warm-item p{font-size:0.93rem;}
+
+  /* ---------- glossary (section 06) ---------- */
+  .subhead{font-size:0.85rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:0.04em; margin:30px 0 14px;}
+  .nav-list{list-style:none; display:grid; gap:10px; margin-bottom:10px;}
+  .nav-list li{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:12px; padding:12px 16px;
+    font-size:0.9rem; display:flex; gap:10px;
+  }
+  .nav-list b{min-width:6.5em;}
+  .search-box{
+    display:flex; align-items:center; gap:10px; background:var(--bg-card); border:1px solid var(--line);
+    border-radius:999px; padding:10px 18px; margin-bottom:16px;
+  }
+  .search-box input{
+    border:none; outline:none; background:transparent; font-family:inherit; font-size:0.95rem;
+    width:100%; color:var(--ink);
+  }
+  .glossary-item{
+    border-bottom:1px solid var(--line); padding:14px 2px;
+  }
+  .glossary-item dt{font-weight:700; font-size:0.95rem; margin-bottom:4px;}
+  .glossary-item dd{font-size:0.9rem; color:var(--muted);}
+  .glossary-item[hidden]{display:none;}
+  .no-results{font-size:0.9rem; color:var(--muted); padding:14px 2px; display:none;}
+
+  /* ---------- settings (section 07) ---------- */
+  .setting-item{
+    background:var(--bg-card); border:1px solid var(--line); border-radius:14px;
+    padding:16px 18px; margin-bottom:10px; box-shadow:var(--shadow);
+  }
+  .setting-item h3{font-size:0.95rem; font-weight:700; margin-bottom:4px;}
+  .setting-item p{font-size:0.88rem; color:var(--muted);}
+  .fp-note{
+    margin-top:24px; font-size:0.85rem; color:var(--muted); background:var(--bg-soft);
+    border-radius:12px; padding:14px 16px;
+  }
+
+  /* ---------- checklist ---------- */
+  #checklist{background:var(--rose-soft);}
+  .checklist-list{list-style:none; display:grid; gap:12px; margin:24px 0 28px;}
+  .checklist-list li{
+    background:var(--bg-card); border-radius:14px; padding:14px 18px; font-size:0.95rem;
+    display:flex; gap:10px; align-items:flex-start; box-shadow:var(--shadow);
+  }
+  .checklist-list li::before{content:"○"; color:var(--rose); flex-shrink:0; margin-top:2px;}
+  .print-btn{
+    background:var(--rose); color:#fff; border:none; border-radius:999px; padding:12px 24px;
+    font-family:inherit; font-size:0.9rem; font-weight:600; cursor:pointer;
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:40px 0 60px; text-align:center; font-size:0.82rem; color:var(--muted);
+  }
+  footer a{text-decoration:underline; color:var(--muted);}
+  .back-top{display:inline-block; margin-bottom:18px; font-size:0.85rem; color:var(--sage); text-decoration:none; font-weight:600;}
+
+  /* ---------- floating checklist button ---------- */
+  .float-checklist{
+    position:fixed; bottom:18px; inset-inline-end:18px; z-index:40;
+    background:var(--ink); color:#fff; text-decoration:none;
+    padding:11px 18px; border-radius:999px; font-size:0.8rem; font-weight:600;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  @media print{
+    header.site-nav, .float-checklist, footer, .back-top{display:none !important;}
+    body *{visibility:hidden;}
+    #checklist, #checklist *{visibility:visible;}
+    #checklist{position:absolute; inset-inline-start:0; top:0; width:100%; background:#fff; padding:20px;}
+    .print-btn{display:none;}
+  }
+
+  @media (min-width:680px){
+    .hero h1{font-size:2.1rem;}
+    section.section h2{font-size:1.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-row">
+    <a href="#top" class="brand">המדריך שלך לטיקטוק</a>
+    <label class="nav-btn" for="nav-toggle">תפריט</label>
+  </div>
+  <input type="checkbox" id="nav-toggle">
+  <nav class="nav-drawer" aria-label="ניווט ראשי">
+    <ul>
+      <li><a href="#top" onclick="closeNav()"><span class="num">·</span>בית</a></li>
+      <li><a href="#section-01" onclick="closeNav()"><span class="num">01</span>מאחורי המסך</a></li>
+      <li><a href="#section-02" onclick="closeNav()"><span class="num">02</span>הראש שלך באפליקציה</a></li>
+      <li><a href="#section-03" onclick="closeNav()"><span class="num">03</span>מה המחקר באמת אומר</a></li>
+      <li><a href="#section-04" onclick="closeNav()"><span class="num">04</span>גוף ודימוי עצמי</a></li>
+      <li><a href="#section-05" onclick="closeNav()"><span class="num">05</span>להישאר את</a></li>
+      <li><a href="#section-06" onclick="closeNav()"><span class="num">06</span>איך האפליקציה עובדת</a></li>
+      <li><a href="#section-07" onclick="closeNav()"><span class="num">07</span>ההגדרות שלך</a></li>
+      <li><a href="#checklist" onclick="closeNav()"><span class="num">✓</span>רשימת בדיקה</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <div id="top" class="wrap hero">
+    <h1>טיקטוק היא לא טובה ולא רעה. היא כלי.</h1>
+    <p>אבל היא כלי שנבנה במיוחד כדי לתפוס את תשומת הלב שלך, ולשמור עליה כמה שיותר זמן. המדריך הזה כתוב אלייך, לא עלייך.</p>
+    <p>הוא נותן לך קודם את ההבנה שעומדת מאחורי המסך, ואחר כך את הידע המעשי על האפליקציה עצמה, כדי שתשתמשי בה מתוך בחירה ולא רק מתוך הרגל אוטומטי.</p>
+    <p class="muted">שבעה חלקים קצרים, אפשר לקרוא ברצף או לקפוץ ישר למה שמעניין אותך. הכל נשאר כאן בשבילך לחזור אליו מתי שתרצי.</p>
+
+    <div class="opening-q">
+      <span class="tag">שאלה לפני שממשיכים</span>
+      לא חובה לענות עכשיו, רק לשים לב: מתי בפעם האחרונה פתחת אפליקציה בלי ממש להחליט, כמעט אוטומטית?
+    </div>
+
+    <div class="index-grid">
+      <a class="index-card" href="#section-01"><span class="n">01</span><span><h3>מאחורי המסך</h3><p>למה האפליקציה בנויה בדיוק ככה שהיא בנויה.</p></span></a>
+      <a class="index-card" href="#section-02"><span class="n">02</span><span><h3>הראש שלך באפליקציה</h3><p>שש דרכים שהמוח שלך מקצר תהליכים, והאפליקציה מכירה אותן.</p></span></a>
+      <a class="index-card" href="#section-03"><span class="n">03</span><span><h3>מה המחקר באמת אומר</h3><p>מה כן ידוע, מה עוד לא ברור, בלי הגזמות לאף כיוון.</p></span></a>
+      <a class="index-card" href="#section-04"><span class="n">04</span><span><h3>גוף ודימוי עצמי</h3><p>את מאמנת את האלגוריתם, בדיוק כמו שהוא מאמן אותך.</p></span></a>
+      <a class="index-card" href="#section-05"><span class="n">05</span><span><h3>להישאר את</h3><p>זהות מול הצגה, ואיך לשמור על עצמך אחרי גלילה ארוכה.</p></span></a>
+      <a class="index-card" href="#section-06"><span class="n">06</span><span><h3>איך האפליקציה עובדת בפועל</h3><p>מילון קצר: מי זה Duet, מה זה Stitch, ואיפה כל דבר נמצא.</p></span></a>
+      <a class="index-card" href="#section-07"><span class="n">07</span><span><h3>ההגדרות שלך, הבחירה שלך</h3><p>הגדרות פרטיות ובטיחות שאת יכולה להפעיל לבד, עכשיו.</p></span></a>
+      <a class="index-card checklist-card" href="#checklist"><span class="n">✓</span><span><h3>רשימת בדיקה</h3><p>הכל בקצרה, במקום אחד, תמיד נגיש.</p></span></a>
+    </div>
+
+    <div class="ritual" id="ritual">
+      <h2>רגע לפני שפותחים את האפליקציה</h2>
+      <p>כלי קטן ואופציונלי, לא תנאי לשום דבר. שלוש שאלות, אפשר לענות בראש, בלי לכתוב בשום מקום.</p>
+      <details>
+        <summary>איך אני מרגישה עכשיו?</summary>
+        <p>לפעמים כדאי לשים לב אם פותחים מתוך שעמום, מתח, בדידות או סתם המתנה למשהו.</p>
+      </details>
+      <details>
+        <summary>כמה זמן יש לי בפועל?</summary>
+        <p>לא כדי להגביל את עצמך מראש, רק כדי לדעת בעצמך את התשובה, ולא לגלות אותה רק בסוף.</p>
+      </details>
+      <details>
+        <summary>מה אני מקווה לקבל מזה עכשיו?</summary>
+        <p>בידור, חיבור לחברות, הפסקה קטנה, מידע. אין תשובה נכונה, רק שווה לדעת מה חיפשת.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ===================== 01 ===================== -->
+  <section class="section" id="section-01">
+    <div class="wrap">
+      <div class="section-kicker">01</div>
+      <h2>מאחורי המסך</h2>
+      <p class="section-sub">כלכלת קשב ועיצוב תודעה</p>
+      <p class="lead">חברות המדיה החברתית מרוויחות מזמן הצפייה שלך, לא בהכרח מהרגשה טובה שיש לך בסוף. זה נקרא כלכלת קשב: תשומת הלב שלך היא המוצר שנמכר למפרסמים. זה לא סוד וזה לא קונספירציה, זו פשוט הדרך שבה האפליקציה מרוויחה כסף. להכיר את המנגנון נותן לך יותר בחירה בתוכו.</p>
+
+      <div class="mech-card">
+        <h3>גלילה אינסופית</h3>
+        <p>אין נקודת עצירה טבעית בפיד. המוח שלך צריך להחליט באופן פעיל מתי לעצור, במקום שמישהו יתן לו רמז כמו סוף העמוד.</p>
+        <details class="reflect"><summary>שאלה לעצור עליה</summary><p>מה קורה לי בגוף כשאני מנסה לעצור באמצע גלילה?</p></details>
+      </div>
+
+      <div class="mech-card">
+        <h3>תגמול משתנה</h3>
+        <p>אותו מנגנון פסיכולוגי שעומד מאחורי מכונות מזל. את לא יודעת אם הסרטון הבא יהיה משעמם או מדהים, וחוסר הוודאות הזה בדיוק מה שגורם לרצון להמשיך לגלול.</p>
+        <details class="reflect"><summary>שאלה לעצור עליה</summary><p>יש לי תחושה שאני מחכה לסרטון הטוב הבא, כמו בהגרלה?</p></details>
+      </div>
+
+      <div class="mech-card">
+        <h3>אלגוריתם שלומד אותך מהר מאוד</h3>
+        <p>כל שנייה של צפייה, כל לייק, כל עצירה קטנה נאספים כדי לבנות פיד שמותאם בדיוק למה שהכי קשה לך להתעלם ממנו. זה לא תמיד מה שהכי טוב לך.</p>
+        <details class="reflect"><summary>שאלה לעצור עליה</summary><p>יש נושא שהפיד שלי חוזר אליו כל הזמן, גם כשאני לא בטוחה שאני רוצה בזה?</p></details>
+      </div>
+
+      <div class="mech-card">
+        <h3>התראות מתוזמנות</h3>
+        <p>התראות מתוכננות כדי להחזיר אותך לאפליקציה ברגעים שסביר שתגיבי, לא בהכרח ברגעים הכי נוחים לך.</p>
+        <details class="reflect"><summary>שאלה לעצור עליה</summary><p>מתי ההתראות מגיעות אליי הכי הרבה, ומה אני מרגישה כשאני רואה אותן?</p></details>
+      </div>
+
+      <p class="closing-note">שום דבר מכל זה לא נבנה מתוך כוונה רעה כלפייך באופן אישי. זה פשוט התמריץ העסקי של האפליקציה. אפשר להכיר את המנגנון, ולהשתמש בו במודעות, במקום שהוא ישתמש בך בלי שתשימי לב.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 02 ===================== -->
+  <section class="section" id="section-02">
+    <div class="wrap">
+      <div class="section-kicker">02</div>
+      <h2>הראש שלך באפליקציה</h2>
+      <p class="section-sub">הטיות קוגניטיביות ויוריסטיקות</p>
+      <p class="lead">יוריסטיקות הן קיצורי דרך שהמוח שלנו משתמש בהם כדי לקבל החלטות מהר. הן שימושיות ברוב החיים, אבל בסביבת מדיה חברתית הן הופכות אותנו לפגיעות במיוחד.</p>
+
+      <div class="mech-card">
+        <h3>הטיית זמינות</h3>
+        <p>מה שרואים הכי הרבה נתפס כנפוץ או נכון יותר ממה שהוא באמת. אם ראית היום עשרות סרטונים על גוף מסוים, המוח מתחיל לתפוס אותו כנורמה, גם אם זו לא המציאות ברחוב.</p>
+      </div>
+      <div class="mech-card">
+        <h3>הוכחה חברתית</h3>
+        <p>אם לסרטון יש הרבה לייקים ותגובות, קל להניח שהוא נכון או ראוי לחיקוי, בלי לבדוק בעצמך. טרנד עם מיליון שיתופים לא הופך להיות נכון, רק פופולרי.</p>
+      </div>
+      <div class="mech-card">
+        <h3>הטיית אישוש</h3>
+        <p>האלגוריתם מזין אותך בתוכן שמחזק את מה שאת כבר חושבת או מרגישה, כולל מחשבות שליליות על עצמך. אם עצרת פעם אחת על סרטון שאומר שאת לא מספיק, הפיד עלול להביא לך עוד ועוד תוכן דומה.</p>
+      </div>
+      <div class="mech-card">
+        <h3>אפקט האמת המדומה</h3>
+        <p>ככל שרואים משהו יותר פעמים, כך הוא מרגיש נכון יותר, גם בלי שום קשר לעובדות. טענה שחוזרת בעשרות סרטונים לא הופכת להיות מבוססת יותר, רק מוכרת יותר.</p>
+      </div>
+      <div class="mech-card">
+        <h3>הטיית שליליות</h3>
+        <p>תוכן דרמטי, מפחיד או מכפיש תופס תשומת לב חזקה יותר מתוכן ניטרלי, ולכן מקבל יותר חשיפה. סרטון של ריב או משבר יתפוס יותר צפיות מסרטון רגוע, לא כי הוא מייצג יותר את המציאות.</p>
+      </div>
+      <div class="mech-card">
+        <h3>FOMO</h3>
+        <p>הפחד לפספס משהו שכולם כאילו חווים, מה שדוחף לבדוק את האפליקציה שוב ושוב. טרנד או אתגר שכולם מדברים עליו יכול ליצור תחושה שאת חייבת להיות שם עכשיו, גם אם את לא ממש רוצה.</p>
+      </div>
+
+      <details class="reflect"><summary>שאלה לעצור עליה</summary><p>יש נושא שבו הפיד שלי מזין אותי כל הזמן באותה מחשבה, עד שהיא מתחילה להרגיש כמו עובדה?</p></details>
+    </div>
+  </section>
+
+  <!-- ===================== 03 ===================== -->
+  <section class="section" id="section-03">
+    <div class="wrap">
+      <div class="section-kicker">03</div>
+      <h2>מה המחקר באמת אומר</h2>
+      <p class="section-sub">בכנות, כולל מה שעוד לא ידוע</p>
+      <p class="lead">המחקר על טיקטוק ובני נוער עדיין צעיר יחסית. חלק גדול מהמחקרים מראים קשר בין דברים, לא הוכחה חד משמעית שדבר אחד גורם לשני. שווה לקרוא את הממצאים הבאים עם הזהירות הזאת, כמו כל מידע ברשת.</p>
+
+      <ul class="finding-list">
+        <li>סקירה שבחנה כעשרים מחקרים ומעל 17,000 משתתפים בעשר מדינות מצאה קשר בין שימוש בטיקטוק לבין שביעות רצון נמוכה יותר מהחיים, יותר סימפטומים דיכאוניים, וסיכון לשימוש בעייתי. איכות הראיות הוגדרה כבינונית.</li>
+        <li>מחקרים על השוואה חברתית מראים שוב ושוב שיותר שימוש והשוואה עצמית לתוכן ברשת קשורים לירידה בשביעות הרצון מהגוף, ולעלייה בחרדה ובדיכאון, במיוחד אצל נערות מתבגרות.</li>
+        <li>מחקר שבדק במפורש משתמשות בטיקטוק מצא רמות גבוהות יותר של השוואה חברתית ודימוי גוף נמוך יותר, בהשוואה למי שלא משתמשות באפליקציה.</li>
+        <li>אלגוריתמים מבוססי תוכן חזותי מזהים במהירות מה תופס משתמשת מסוימת, וממשיכים להזין אותה בתוכן דומה. זה יכול ליצור מעגל שמעצים דימויי גוף בלתי אפשריים.</li>
+        <li>יש גם דיווחים על הדבקה חברתית של דפוסים התנהגותיים ופסיכיאטריים, בקרב נערות פגיעות במיוחד.</li>
+        <li>מנגד, יש עדות לכך שהאפליקציה יכולה גם לשמש ערוץ תמיכה, שיתוף, והפגת בדידות. מדובר בכלי דו ערכי, שהשפעתו תלויה מאוד באיך משתמשים בו.</li>
+      </ul>
+
+      <div class="callout">
+        <strong>המסקנה המעשית</strong>
+        לא מדובר בין סכנה מוחלטת לבין אין שום בעיה. מדובר בכלי עם השפעה אמיתית ומדידה על מצב הרוח ועל תפיסת הגוף, ששווה להשתמש בו במודעות.
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 04 ===================== -->
+  <section class="section" id="section-04">
+    <div class="wrap">
+      <div class="section-kicker">04</div>
+      <h2>גוף ודימוי עצמי</h2>
+      <p class="section-sub">כולל בודי פוזיטיב, שגם הוא לא ניטרלי</p>
+      <p class="lead">הפיד שלך הוא לא המציאות. הוא תוצאה של אלגוריתם שלמד מה גורם לך לעצור ולצפות, לא בהכרח מה טוב לך.</p>
+
+      <div class="principle">
+        <h3>את מאמנת את האלגוריתם, לא רק שהוא מאמן אותך</h3>
+        <p>כל לחיצת לייק, כל צפייה עד הסוף, כל עצירה ממושכת מלמדת את המערכת מה להראות לך יותר. אם תתחילי במודע לעקוב ולתת לייקים לתוכן מגוון, גדלי גוף שונים, אמנות, הומור, מאמרים, הפיד יתחיל להשתנות בהדרגה.</p>
+      </div>
+      <div class="principle">
+        <h3>הפרדה בין יפה לנורמלי</h3>
+        <p>תמונות וסרטונים בטיקטוק לרוב עוברים עריכה, תאורה, זוויות, ולפעמים סינון דיגיטלי. הם לא מייצגים איך גוף אמיתי נראה ברוב שעות היום.</p>
+      </div>
+      <div class="principle">
+        <h3>שימי לב לרגע שבו את מתחילה להשוות</h3>
+        <p>ההשוואה עצמה היא תהליך אנושי טבעי. אפשר לתרגל לזהות אותה ברגע שהיא קורית, ולבחור אם להמשיך בה או לעצור.</p>
+      </div>
+      <div class="principle">
+        <h3>גם תוכן בודי פוזיטיב לא ניטרלי</h3>
+        <p>גם תוכן שמנסה לקדם קבלה עצמית יכול בעצמו להפוך למקור השוואה. השאלה החשובה היא איך את מרגישה אחרי הצפייה, לא רק מה המסר המוצהר של הסרטון.</p>
+      </div>
+
+      <details class="reflect"><summary>שאלה לעצור עליה</summary><p>אחרי איזה סוג תוכן את בדרך כלל מרגישה יותר טוב עם עצמך, ואחרי איזה סוג פחות?</p></details>
+    </div>
+  </section>
+
+  <!-- ===================== 05 ===================== -->
+  <section class="section" id="section-05">
+    <div class="wrap">
+      <div class="section-kicker">05</div>
+      <h2>להישאר את</h2>
+      <p class="section-sub">זהות אותנטית מול הצגה</p>
+      <p class="lead">זה החלק הכי אישי במדריך. לא רשימת כללים, אלא כמה דברים ששווה לזכור כדי שהזהות שלך תישאר שלך, גם כשיש קהל.</p>
+
+      <div class="warm-item">
+        <h3>זהות מול הצגה</h3>
+        <p>ברשת קל להתחיל לבנות גרסה ערוכה של עצמך, מותאמת למה שמקבל תגובות. שווה לשאול מדי פעם: אני עושה את זה כי זה באמת אני, או כי זה מה שיביא לייקים?</p>
+      </div>
+      <div class="warm-item">
+        <h3>הפסקות מכוונות</h3>
+        <p>לא כעונש, אלא כדי לבדוק איך את מרגישה בלי הפיד. גם עשר דקות שקטות ביום, בלי מסך, יכולות לעזור לך להישאר מחוברת לתחושות שלך, לא רק לתגובות של אחרים.</p>
+      </div>
+      <div class="warm-item">
+        <h3>חיזוק פנימי מול חיצוני</h3>
+        <p>נסי לשים לב להבדל בין אני מרגישה טוב עם עצמי לבין אחרים אמרו שאני טובה. שני הדברים חשובים, אבל רק אחד מהם תלוי בך.</p>
+      </div>
+      <div class="warm-item">
+        <h3>דיבור עצמי מודע</h3>
+        <p>אחרי גלילה ארוכה, שימי לב איך את מדברת אל עצמך. אם עלו מחשבות ביקורתיות על הגוף, המראה או ההישגים שלך, זו הזדמנות לעצור ולשאול: הייתי אומרת את זה לחברה טובה?</p>
+      </div>
+      <div class="warm-item">
+        <h3>קהילה אמיתית מול קהל</h3>
+        <p>עוקבים ולייקים הם לא אותו דבר כמו קשרים קרובים. שווה להשקיע גם בזמן איכות עם אנשים שמכירים אותך מעבר למסך.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 06 ===================== -->
+  <section class="section" id="section-06">
+    <div class="wrap">
+      <div class="section-kicker">06</div>
+      <h2>איך האפליקציה עובדת בפועל</h2>
+      <p class="section-sub">ניווט, מונחים ופיצ'רים</p>
+      <p class="lead">חלק שימושי לדפדוף, לא בהכרח לקריאה ברצף. חשוב לדעת: המונח ריל שייך רשמית לאינסטגרם ולפייסבוק. בטיקטוק קוראים לזה סתם סרטון או TikTok, גם אם בשפה יומיומית אנשים משתמשים במילה ריל לכל סרטון קצר ברשת.</p>
+
+      <p class="subhead">ניווט בסיסי</p>
+      <ul class="nav-list">
+        <li><b>בית</b>הפיד הראשי. שתי לשוניות למעלה: עוקבים, שמראה סרטונים רק ממי שאת עוקבת אחריהם, ו-For You, הפיד המומלץ על ידי האלגוריתם.</li>
+        <li><b>חיפוש</b>סמל זכוכית מגדלת, לחיפוש חשבונות, האשטגים, סאונדים או נושאים.</li>
+        <li><b>פלוס</b>כפתור להעלאת סרטון חדש, צילום ישיר או מהגלריה.</li>
+        <li><b>תיבת דואר</b>הודעות פרטיות, והתראות על לייקים, תגובות ועוקבים חדשים.</li>
+        <li><b>פרופיל</b>העמוד האישי שלך: סרטונים שפרסמת, עוקבים, לייקים, וגישה להגדרות דרך שלוש הקווים בפינה.</li>
+      </ul>
+
+      <p class="subhead">מילון מונחים</p>
+      <div class="search-box">
+        <span aria-hidden="true">⌕</span>
+        <input type="text" id="glossary-search" placeholder="חפשי מונח, למשל Duet">
+      </div>
+      <dl id="glossary-list">
+        <div class="glossary-item" data-term="for you fyp פיד אלגוריתם">
+          <dt>For You (FYP)</dt>
+          <dd>הפיד המותאם אישית שהאלגוריתם בונה בהתאם למה שצפית בו, אהבת, או עצרת עליו.</dd>
+        </div>
+        <div class="glossary-item" data-term="לייק תגובה שמירה שיתוף">
+          <dt>לייק, תגובה, שמירה, שיתוף</dt>
+          <dd>ארבעת הכפתורים בצד הסרטון. שמירה מכניסה את הסרטון לתיקיית מועדפים בפרופיל, לצפייה חוזרת בלי לחפש אותו שוב.</dd>
+        </div>
+        <div class="glossary-item" data-term="duet דואט">
+          <dt>Duet</dt>
+          <dd>יצירת סרטון חדש שמופיע לצד סרטון קיים של מישהו אחר, במסך מפוצל. אפשר להפעיל או לכבות את זה לסרטונים שלך בהגדרות הפרטיות.</dd>
+        </div>
+        <div class="glossary-item" data-term="stitch סטיץ">
+          <dt>Stitch</dt>
+          <dd>לקיחת קטע קצר מסרטון של מישהו אחר, ושילובו כפתיחה לסרטון חדש. גם זה ניתן להגבלה בהגדרות.</dd>
+        </div>
+        <div class="glossary-item" data-term="live שידור חי">
+          <dt>LIVE</dt>
+          <dd>שידור חי בזמן אמת, שבו צופים שולחים תגובות ומתנות וירטואליות. יש דרישת גיל מינימלי להפעלת LIVE.</dd>
+        </div>
+        <div class="glossary-item" data-term="sound סאונד שיר מוזיקה">
+          <dt>Sound</dt>
+          <dd>כל סרטון מבוסס על סאונד, שיכול להיות שיר, קטע מסרטון אחר, או הקלטה מקורית. לוחצים על שם הסאונד כדי לראות סרטונים אחרים שמשתמשים בו.</dd>
+        </div>
+        <div class="glossary-item" data-term="אפקטים פילטרים עריכה">
+          <dt>אפקטים ופילטרים</dt>
+          <dd>כלים ליצירת תוכן: אפקטים ויזואליים, מסכות, האטה והאצה, מעברים. נמצאים במסך היצירה.</dd>
+        </div>
+        <div class="glossary-item" data-term="drafts טיוטות">
+          <dt>Drafts (טיוטות)</dt>
+          <dd>סרטונים שהתחלת ליצור אבל לא פרסמת. נשמרים בפרופיל תחת טיוטות עד שמוחקים או מפרסמים אותם.</dd>
+        </div>
+        <div class="glossary-item" data-term="hashtag האשטג תיוג">
+          <dt>האשטג (#)</dt>
+          <dd>תיוג נושאי שעוזר לסרטון להופיע כשמחפשים את הנושא, ומקבץ יחד סרטונים בנושא דומה.</dd>
+        </div>
+      </dl>
+      <p class="no-results" id="no-results">אין מונח שתואם את החיפוש.</p>
+    </div>
+  </section>
+
+  <!-- ===================== 07 ===================== -->
+  <section class="section" id="section-07">
+    <div class="wrap">
+      <div class="section-kicker">07</div>
+      <h2>ההגדרות שלך, הבחירה שלך</h2>
+      <p class="section-sub">פרטיות ובטיחות שאת מפעילה בעצמך</p>
+      <p class="lead">נכנסים אליהן דרך פרופיל, שלוש הקווים בפינה העליונה, הגדרות ופרטיות. כל אחת מההגדרות האלה היא כלי שאת יכולה לבחור להפעיל בשבילך, לא משהו שקורה לך.</p>
+
+      <div class="setting-item"><h3>חשבון פרטי</h3><p>כשמופעל, רק עוקבים מאושרים יכולים לראות את הסרטונים שלך.</p></div>
+      <div class="setting-item"><h3>מי יכול לעשות דואט או סטיץ' לתוכן שלך</h3><p>ניתן להגביל לעוקבים בלבד, או לכבות לגמרי.</p></div>
+      <div class="setting-item"><h3>הגדרות תגובות והודעות פרטיות</h3><p>שליטה במי יכול להגיב, לתייג, או לשלוח הודעה.</p></div>
+      <div class="setting-item"><h3>חסימת משתמשים ספציפיים</h3><p>אפשר לחסום כל חשבון בכמה לחיצות, בלי הסבר לאף אחד.</p></div>
+      <div class="setting-item"><h3>סינון מילות מפתח</h3><p>אפשר להזין עד מאה מילים שיוסתרו אוטומטית מהתגובות על התוכן שלך.</p></div>
+      <div class="setting-item"><h3>מצב מוגבל (Restricted Mode)</h3><p>מגביל הופעה של תוכן שעלול להיות לא מתאים לגיל.</p></div>
+      <div class="setting-item"><h3>רענון פיד ה-For You</h3><p>אפשרות לאפס את מה שהאלגוריתם למד, ולהתחיל מחדש.</p></div>
+      <div class="setting-item"><h3>זמן מסך ורווחה</h3><p>נמצא תחת זמן ורווחה בהגדרות: זמן מסך יומי, הפסקות מתוזמנות, ותזכורות שינה.</p></div>
+
+      <p class="fp-note">יש גם אפשרות בשם Family Pairing, שמחברת חשבון הורה לחשבון שלך לצורך שיתוף בקרה על זמן מסך, תוכן והודעות, כשני הצדדים רואים ומאשרים שינויים. אם זה רלוונטי אצלכם בבית, זו שיחה שכדאי לקיים ביחד, לא הפתעה.</p>
+    </div>
+  </section>
+
+  <!-- ===================== checklist ===================== -->
+  <section class="section" id="checklist">
+    <div class="wrap">
+      <div class="section-kicker">✓</div>
+      <h2>רשימת בדיקה מהירה</h2>
+      <p class="section-sub">הכל בקצרה, במקום אחד</p>
+      <ul class="checklist-list">
+        <li>אני יודעת שהאלגוריתם לומד ממני, ואני יכולה לכוון אותו במודע.</li>
+        <li>אני מזהה מתי אני משווה את עצמי לתוכן שראיתי.</li>
+        <li>אני שואלת את עצמי מה אני מרגישה אחרי גלילה ארוכה, לא רק תוך כדי.</li>
+        <li>יש לי לפחות פעילות אחת ביום שהיא לא מסך, שמחברת אותי לעצמי.</li>
+        <li>אני זוכרת שהפיד שלי הוא לא תמונת מצב של המציאות, אלא תוצאה של מה שגרם לי לעצור בעבר.</li>
+        <li>אני יודעת אילו הגדרות פרטיות עומדות לרשותי, ואיך להפעיל אותן.</li>
+        <li>יש לי לפחות מקום אחד, מקוון או לא, שבו אני יכולה להיות בדיוק את עצמי בלי לערוך.</li>
+      </ul>
+      <button class="print-btn" onclick="window.print()">הדפיסי או שמרי כקובץ PDF</button>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <a class="back-top" href="#top">חזרה למעלה</a>
+  <p>מדריך זה נועד למטרות חינוכיות ותומכות, ואינו תחליף לליווי טיפולי פרטני.</p>
+  <p style="margin-top:6px;">להורים ולמטפלים: <a href="tiktok-onboarding-parents.html">הערה קצרה נפרדת</a></p>
+</footer>
+
+<a href="#checklist" class="float-checklist">רשימת בדיקה</a>
+
+<script>
+  function closeNav(){
+    document.getElementById('nav-toggle').checked = false;
+  }
+
+  (function(){
+    var input = document.getElementById('glossary-search');
+    var items = Array.prototype.slice.call(document.querySelectorAll('.glossary-item'));
+    var noResults = document.getElementById('no-results');
+    input.addEventListener('input', function(){
+      var q = input.value.trim().toLowerCase();
+      var visible = 0;
+      items.forEach(function(item){
+        var match = item.getAttribute('data-term').toLowerCase().indexOf(q) !== -1
+          || item.querySelector('dt').textContent.toLowerCase().indexOf(q) !== -1;
+        item.hidden = !match;
+        if(match) visible++;
+      });
+      noResults.style.display = visible === 0 ? 'block' : 'none';
+    });
+  })();
+</script>
+
+</body>
+</html>
